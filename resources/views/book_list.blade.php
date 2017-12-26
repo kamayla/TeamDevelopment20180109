@@ -3,12 +3,12 @@
 @section('content')
 
 <div class="panel-body">
-  <!-- バリテーションエラーの表示に使用 -->
+  <!-- バリデーションエラーの表示に使用 -->
   @include('common.errors')
-  <!-- バリテーションエラーの表示に使用 -->
+  <!-- バリデーションエラーの表示に使用 -->
 
   <!-- 本登録フォーム -->
-  <form action="{{url('book_list')}}" method="post">
+  <form action="{{url('book_add')}}" method="post">
     {{csrf_field()}}
     <table border="1">
       <tr>
@@ -41,7 +41,7 @@
       </tr>
       <tr>
         <td>発売日</td>
-        <td><input type="text" name="pro_release_date"></td>
+        <td><input type="date" name="pro_release_date"></td>
       </tr>
       <tr>
         <td>出版社</td>
@@ -77,7 +77,6 @@
       <i class="glyphicon glyphicon-plus"></i>SAVE
     </button>
   </form>
-  FUUUUUUUUUUUUUUCK
 </div>
 
 @endsection
