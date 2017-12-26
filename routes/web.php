@@ -33,7 +33,7 @@ Route::post('/book_add', function(Request $request){
         'pro_publisher' => 'required |min:1 |max:255',
         'pro_label' => 'required |min:1 |max:255',
         'pro_description' => 'required |min:1 |max:255',
-        'pro_pro_size' => 'required |min:1 |max:255',
+        'pro_size' => 'required |min:1 |max:255',
         'pro_weight' => 'required |min:1 |max:255',
         'pro_stock' => 'required |min:1 |max:255',
         'pro_isbn' => 'required |min:1 |max:255',
