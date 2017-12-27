@@ -21,7 +21,9 @@ class CreateProductsTable extends Migration
             $table->string('pro_thumbnail'); // 画像
             $table->string('pro_genre'); // ジャンル
             $table->string('pro_author'); // 著者
+            $table->string('pro_author_en'); // 著者english
             $table->string('pro_original_author'); // 原作者
+            $table->string('pro_original_author_en'); // 原作者english
             $table->dateTime('pro_release_date'); // 発売日
             $table->string('pro_publisher'); // 出版社
             $table->string('pro_label'); // レーベル

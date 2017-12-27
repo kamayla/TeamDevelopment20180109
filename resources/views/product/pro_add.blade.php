@@ -8,7 +8,7 @@
   <!-- バリデーションエラーの表示に使用 -->
 
   <!-- 本登録フォーム -->
-  <form action="{{url('book_add')}}" method="post">
+  <form action="{{url('pro_add_done')}}" method="post" enctype="multipart/form-data">
     {{csrf_field()}}
     <table border="1">
       <tr>
@@ -25,7 +25,7 @@
       </tr>
       <tr>
         <td>画像</td>
-        <td><input type="text" name="pro_thumbnail"></td>
+        <td><input type="file" name="pro_thumbnail"></td>
       </tr>
       <tr>
         <td>ジャンル</td>
@@ -36,8 +36,16 @@
         <td><input type="text" name="pro_author"></td>
       </tr>
       <tr>
+        <td>著者(en)</td>
+        <td><input type="text" name="pro_author_en"></td>
+      </tr>
+      <tr>
         <td>原作者</td>
         <td><input type="text" name="pro_original_author"></td>
+      </tr>
+      <tr>
+        <td>原作者(en)</td>
+        <td><input type="text" name="pro_original_author_en"></td>
       </tr>
       <tr>
         <td>発売日</td>
