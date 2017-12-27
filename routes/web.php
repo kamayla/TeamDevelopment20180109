@@ -20,3 +20,6 @@ Route::get('/pro_add', 'ProductsController@add_view');
 
 // 本追加
 Route::post('/pro_add_done', 'ProductsController@add_done');
+
+// 本削除
+Route::post('/pro_delete_done/{product}', 'ProductsController@delete_done');

@@ -14,6 +14,9 @@
         <th>タイトル</th>
         <th>価格</th>
         <th>ジャンル</th>
+        <th>詳細</th>
+        <th>削除</th>
+
       </thead>
       <tbody>
         @foreach ($products as $product)
@@ -22,6 +25,17 @@
             <td class="table-text">{{$product->pro_name}}</td>
             <td class="table-text">{{$product->pro_price}}</td>
             <td class="table-text">{{$product->pro_genre}}</td>
+            <td class="table-text">{!!nl2br($product->pro_description)!!}</td>
+            <!-- 削除ボタン -->
+            <td>
+              <form action="{{url('pro_delete_done/'.$product->id)}}" method="post">
+                {{csrf_field()}}
+                <button type="submit" class="btn btn-danger">
+                  <i class="glyphicon glyphicon-trash"></i>削除
+                </button>
+              
+              </form>
+            </td>
           </tr>
         @endforeach
       </tbody>

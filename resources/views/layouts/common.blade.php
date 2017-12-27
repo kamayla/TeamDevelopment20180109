@@ -18,7 +18,8 @@
 <body>
   <div class="container">
     <nav class="navbar navbar-default">
-      <a href="{{url('pro_add')}}">本追加フォーム</a>
+      <a href="{{url('/')}}" class="btn btn-primary">TOPへ</a>
+      <a href="{{url('pro_add')}}" class="btn btn-primary">本追加フォーム</a>
       <!-- ナビバーの表示領域 -->
     </nav>
     @yield('content')

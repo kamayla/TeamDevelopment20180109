@@ -79,5 +79,11 @@ class ProductsController extends Controller
         return view('product/pro_add');
     }
 
+    public function delete_done(Product $product){
+        $product->delete();
+        return redirect('/');
+
+    }
+
 
 }
