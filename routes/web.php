@@ -23,3 +23,9 @@ Route::post('/pro_add_done', 'ProductsController@add_done');
 
 // 本削除
 Route::post('/pro_delete_done/{product}', 'ProductsController@delete_done');
+
+// 更新画面表示
+Route::post('/pro_edit/{product}', 'ProductsController@edit_view');
+
+// 本更新処理
+Route::post('/pro_edit_done', 'ProductsController@edit_done');
