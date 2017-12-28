@@ -12,6 +12,10 @@
 use App\Product;
 use Illuminate\Http\Request;
 
+/**
+ * 管理者側のルート定義
+ */
+
 // 登録一覧を表示
 Route::get('/', 'ProductsController@top_view');
 
@@ -29,3 +33,9 @@ Route::post('/pro_edit/{product}', 'ProductsController@edit_view');
 
 // 本更新処理
 Route::post('/pro_edit_done', 'ProductsController@edit_done');
+
+/**
+ * ユーザー側のルート定義
+ */
+
+Route::get('/booquet', 'ShopController@top_view');

@@ -1,0 +1,54 @@
+.navdiv{
+  width: 33%;
+}
+
+.navbar{
+  display: flex;
+}
+
+.glyphicon{
+  font-size: 30px;
+}
+
+div{
+  border: 1px solid red;
+}
+
+.mainWrapper{
+  display: flex;
+  height: 600px;
+}
+
+.leftSidebar{
+  width: 20%;
+}
+
+.mainArea{
+  width: 60%;
+}
+
+.rightSidebar{
+  width: 20%;
+}
+
+.right-top{
+  height: 50%;
+}
+
+.right-under{
+  height: 50%;
+}
+
+.new-arrival{
+  display: flex;
+  justify-content: space-around;
+}
+
+footer{
+  height: 150px;
+  background: gray;
+  color: white;
+  text-align: center;
+  font-size: 32px;
+  line-height: 150px;
+}

@@ -29,7 +29,7 @@ class ProductsController extends Controller
             'pro_stock' => 'required |min:1 |max:255',
             'pro_isbn' => 'required |min:1 |max:255',
         ]);
-
+        
         // ファイルを取得
         $file = $request->file('pro_thumbnail');
         // ファイルが空かどうか審査
@@ -80,15 +80,22 @@ class ProductsController extends Controller
     }
 
     public function delete_done(Product $product){
+        $pro_thumbnail = $product->pro_thumbnail;
+        if($pro_thumbnail != ''){
+            unlink('./pro_img/'.$product->pro_thumbnail);
+        }
+
         $product->delete();
+        
         return redirect('/');
 
     }
-
+    // 更新画面表示
     public function edit_view(Product $product){
         return view('product/pro_edit', ['product' => $product]);
     }
 
+    // 更新処理
     public function edit_done(Request $request){
         // バリデーション
         $validator = Validator::make($request->all(),[
