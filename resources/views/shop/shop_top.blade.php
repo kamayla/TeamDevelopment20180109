@@ -22,7 +22,7 @@
           {{$product->pro_author}}
         </div>
         <div>
-          {{$product->pro_price}}
+          {{$product->pro_price.'円'}}
         </div>
       </div>
     @endforeach
