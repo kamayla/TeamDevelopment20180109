@@ -31,7 +31,7 @@ class CreateProductsTable extends Migration
             $table->string('pro_size'); // 書籍サイズ
             $table->integer('pro_weight'); // 書籍重量
             $table->integer('pro_stock'); // 在庫数
-            $table->integer('pro_isbn'); // ISBN_NO
+            $table->string('pro_isbn'); // ISBN_NO
             $table->timestamps();
         });
     }
