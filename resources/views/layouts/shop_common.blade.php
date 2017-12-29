@@ -61,8 +61,14 @@
 
     </div>
   </div>
-  <div class="underContent">
+  <div class="underContent1">
     @yield('content2')
+  </div>
+  <div class="underContent2">
+    @yield('content3')
+  </div>
+  <div class="underContent1">
+    @yield('content4')
   </div>
 
   <footer>

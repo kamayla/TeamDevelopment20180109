@@ -41,7 +41,21 @@ div{
 
 .new-arrival{
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.new-arrival-item{
+  width: 16.66%;
+
+}
+
+.categoryWrap{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.categoryItem{
+  width: 25%;
 }
 
 footer{
