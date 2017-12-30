@@ -29,7 +29,19 @@
       </tr>
       <tr>
         <td>ジャンル</td>
-        <td><input type="text" name="pro_genre" value="{{$product->pro_genre}}"></td>
+        <td>
+          <select name="pro_genre" id="pro_genre" >
+            <option value="Tokyo">Tokyo</option>
+            <option value="Kyoto">Kyoto</option>
+            <option value="Art">Art</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Music">Music</option>
+            <option value="Temple">Temple</option>
+            <option value="Gokudo">Gokudo</option>
+            <option value="Other">Other</option>
+            </select>
+        </td>
+        
       </tr>
       <tr>
         <td>著者</td>
@@ -89,4 +101,40 @@
   </form>
 </div>
 
+<input type="hidden" id="genre" value="{{$product->pro_genre}}">
+
+<script>
+  let genre = document.getElementById('genre').value;
+
+  if(genre=='Tokyo'){
+    document.getElementById('pro_genre')[0].selected = true;
+  }
+  if(genre=='Kyoto'){
+    document.getElementById('pro_genre')[1].selected = true;
+  }
+  if(genre=='Art'){
+    document.getElementById('pro_genre')[2].selected = true;
+  }
+  if(genre=='Fashion'){
+    document.getElementById('pro_genre')[3].selected = true;
+  }
+  if(genre=='Music'){
+    document.getElementById('pro_genre')[4].selected = true;
+  }
+  if(genre=='Temple'){
+    document.getElementById('pro_genre')[5].selected = true;
+  }
+  if(genre=='Gokudo'){
+    document.getElementById('pro_genre')[6].selected = true;
+  }
+  if(genre=='Other'){
+    document.getElementById('pro_genre')[7].selected = true;
+  }
+
+
+
+ 
+  
+  
+</script>
 @endsection

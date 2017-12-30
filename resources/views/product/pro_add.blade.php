@@ -29,7 +29,18 @@
       </tr>
       <tr>
         <td>ジャンル</td>
-        <td><input type="text" name="pro_genre"></td>
+        <td>
+          <select name="pro_genre" id="">
+            <option value="Tokyo">Tokyo</option>
+            <option value="Kyoto">Kyoto</option>
+            <option value="Art">Art</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Music">Music</option>
+            <option value="Temple">Temple</option>
+            <option value="Gokudo">Gokudo</option>
+            <option value="Other">Other</option>
+          </select>
+        </td>
       </tr>
       <tr>
         <td>著者</td>
