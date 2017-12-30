@@ -160,3 +160,21 @@ footer{
 
 
 /* /shop_item_page */
+
+
+/* shop_result_page */
+.question{
+  text-align: center;
+}
+
+.result-wrap{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.result-item{
+  width: 16.66%;
+}
+
+
+/* /shop_result_page */

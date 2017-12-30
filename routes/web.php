@@ -41,3 +41,5 @@ Route::post('/pro_edit_done', 'ProductsController@edit_done');
 Route::get('/booquet', 'ShopController@top_view');
 // 商品個別ページの表示
 Route::get('/shop_item_page/{product}', 'shopController@shop_item_page_view');
+
+Route::post('/shop_result_page', 'shopController@shop_result_page_view');

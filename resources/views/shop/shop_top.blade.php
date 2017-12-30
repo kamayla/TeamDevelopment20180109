@@ -61,31 +61,31 @@
   </div>
   <div class="categoryItem">
     <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Tokyo</p>
+    <p>Kyoto</p>
   </div>
   <div class="categoryItem">
     <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Tokyo</p>
+    <p>Art</p>
   </div>
   <div class="categoryItem">
     <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Tokyo</p>
+    <p>Fashion</p>
   </div>
   <div class="categoryItem">
     <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Tokyo</p>
+    <p>Music</p>
   </div>
   <div class="categoryItem">
     <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Tokyo</p>
+    <p>Temple</p>
   </div>
   <div class="categoryItem">
     <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Tokyo</p>
+    <p>Gokudo</p>
   </div>
   <div class="categoryItem">
     <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Tokyo</p>
+    <p>Other</p>
   </div>
 </div>
 

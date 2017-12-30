@@ -19,9 +19,10 @@
   <!-- ナビゲーションバー -->
   <nav class="navbar navbar-default">
     <div class="navdiv">
-      <form action="">
-        <i class="glyphicon glyphicon-search"></i>
-        <input type="text">
+      <form action="{{url('/shop_result_page')}}" method="post">
+        {{csrf_field()}}
+        <input type="text" name="question">
+        <button type="submit" class="btn btn-primary"><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
       </form>
     </div>
     <div class="navdiv">

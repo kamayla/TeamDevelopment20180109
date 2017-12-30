@@ -131,10 +131,5 @@
     document.getElementById('pro_genre')[7].selected = true;
   }
 
-
-
- 
-  
-  
 </script>
 @endsection
