@@ -45,30 +45,20 @@
       @yield('content1')
     </div>
     <div class="rightSidebar">
-      <div class="right-top">
-        <i class="fa fa-facebook-official fa-3x" aria-hidden="true"></i>
-        <i class="fa fa-instagram fa-3x" aria-hidden="true"></i>
-        <i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
-      </div>
-      <div class="right-under">
-        <ul>
-          <li>Info</li>
-          <li>Shipping</li>
-          <li>About Us</li>
-          <li>Help</li>
-        </ul>
-      </div>
-
+      @yield('content2')
     </div>
   </div>
   <div class="underContent1">
-    @yield('content2')
-  </div>
-  <div class="underContent2">
     @yield('content3')
   </div>
-  <div class="underContent1">
+  <div class="underContent2">
     @yield('content4')
+  </div>
+  <div class="underContent3">
+    @yield('content5')
+  </div>
+  <div class="underContent4">
+    @yield('content6')
   </div>
 
   <footer>

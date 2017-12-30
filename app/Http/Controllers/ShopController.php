@@ -12,4 +12,9 @@ class ShopController extends Controller
         $products = Product::orderBy('created_at', 'asc')->get();
         return view('shop/shop_top', ['products' => $products]);
     }
+
+    // ショップ個別ページの表示
+    public function shop_item_page_view(Product $product){
+        return view('shop/shop_item_page', ['product' => $product]);
+    }
 }

@@ -37,5 +37,7 @@ Route::post('/pro_edit_done', 'ProductsController@edit_done');
 /**
  * ユーザー側のルート定義
  */
-
+// ショップトップページの表示
 Route::get('/booquet', 'ShopController@top_view');
+// 商品個別ページの表示
+Route::get('/shop_item_page/{product}', 'shopController@shop_item_page_view');

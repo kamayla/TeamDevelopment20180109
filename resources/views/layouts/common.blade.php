@@ -14,6 +14,7 @@
   <div class="container">
     <nav class="navbar navbar-default">
       <a href="{{url('/')}}" class="btn btn-primary">TOPへ</a>
+      <a href="{{url('booquet')}}" class="btn btn-primary">SHOPへ</a>
       <a href="{{url('pro_add')}}" class="btn btn-primary">本追加フォーム</a>
       <!-- ナビバーの表示領域 -->
     </nav>
