@@ -4,6 +4,15 @@
   width: 33%;
 }
 
+.headerTitle{
+  color: black;
+  
+}
+
+.headerTitle:hover{
+  text-decoration: none;
+}
+
 .navbar{
   display: flex;
 }
@@ -120,6 +129,32 @@ footer{
   text-align: center;
   height: 150px;
   line-height: 150px;
+}
+
+.ow-wrap{
+  display: flex;
+
+}
+
+.ow-img{
+  width: 33.33%;
+}
+
+.ow-info{
+  width: 66.66%
+}
+
+.other-works-of-this-genre-wrap{
+  display: flex;
+}
+
+.genre-item{
+  width: 16.66%
+}
+
+.view-more{
+  display: block;
+  margin: 0 auto;
 }
 
 

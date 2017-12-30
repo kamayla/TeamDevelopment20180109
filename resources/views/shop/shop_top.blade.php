@@ -121,6 +121,7 @@
     <h3>Shipping</h3>
     <div>
     wordwordwordwordwordwordwordwordwordword
+    
     </div>
     <div class="wrap">
       <div class="text-area">
@@ -133,7 +134,7 @@
   </div>
 
   <div class="shopping-guide-item">
-    <h3>Shipping</h3>
+    <h3>Payment method</h3>
     <div>
     wordwordwordwordwordwordwordwordwordword
     </div>
@@ -142,13 +143,14 @@
         <p>wordwordwordwordword</p>
       </div>
       <div class="icon-area">
-      <i class="fa fa-car fa-3x" aria-hidden="true"></i>
+        <i class="fa fa-cc-mastercard fa-2x" aria-hidden="true"></i>
+        <i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i>
+        <i class="fa fa-cc-paypal fa-2x" aria-hidden="true"></i>
+        <i class="fa fa-cc-amex fa-2x" aria-hidden="true"></i>
+
       </div>
     </div>
   </div>
- 
-
-
 </div>
 
 @endsection

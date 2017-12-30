@@ -25,7 +25,7 @@
       </form>
     </div>
     <div class="navdiv">
-      <h1>Booquet</h1>
+      <a href="{{url('/booquet')}}" class="headerTitle"><h1>Booquet</h1></a>
     </div>
     <div class="navdiv">
       <p>Login | Join<i class="glyphicon glyphicon-shopping-cart"></i></p>
