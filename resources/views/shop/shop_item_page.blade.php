@@ -36,7 +36,8 @@
       Weight:{{$product->pro_weight}}kg
     </div>
     <div>
-      <form action="">
+      <form action="{{url('shop_cart_in/'.$product->id)}}" method="post">
+        {{csrf_field()}}
         <select name="quantity" id="">
           @for($i=0; $i<$product->pro_stock; $i++)
           <option value="{{$i+1}}">{{$i+1}}</option>

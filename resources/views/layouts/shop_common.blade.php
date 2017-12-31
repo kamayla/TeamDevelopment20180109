@@ -29,7 +29,8 @@
       <a href="{{url('/booquet')}}" class="headerTitle"><h1>Booquet</h1></a>
     </div>
     <div class="navdiv">
-      <p>Login | Join<i class="glyphicon glyphicon-shopping-cart"></i></p>
+      Login | Join
+      <a href="{{url('/shop_cart_look')}}"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a>
     </div>
   </nav>
   <!-- /ナビゲーションバー -->

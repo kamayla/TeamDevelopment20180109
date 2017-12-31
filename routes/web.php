@@ -37,9 +37,14 @@ Route::post('/pro_edit_done', 'ProductsController@edit_done');
 /**
  * ユーザー側のルート定義
  */
+
 // ショップトップページの表示
 Route::get('/booquet', 'ShopController@top_view');
 // 商品個別ページの表示
 Route::get('/shop_item_page/{product}', 'shopController@shop_item_page_view');
-
+// 検索結果の表示
 Route::post('/shop_result_page', 'shopController@shop_result_page_view');
+// カートに入れる処理
+Route::post('/shop_cart_in/{product}', 'shopController@shop_cart_in');
+// カートの表示
+Route::get('/shop_cart_look','shopController@shop_cart_look');

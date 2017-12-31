@@ -3,7 +3,6 @@
 @section('content1')
 <!-- 本の一覧表示 -->
 <img src="{{asset('shop_img/main_visual.png')}}" alt="" style="width: 100%;">
-
 @endsection
 
 @section('content2')

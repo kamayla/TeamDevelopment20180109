@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use Validator;
+use Session;
 
 class ShopController extends Controller
 {
     public function top_view(){
-        $products = Product::orderBy('created_at', 'asc')->get();
+        $products = Product::orderBy('created_at', 'desc')->get();
         return view('shop/shop_top', ['products' => $products]);
     }
 
@@ -37,9 +38,39 @@ class ShopController extends Controller
         ->orWhere('pro_label','like',"%{$request->question}%")
         ->orWhere('pro_description','like',"%{$request->question}%")
         ->orWhere('pro_isbn','like',"%{$request->question}%")
-        
         ->get();
         return view('shop/shop_result_page',['products' => $products, 'question' => $request->question]);
 
+    }
+
+    public function shop_cart_in(Product $product,Request $request){
+        if(Session::get('cart')){
+            $cart = Session::get('cart');
+        }
+        if(Session::get('quantity')){
+            $quantity = Session::get('quantity');
+        }
+        $cart[] = $product->id;
+        $quantity[] = (int)$request->quantity;
+        Session::put('cart',$cart);
+        Session::put('quantity',$quantity);
+
+        return redirect('shop_item_page/'.$product->id);
+
+    }
+
+    public function shop_cart_look(){
+        $cart = Session::get('cart');
+        $quantity = Session::get('quantity');
+        foreach($cart as $key => $val){
+            $product[] = Product::find($val);
+            
+        }
+
+        return view('shop/shop_cart_look',[
+                'cart' => $cart,
+                'quantity' => $quantity, 
+                'product'=> $product
+            ]);
     }
 }
