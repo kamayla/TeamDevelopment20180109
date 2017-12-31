@@ -15,7 +15,11 @@
       {{$product->pro_author}}
     </div>
     <div>
-      {{$product->pro_price.'円'}}
+    <?php
+         $number =$product->pro_price;
+        // 3桁ごとにカンマ区切りで出力
+        echo number_format($number);
+        ?>円
     </div>
     <div>
       In Stock
