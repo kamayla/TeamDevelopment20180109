@@ -44,17 +44,35 @@ class ShopController extends Controller
     }
 
     public function shop_cart_in(Product $product,Request $request){
+        $flag=true;
         if(Session::get('cart')){
             $cart = Session::get('cart');
+        }else{
+            $cart[] = $product->id;
+            $quantity[] = (int)$request->quantity;
+            Session::put('cart',$cart);
+            Session::put('quantity',$quantity);
+            $flag=false;
         }
+
         if(Session::get('quantity')){
             $quantity = Session::get('quantity');
         }
-        $cart[] = $product->id;
-        $quantity[] = (int)$request->quantity;
-        Session::put('cart',$cart);
-        Session::put('quantity',$quantity);
-
+        if($flag==true){
+            $key = array_search($product->id, $cart);
+            Session::put('key',$key);
+            if($key!=false||$key===0){
+                $quantity[$key] += (int)$request->quantity;
+                Session::put('quantity',$quantity);
+            }else{
+                $cart[] = $product->id;
+                $quantity[] = (int)$request->quantity;
+                Session::put('cart',$cart);
+                Session::put('quantity',$quantity);
+            }
+        }
+        
+        
         $max = count($cart);
         $totalQuantity = 0;
         for($i=0;$i<$max;$i++){
@@ -70,15 +88,28 @@ class ShopController extends Controller
     public function shop_cart_look(){
         $cart = Session::get('cart');
         $quantity = Session::get('quantity');
-        foreach($cart as $key => $val){
-            $product[] = Product::find($val);
-            
-        }
-
-        return view('shop/shop_cart_look',[
+        if(isset($cart)){
+            foreach($cart as $key => $val){
+                $product[] = Product::find($val); 
+            }
+            return view('shop/shop_cart_look',[
                 'cart' => $cart,
                 'quantity' => $quantity, 
                 'product'=> $product,
             ]);
+        }
+
+        return view('shop/shop_cart_look',[
+            'cart' => $cart,
+            'quantity' => $quantity
+        ]);
+        
+
+        
+    }
+
+    public function delete(){
+        Session::flush();
+        return redirect('/booquet');
     }
 }

@@ -2,6 +2,7 @@
 
 @section('content3')
 <div class="container">
+  @if(isset($cart))
   <table class="table">
     @for($i=0; $i<count($cart); $i++)
       <tr>
@@ -18,7 +19,13 @@
       
     @endfor
   </table>
+  @endif
 </div>
+<?php var_dump(Session::get('quantity'))?>
+<br>
+<?php var_dump(Session::get('cart'))?>
+<br>
+<?php var_dump(Session::get('key'))?>
 
 
 @endsection

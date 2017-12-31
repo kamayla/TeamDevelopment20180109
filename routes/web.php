@@ -48,3 +48,6 @@ Route::post('/shop_result_page', 'shopController@shop_result_page_view');
 Route::post('/shop_cart_in/{product}', 'shopController@shop_cart_in');
 // カートの表示
 Route::get('/shop_cart_look','shopController@shop_cart_look');
+
+// カートを消す（テスト期間用）
+Route::get('/delete', 'shopController@delete');
