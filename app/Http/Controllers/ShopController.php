@@ -55,6 +55,14 @@ class ShopController extends Controller
         Session::put('cart',$cart);
         Session::put('quantity',$quantity);
 
+        $max = count($cart);
+        $totalQuantity = 0;
+        for($i=0;$i<$max;$i++){
+            $totalQuantity += $quantity[$i];
+        }
+        Session::put('totalQuantity',$totalQuantity);
+        
+
         return redirect('shop_item_page/'.$product->id);
 
     }
@@ -70,7 +78,7 @@ class ShopController extends Controller
         return view('shop/shop_cart_look',[
                 'cart' => $cart,
                 'quantity' => $quantity, 
-                'product'=> $product
+                'product'=> $product,
             ]);
     }
 }

@@ -31,6 +31,7 @@
     <div class="navdiv">
       Login | Join
       <a href="{{url('/shop_cart_look')}}"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a>
+      <?php echo Session::get('totalQuantity')?>
     </div>
   </nav>
   <!-- /ナビゲーションバー -->
