@@ -54,3 +54,6 @@ Route::get('/delete', 'shopController@delete');
 
 // カートを消す
 Route::post('/shop_cart_delete/{product}', 'shopController@shop_cart_delete');
+
+// カートの数量変更
+Route::post('/shop_cart_quantity_edit/{product}', 'shopController@shop_cart_quantity_edit');

@@ -126,11 +126,27 @@ class ShopController extends Controller
         if(count($cart)===0){
             Session::forget('cart');
             Session::forget('quantity');
-
         }
 
         return redirect('/shop_cart_look');
-        
+    }
+
+    public function shop_cart_quantity_edit(Product $product, Request $request){
+        $cart = Session::get('cart');
+        $quantity = Session::get('quantity');
+        $key = array_search($product->id, $cart);
+        $quantity[$key] = $request->quantity;
+        Session::put('quantity',$quantity);
+
+        $max = count($cart);
+        $totalQuantity = 0;
+        for($i=0;$i<$max;$i++){
+            $totalQuantity += $quantity[$i];
+        }
+        Session::put('totalQuantity',$totalQuantity);
+
+        return redirect('/shop_cart_look');
+
     }
 
     public function delete(){
