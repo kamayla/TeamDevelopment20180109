@@ -69,7 +69,10 @@
       
     @endfor
   </table>
+  @else
+  <p>カートに何も入っていません。</p>
   @endif
+  
 </div>
 
 
