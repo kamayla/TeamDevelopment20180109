@@ -15,17 +15,21 @@
         <td>
           {{$product[$i]->pro_price.'円'}}
         </td>
+        <td>
+          <form action="{{url('shop_cart_delete/'.$product[$i]->id)}}" method="post">
+            {{csrf_field()}}
+            <button type="submit" class="btn btn-danger">
+              <i class="glyphicon glyphicon-trash"></i>削除
+            </button>
+          </form>
+        </td>
       </tr>
       
     @endfor
   </table>
   @endif
 </div>
-<?php var_dump(Session::get('quantity'))?>
-<br>
-<?php var_dump(Session::get('cart'))?>
-<br>
-<?php var_dump(Session::get('key'))?>
+
 
 
 @endsection

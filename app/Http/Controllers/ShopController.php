@@ -60,7 +60,6 @@ class ShopController extends Controller
         }
         if($flag==true){
             $key = array_search($product->id, $cart);
-            Session::put('key',$key);
             if($key!=false||$key===0){
                 $quantity[$key] += (int)$request->quantity;
                 Session::put('quantity',$quantity);
@@ -103,8 +102,34 @@ class ShopController extends Controller
             'cart' => $cart,
             'quantity' => $quantity
         ]);
-        
+    }
 
+    public function shop_cart_delete(Product $product){
+        $cart = Session::get('cart');
+        $quantity = Session::get('quantity');
+        $key = array_search($product->id, $cart);
+        array_splice($cart,$key,1);
+        array_splice($quantity,$key,1);
+
+        Session::put('cart',$cart);
+        Session::put('quantity',$quantity);
+
+
+
+        $max = count($cart);
+        $totalQuantity = 0;
+        for($i=0;$i<$max;$i++){
+            $totalQuantity += $quantity[$i];
+        }
+        Session::put('totalQuantity',$totalQuantity);
+
+        if(count($cart)===0){
+            Session::forget('cart');
+            Session::forget('quantity');
+
+        }
+
+        return redirect('/shop_cart_look');
         
     }
 
