@@ -9,9 +9,6 @@
         画像
       </th>
       <th>
-        &nbsp;
-      </th>
-      <th>
         数量
       </th>
       <th>
@@ -28,17 +25,6 @@
       <tr>
         <td>
           <img src="{{asset('pro_img/'.$product[$i]->pro_thumbnail)}}" alt="" style="height: 150px;">
-        </td>
-        <td>
-          <div>
-            {{$product[$i]->pro_name}}
-          </div>
-          <div>
-            {{$product[$i]->pro_author}}
-          </div>
-          <div>
-            in Stock
-          </div>
         </td>
         <td>
           <form action="{{url('shop_cart_quantity_edit/'.$product[$i]->id)}}" method="post">
