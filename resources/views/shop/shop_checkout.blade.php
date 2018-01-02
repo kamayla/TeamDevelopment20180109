@@ -3,7 +3,11 @@
 
 @section('content3')
 <div class="container">
-  <form>
+  <!-- バリデーションエラーの表示に使用 -->
+  @include('common.errors')
+  <!-- バリデーションエラーの表示に使用 -->
+  <form action="{{url('/shop_confirmation')}}" method="post">
+    {{csrf_field()}}
     <h3>Shipping Address</h3>
     <table>
       <tr>
@@ -121,8 +125,6 @@
         </td>
       </tr>
     </table>
-    
-    
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>

@@ -105,10 +105,8 @@
 <p>Shiping Cost: $8.99</p>
 <p>tax: $0.00</p>
 <p>Grand Total: {{$TotalAmount}}</p>
-<form action="{{url('shop_checkout')}}" method="post">
-  {{csrf_field()}}
-  <button type="submit">Checkout</button>
-</form>
+
+<a href="{{url('shop_checkout')}}" class="btn btn-primary">Checkout</a>
 
 
 
