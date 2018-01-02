@@ -74,7 +74,82 @@
   @endif
   
 </div>
+@endsection
+
+@section('content4')
+<?php 
+  $TotalQuantity = 0; 
+  $TotalAmount = 0;
+?>
+<div class="container">
+@for($i=0;$i<count($cart);$i++)
+
+  <?php 
+    $TotalQuantity += $quantity[$i];
+    $TotalAmount += ($product[$i]->pro_price * $quantity[$i]);
+  ?>
+@endfor
+
+<div class="total-wrap">
+  <div>
+    <p>Total Quantity:</p>
+    <p>{{$TotalQuantity}}</p>
+  </div>
+  <div>
+    <p>Total Amount:</p>
+    <p>{{$TotalAmount}}</p>
+  </div>
+</div>
+<p>Shiping Cost: $8.99</p>
+<p>tax: $0.00</p>
+<p>Grand Total: {{$TotalAmount}}</p>
+<form action="/">
+<button type="submit">Checkout</button>
+</form>
 
 
+
+
+</div>
+@endsection
+
+@section('content6')
+<h1>Shopping Guide</h1>
+<div class="shopping-guide-wrap">
+  <div class="shopping-guide-item">
+    <h3>Shipping</h3>
+    <div>
+    wordwordwordwordwordwordwordwordwordword
+    
+    </div>
+    <div class="wrap">
+      <div class="text-area">
+        <p>wordwordwordwordword</p>
+      </div>
+      <div class="icon-area">
+      <i class="fa fa-car fa-3x" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="shopping-guide-item">
+    <h3>Payment method</h3>
+    <div>
+    wordwordwordwordwordwordwordwordwordword
+    </div>
+    <div class="wrap">
+      <div class="text-area">
+        <p>wordwordwordwordword</p>
+      </div>
+      <div class="icon-area">
+        <i class="fa fa-cc-mastercard fa-2x" aria-hidden="true"></i>
+        <i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i>
+        <i class="fa fa-cc-paypal fa-2x" aria-hidden="true"></i>
+        <i class="fa fa-cc-amex fa-2x" aria-hidden="true"></i>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 @endsection
