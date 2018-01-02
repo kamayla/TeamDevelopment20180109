@@ -6,7 +6,7 @@
   <table class="table">
     <tr>
       <th>
-        画像1
+        画像11
       </th>
       <th>
         &nbsp;
