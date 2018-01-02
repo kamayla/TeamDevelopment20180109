@@ -6,7 +6,7 @@
   <table class="table">
     <tr>
       <th>
-        画像
+        画像1
       </th>
       <th>
         数量
