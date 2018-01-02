@@ -153,4 +153,8 @@ class ShopController extends Controller
         Session::flush();
         return redirect('/booquet');
     }
+
+    public function shop_checkout_view(){
+        return view('shop/shop_checkout');
+    }
 }

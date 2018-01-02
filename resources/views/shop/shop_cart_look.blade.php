@@ -82,6 +82,7 @@
   $TotalAmount = 0;
 ?>
 <div class="container">
+@if(isset($cart))
 @for($i=0;$i<count($cart);$i++)
 
   <?php 
@@ -89,6 +90,7 @@
     $TotalAmount += ($product[$i]->pro_price * $quantity[$i]);
   ?>
 @endfor
+
 
 <div class="total-wrap">
   <div>
@@ -103,13 +105,14 @@
 <p>Shiping Cost: $8.99</p>
 <p>tax: $0.00</p>
 <p>Grand Total: {{$TotalAmount}}</p>
-<form action="/">
-<button type="submit">Checkout</button>
+<form action="{{url('shop_checkout')}}" method="post">
+  {{csrf_field()}}
+  <button type="submit">Checkout</button>
 </form>
 
 
 
-
+@endif
 </div>
 @endsection
 

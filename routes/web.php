@@ -57,3 +57,5 @@ Route::post('/shop_cart_delete/{product}', 'shopController@shop_cart_delete');
 
 // カートの数量変更
 Route::post('/shop_cart_quantity_edit/{product}', 'shopController@shop_cart_quantity_edit');
+// チェクアウトページ表示
+Route::post('/shop_checkout', 'shopController@shop_checkout_view');
