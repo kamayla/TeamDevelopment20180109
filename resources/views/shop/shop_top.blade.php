@@ -13,7 +13,7 @@
 </div>
 <div class="right-under">
   <ul>
-    <li>Info</li>
+    <li>Info1</li>
     <li>Shipping</li>
     <li>About Us</li>
     <li>Help</li>

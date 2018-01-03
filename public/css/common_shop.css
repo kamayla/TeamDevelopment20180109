@@ -178,3 +178,13 @@ footer{
 
 
 /* /shop_result_page */
+
+
+
+/* shop_cart_look */
+.total-wrap{
+  display: flex;
+}
+
+
+/* /shop_cart_look */

@@ -153,4 +153,29 @@ class ShopController extends Controller
         Session::flush();
         return redirect('/booquet');
     }
+
+    public function shop_checkout_view(){
+        return view('shop/shop_checkout');
+    }
+
+    public function shop_confirmation_view(Request $request){
+        // バリデーション
+        $validator = Validator::make($request->all(),[
+            'c_name' => 'required |min:1 |max:255',
+            'c_email' => 'required |min:1 |max:255',
+            'c_country' => 'required |min:1 |max:255',
+            'c_postal1' => 'required |min:1 |max:3',
+            'c_postal2' => 'required |min:1 |max:4',
+            'c_address' => 'required |min:1 |max:255',
+            'c_tel' => 'required |min:1 |max:255',
+            'c_card_number' => 'required |min:1 |max:255',
+            'c_card_security_code' => 'required |min:1 |max:255',
+        ]);
+
+        if ($validator->fails()){
+            return redirect('/shop_checkout')
+                ->withInput()
+                ->withErrors($validator);
+        }
+    }
 }
