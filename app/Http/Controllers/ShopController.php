@@ -10,7 +10,7 @@ use Session;
 class ShopController extends Controller
 {
     public function top_view(){
-        $products = Product::orderBy('created_at', 'desc')->get();
+        $products = Product::orderBy('created_at', 'desc')->get()->take(12);;
         return view('shop/shop_top', ['products' => $products]);
     }
 
@@ -159,6 +159,8 @@ class ShopController extends Controller
     }
 
     public function shop_confirmation_view(Request $request){
+        $cart = Session::get('cart');
+        $quantity = Session::get('quantity');
         // バリデーション
         $validator = Validator::make($request->all(),[
             'c_name' => 'required |min:1 |max:255',
@@ -177,5 +179,19 @@ class ShopController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
+
+        foreach($cart as $key => $val){
+            $product[] = Product::find($val); 
+        }
+
+        return view('shop/shop_confirm', [
+                'product' => $product,
+                'request' => $request,
+                'cart' => $cart,
+                'quantity' => $quantity
+             ]
+        );
+
+
     }
 }
