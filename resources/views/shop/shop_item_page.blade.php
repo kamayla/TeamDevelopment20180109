@@ -67,10 +67,6 @@
   レビューエリア
 </div>
 
-
-@endsection
-
-@section('content2')
 <h4>Other works by</h4>
 <h4>{{$product->pro_author}}</h4>
   @foreach($otherworks as $otherwork)
@@ -125,44 +121,46 @@
 
 
 @section('content4')
-
-<h1>Shopping Guide</h1>
-<div class="shopping-guide-wrap">
-  <div class="shopping-guide-item">
-    <h3>Shipping</h3>
-    <div>
-    wordwordwordwordwordwordwordwordwordword
-    
-    </div>
-    <div class="wrap">
-      <div class="text-area">
-        <p>wordwordwordwordword</p>
-      </div>
-      <div class="icon-area">
-      <i class="fa fa-car fa-3x" aria-hidden="true"></i>
-      </div>
-    </div>
+<div class="infomation-wrapper">
+  <div class="infomationTitle">
+      <h1>Shopping Guide</h1>
   </div>
-
-  <div class="shopping-guide-item">
-    <h3>Payment method</h3>
-    <div>
-    wordwordwordwordwordwordwordwordwordword
-    </div>
-    <div class="wrap">
-      <div class="text-area">
-        <p>wordwordwordwordword</p>
+  <div class="infomationContainer">
+      <div class='infomationLeft'>
+          <div class="shippingTitle">
+              <p>Shipping</p>
+          </div>
+          <h3>Items ordered by 11 AM are shipped during <br>the day.</h3>
+          <div class="shippingInner">
+              <p>Most items qualify for Free Standard Shipping in the USA.<br>
+              You can also pick up at a nearby bookstore or convenience store.<br>
+              Dispatch other than the USA is also possible.
+              </p>
+              <p class="fa fa-truck" aria-hidden="true"></p>
+          </div>
       </div>
-      <div class="icon-area">
-        <i class="fa fa-cc-mastercard fa-2x" aria-hidden="true"></i>
-        <i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i>
-        <i class="fa fa-cc-paypal fa-2x" aria-hidden="true"></i>
-        <i class="fa fa-cc-amex fa-2x" aria-hidden="true"></i>
-
+      <div class='infomationRight'>
+          <div class="paymentTitle">
+              <p>Payment Method</p>
+          </div>
+          <h3>choose your preferred payment method such as credit card payment, convenience store payment</h3>
+          <div class="paymentInner">
+              <p>VISA,MASTERCARD,AMEX,JCB can be used.<br>
+              Those who are concerned about security can also pay by paypal.<br>
+              We also do cash on delivery shipping.
+              </p>
+              <div class="paymentIcons">
+                  <div class="paymentIcons_top">
+                      <p class="fa fa-cc-mastercard" aria-hidden="true"></p>
+                      <p class="fa fa-cc-visa" aria-hidden="true"></p>
+                  </div>
+                  <div class="paymentIcons_bottom">
+                    <p class="fa fa-cc-paypal" aria-hidden="true"></p>
+                    <p class="fa fa-cc-amex" aria-hidden="true"></p>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
   </div>
 </div>
-
-
 @endsection
