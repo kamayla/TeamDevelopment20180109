@@ -1,42 +1,212 @@
 @charset "utf-8";
 /* 共通部分 */
-.navdiv{
-  width: 33%;
+body{
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+  color:rgb(43,43,43);
+  width:1430px;
+  margin:0 auto;
+}
+a{
+  cursor:pointer;
+  color:rgb(43,43,43);
 }
 
-.headerTitle{
-  color: black;
-  
-}
-
-.headerTitle:hover{
+a:hover{
   text-decoration: none;
 }
 
-.navbar{
-  display: flex;
-}
-
-.glyphicon{
-  font-size: 30px;
+button{
+  cursor:pointer;
 }
 
 div{
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
+
+/*--- headerセクション ---*/
+.navbar{
+  display: flex;
+  height:68px;
+  border-bottom:1px solid rgb(151,151,151);
+}
+
+nav div{
+  width: 33.3%;
+  text-align:center;
+}
+
+.searchButton{
+  border:none;
+}
+
+.searchSection input{
+  border:none;
+  border-bottom:1px solid rgb(43,43,43);
+  width:190px;
+  height:40px;
+  font-size:24px;
+}
+
+.searchSection input:focus{
+  outline:none;
+}
+
+.loginSection{
+  font-size:22px;
+}
+
+.userLogo {
+  margin-right:8px;
+}
+
+.verticalBar{
+  margin:0 4px;
+  color:rgb(100,100,100);
+}
+
+.cartIcon{
+  margin-left:32px;
+}
+
+/*--- /headerセクション ---*/
+
+/*--- footerセクション ---*/
+
+footer{
+  /* height: 150px; */
+  background: rgb(43,43,43);
+  color: white;
+  display:flex;
+}
+
+.footerLeft{
+  border-right:1px solid white;
+}
+
+.footerLeft{
+  display:flex;
+  justify-content: space-between;
+  width:50%;
+}
+.footerRight{
+  display:flex;
+  width:50%;
+}
+
+.footerLeft_left{
+  margin:16px 0 16px 48px;
+}
+
+.footerLeft_left img{
+  margin-bottom:16px;
+}
+
+.footerLeft_left p{
+  font-size:16px;
+  margin:0 0 0 64px;
+  letter-spacing: 0.5px;
+}
+
+.footerLeft_right{
+  margin:auto 16px 16px 0;
+}
+
+.footerLeft_right p:nth-of-type(1){
+  margin-bottom:8px;
+}
+
+.footerLeft_right p{
+  font-size:18px;
+  letter-spacing: 1px;
+  margin-bottom:0;
+}
+
+.footerLeft_right span{
+  font-size:40px;
+  margin-left:8px;
+}
+
+.footerRight_left,.footerRight_center{
+  margin:16px 0 0 64px;
+}
+
+.footerRight_left h3,.footerRight_center h3{
+  font-size:24px;
+  letter-spacing: 1px;
+}
+
+.footerRight_left p,.footerRight_center p{
+  margin:0 0 8px 48px;
+  letter-spacing: 1px;
+}
+
+.languages p:nth-of-type(2),.languages p:nth-of-type(3){
+  font-size:14px;
+}
+
+.footerRight_right{
+  margin:auto 0 0 auto;
+  padding:0 32px 16px 0;
+}
+
+.footerRight_right p {
+  font-size:18px;
+  letter-spacing: 1px;
+  margin-bottom:8px;
+}
+
+.footerRight_right span{
+  font-size:36px;
+  margin-left:5px;
+}
+
+/*--- /footerセクション ---*/
+/* /共通部分 */
+
+
+/*---mainセクション ---*/
 
 .mainWrapper{
   display: flex;
-  /* height: 600px; */
 }
 
 .leftSidebar{
   width: 20%;
 }
 
-.mainArea{
-  width: 60%;
+.leftSidebar div{
+  margin-top:-16px;
+  width:170px;
+  border-top:1px solid rgb(43,43,43);
 }
+
+.leftSidebar ul{
+  list-style: none;
+  font-size:26px;
+  height:150px;
+  margin:32px 0 0 32px;
+}
+
+.mainArea{
+  width: 1032px;
+  margin:0 auto;
+}
+
+.mainVisual{
+  /* text-align: center;
+  margin-top:40px;
+  display:flex; */
+}
+
+.subVisual{
+  display:flex;
+  flex-direction: column;
+}
+
+.subVisual img{
+  height:115.5px;
+}
+
 
 .rightSidebar{
   width: 20%;
@@ -44,74 +214,349 @@ div{
 
 .right-top{
   height: 50%;
+  text-align: center;
+  padding-top:16px
+}
+
+.right-top a{
+  font-size:40px;
+  margin: 0 5px;
 }
 
 .right-under{
   height: 50%;
+  margin-left:32px;
 }
 
-footer{
-  height: 150px;
-  background: gray;
-  color: white;
-  text-align: center;
-  font-size: 32px;
-  line-height: 150px;
+.right-under div{
+  border-top:1px solid rgb(43,43,43);
 }
-/* /共通部分 */
+
+.right-under ul{
+  list-style: none;
+  font-size:26px;
+  margin-left:auto;
+  padding-left:58px;
+}
+
+/*---/mainセクション ---*/
 
 
-/* shop_top */
+/* ----New Arrivalセクション--- */
+
+.newArrival-wrapper{
+  width:1340px;
+  margin:32px auto;
+}
+
+
 .new-arrival{
   display: flex;
   flex-wrap: wrap;
 }
 
-.new-arrival-item{
-  width: 16.66%;
-
+.new-arrival a{
+  display:block;
 }
 
-.categoryWrap{
+.newArrival-title{
+  border-bottom:1px solid rgb(43,43,43);
+  margin-bottom:16px;
+}
+
+.newArrival-title h1{
+  font-size:34px;
+  margin:0;
+  padding-left:32px;
+}
+
+.new-arrival-item{
+  width: 16.66%;
+}
+
+.new-arrival-item a:hover{
+  background-color:rgb(43,43,43);
+  color:white;
+}
+
+.itemImage{
+  padding-top:16px;
+}
+
+.itemWord{
+  width:80%;
+  margin:8px auto 0;
+  padding-bottom:4px;
+}
+
+.itemTitle{
+  font-size:18px;
+  font-weight:bold;
+  letter-spacing:0.6px;
+  margin:0;
+  letter-spacing: 1px;
+}
+
+.itemAuther{
+  font-size:16px;
+  color:rgb(135, 135, 135);
+  letter-spacing:0.6px;
+  margin:0;
+  letter-spacing: 1px;
+}
+
+.itemPrice{
+  text-align:right;
+  font-size:18px;
+}
+
+/* ----/New Arrivalセクション--- */
+
+/* ---Categoryセクション--- */
+
+.category-wrapper{
+  width:1340px;
+  margin:0 auto;
+}
+
+.categoryTitle{
+  border-bottom:1px solid rgb(43,43,43);
+  margin-bottom:16px;
+}
+
+.categoryTitle h1{
+  font-size:34px;
+  margin:0;
+  padding-left:32px;
+}
+
+.categoryItems{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .categoryItem{
-  width: 25%;
+  text-align: center;
+  margin:8px;
 }
 
-.artist-wrap{
-  display: flex;
+.categoryItem a{
+  display:block;
+  width:300px;
+  height:200px;
+  border:5px solid rgb(43,43,43);
+}
+
+.categoryItem a:hover{
+  color:white;
+}
+
+.tokyo:hover{
+  background-image:url(../shop_img/tokyo.png);
+}
+
+.kyoto:hover{
+  background-image:url(../shop_img/kyoto.png);
+}
+
+.gokudo:hover{
+  background-image:url(../shop_img/gokudo.png);
+}
+
+.temple:hover{
+  background-image:url(../shop_img/temple.png);
+}
+
+.art:hover{
+  background-image:url(../shop_img/art.png);
+}
+
+.fashion:hover{
+  background-image:url(../shop_img/fashion.png);
+}
+
+.music:hover{
+  background-image:url(../shop_img/music.png);
+}
+
+.other:hover{
+  background-image:url(../shop_img/other.png);
+}
+
+.categoryItem p{
+  font-size:40px;
+  letter-spacing: 3px;
+  line-height: 190px;
+}
+
+/* ---/Categoryセクション--- */
+
+
+/* ---Artistセクション--- */
+
+.artist-wrapper{
+  width:1340px;
+  margin: 32px auto 0;
+}
+
+.artistTitle{
+  border-bottom:1px solid rgb(43,43,43);
+  margin-bottom:16px;
+}
+
+.artistTitle h1{
+  font-size:34px;
+  margin:0;
+  padding-left:32px;
+}
+
+.artistItems{
+  display:flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
-.artist-item{
-  width: 50%;
+.artistItem{
+  margin:8px;
 }
 
 
-.shopping-guide-wrap{
-  display: flex;
+.artistItem a{
+  display:block;
+  width:500px;
+  height:250px;
+  border:10px solid rgb(43,43,43);
 }
 
-.shopping-guide-item{
-  width: 50%;
+.artistItem a:hover{
+color:white;
 }
 
-.wrap{
-  display: flex;
+.artist_1:hover{
+  background-image:url(../shop_img/artist_1.png);
 }
 
-.text-area{
-  width: 70%;
+.artist_2:hover{
+  background-image:url(../shop_img/artist_2.png);
 }
 
-.icon-area{
-  width: 30%;
+.artist_3:hover{
+  background-image:url(../shop_img/artist_3.png);
 }
+
+.artist_4:hover{
+  background-image:url(../shop_img/artist_4.png);
+}
+
+.artistItems p{
+  font-size:40px;
+  font-weight:bold;
+  text-align:center;
+  line-height: 240px;
+  letter-spacing: 2px;
+}
+
+/* ---infomationセクション--- */
+
+.infomation-wrapper{
+  width:1340px;
+  margin: 64px auto;
+}
+
+.infomationTitle{
+  border-bottom:1px solid rgb(43,43,43);
+  margin-bottom:32px;
+}
+
+.infomationTitle h1{
+  font-size:34px;
+  margin:0;
+  padding-left:32px;
+}
+
+.infomationContainer{
+  display:flex;
+  justify-content: center;
+}
+
+.infomationContainer h3{
+  margin:16px 0;
+}
+
+.infomationLeft,.infomationRight{
+  width:600px;
+}
+
+.shippingTitle p,.paymentTitle p{
+  display:inline;
+  font-size:34px;
+  border-bottom:1px solid rgb(43,43,43);
+}
+
+.shippingInner , .paymentInner{
+  display:flex;
+}
+
+.shippingInner p:nth-of-type(1),.paymentInner:first-child{
+  width:60%;
+  font-size:18px;
+}
+
+.shippingInner p:nth-of-type(2){
+  width:40%;
+  font-size:140px;
+  margin-left:16px;
+}
+
+.paymentIcons{
+  display:flex;
+  flex-direction: column;
+  margin-left:16px;
+}
+
+.paymentIcons_top,.paymentIcons_bottom{
+  width:40%;
+  display:flex;
+}
+
+.paymentIcons_top p,.paymentIcons_bottom p{
+  font-size:52px;
+  margin:5px;
+}
+
+/* ---/infomationセクション--- */
+
+
+/*左右の矢印の色を変える*/
+.slick-prev:before,
+.slick-next:before {
+    color: #000;
+}
+/*左右の矢印の位置を変える*/
+.slick-next {
+    right: 20px;
+    z-index: 99;
+}
+.slick-prev {
+     left: 15px;
+    z-index: 100;
+}
+/*スライド数のドットの色を変える*/
+.slick-dots li.slick-active button:before,
+.slick-dots li button:before {
+    color: #fff;
+}
+/*スライド画像の横幅可変*/
+img {
+    max-width: 100%;
+     height: auto;
+}
+
 
 /* /shop_top */
+
+
 
 
 

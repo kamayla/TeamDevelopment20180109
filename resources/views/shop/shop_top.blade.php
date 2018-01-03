@@ -1,160 +1,228 @@
 @extends('layouts.shop_common')
 
-@section('content1')
-<!-- 本の一覧表示 -->
-<img src="{{asset('shop_img/main_visual.png')}}" alt="" style="width: 100%;">
-@endsection
 
-@section('content2')
-<div class="right-top">
-  <i class="fa fa-facebook-official fa-3x" aria-hidden="true"></i>
-  <i class="fa fa-instagram fa-3x" aria-hidden="true"></i>
-  <i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
-</div>
-<div class="right-under">
+<!-- main左サイド部 -->
+@section('content0')
   <ul>
-    <li>Info</li>
-    <li>Shipping</li>
-    <li>About Us</li>
-    <li>Help</li>
+          <a href=""><li>New Arrival</li><a>
+          <a href=""><li>Category</li></a>
+          <a href=""><li>Artist</li></a>
   </ul>
-</div>
-
+        <div></div>
 @endsection
 
 
+<!-- main中央部 -->
+@section('content1')
+  <!-- 本の一覧表示 -->
+  <div class="mainVisual">
+      <!-- <a href=""><img src="{{asset('shop_img/main-visual.png')}}" alt=""></a>
+        <div class="subVisual">
+            <a href=""><img src="{{asset('shop_img/sub_visual_1.png')}}" alt="" ></a>
+            <a href=""><img src="{{asset('shop_img/sub_visual_2.png')}}" alt="" ></a>
+            <a href=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></a>
+        </div> -->
+        <ul class="slider thumb-item">
+            <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_1.png')}}" alt="" ></a></li>
+            <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_2.png')}}" alt="" ></a></li>
+            <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></a></li>
+            <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></a></li>
+        </ul>
+        <ul class="slider thumb-item-nav">
+            <li class=""><img src="{{asset('shop_img/sub_visual_1.png')}}" alt="" ></li>
+            <li class=""><img src="{{asset('shop_img/sub_visual_2.png')}}" alt="" ></li>
+            <li class=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></li>
+            <li class=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></li>
+        </ul>
+  </div>
+@endsection
 
+
+<!-- main右サイド部 -->
+@section('content2')
+  <div class="right-top">
+    <a href="" class="fa fa-facebook-official"></a>
+    <a href="" class="fa fa-instagram"></a>
+    <a href="" class="fa fa-twitter-square"></a>
+  </div>
+  <div class="right-under">
+    <div></div>
+    <ul>
+      <a href=""><li>Info</li></a>
+      <a href=""><li>Shipping</li></a>
+      <a href=""><li>About Us</li></a>
+      <a href=""><li>Help</li></a>
+    </ul>
+  </div>
+@endsection
+
+
+<!-- NewArrivalセクション -->
 @section('content3')
-<h1>New Arrival</h1>
+<div class="newArrival-title">
+    <h1>New Arrival</h1>
+</div>
 <div class="new-arrival">
-  @if (count($products) > 0)
-    @foreach($products as $product)
-      <div class="new-arrival-item">
-        <div>
-          <a href="{{url('shop_item_page/'.$product->id)}}">
-            <img src="./pro_img/{{$product->pro_thumbnail}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-          </a>
-        </div>
-        <div>
-          {{$product->pro_name}}
-        </div>
-        <div>
-          {{$product->pro_author}}
-        </div>
-        <div>
-          <!-- {{$product->pro_price.'円'}} -->
-          <?php
-         $number =$product->pro_price;
-        // 3桁ごとにカンマ区切りで出力
-        echo number_format($number);
-        ?>円
-        </div>
-      </div>
-    @endforeach
-  @endif
-
+    @if (count($products) > 0)
+        @foreach($products as $product)
+        <div class="new-arrival-item">
+            <a href="{{url('shop_item_page/'.$product->id)}}">
+                  <div class="itemImage">
+                      <img src="./pro_img/{{$product->pro_thumbnail}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
+                  </div>
+                  <div class="itemWord">
+                      <p class="itemTitle">{{$product->pro_name}}</p>
+                      <p class="itemAuther">{{$product->pro_author}}</p>
+                      <p class="itemPrice">
+                        $
+                        <!-- {{$product->pro_price.'円'}} -->
+                      <?php
+                      $number =$product->pro_price;
+                      // 3桁ごとにカンマ区切りで出力
+                      echo number_format($number);
+                      ?>
+                      </p>
+                  </div>
+                </a>
+            </div>
+        @endforeach
+    @endif
 </div>
 @endsection
+<!-- /NewArrivalセクション -->
+
+<!-- Categoryセクション -->
 
 @section('content4')
-<h1>Category</h1>
-<div class="categoryWrap">
-  <div class="categoryItem">
-    <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Tokyo</p>
-  </div>
-  <div class="categoryItem">
-    <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Kyoto</p>
-  </div>
-  <div class="categoryItem">
-    <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Art</p>
-  </div>
-  <div class="categoryItem">
-    <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Fashion</p>
-  </div>
-  <div class="categoryItem">
-    <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Music</p>
-  </div>
-  <div class="categoryItem">
-    <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Temple</p>
-  </div>
-  <div class="categoryItem">
-    <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Gokudo</p>
-  </div>
-  <div class="categoryItem">
-    <img src="{{asset('shop_img/26.jpg')}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-    <p>Other</p>
-  </div>
+    <div class="categoryTitle">
+        <h1>Category</h1>
+    </div>
+    <div class="categoryItems">
+        <div class="categoryItem">
+              <a class="tokyo" href="">
+                <p>Tokyo</p>
+              </a>
+          </div>
+        <div class="categoryItem">
+              <a class="kyoto" href="">
+                <p>Kyoto</p>
+              </a>
+          </div>
+        <div class="categoryItem">
+              <a class="gokudo" href="">
+                <p>Gokudo</p>
+              </a>
+          </div>
+        <div class="categoryItem">
+              <a class="temple" href="">
+                <p>Temple</p>
+              </a>
+          </div>
+        <div class="categoryItem">
+              <a class="art" href="">
+                <p>Art</p>
+              </a>
+          </div>
+        <div class="categoryItem">
+              <a class="fashion" href="">
+                <p>Fashion</p>
+              </a>
+          </div>
+        <div class="categoryItem">
+              <a class="music" href="">
+                <p>Music</p>
+              </a>
+          </div>
+        <div class="categoryItem">
+              <a class="other" href="">
+                <p>Other</p>
+              </a>
+          </div>
+    </div>
+@endsection
+
+<!-- /Categoryセクション -->
+
+
+
+<!-- Artistセクション -->
+
+@section('content5')
+<div class="artistTitle">
+  <h1>Artist</h1>
+</div>
+<div class="artistItems">
+    <div class="artistItem">
+        <a class="artist_1" href="">
+              <p>Nobuyoshi Araki</p>
+        </a>
+    </div>
+    <div class="artistItem">
+        <a class="artist_2" href="">
+              <p>Yusuke Yamatani</p>
+        </a>
+    </div>
+    <div class="artistItem">
+        <a class="artist_3" href="">
+              <p>KYNE</p>
+        </a>
+    </div>
+    <div class="artistItem">
+        <a class="artist_4" href="">
+              <p>Souhei Terui</p>
+        </a>
+    </div>
 </div>
 
 @endsection
 
-@section('content5')
-<h1>Artist</h1>
-<div class="container">
-  <div class="artist-wrap">
-    <div class="artist-item">
-      <img src="{{asset('shop_img/26.jpg')}}" alt="" style="width: 100%;">
-    </div>
-    <div class="artist-item">
-      <img src="{{asset('shop_img/26.jpg')}}" alt="" style="width: 100%;">
-    </div>
-    <div class="artist-item">
-      <img src="{{asset('shop_img/26.jpg')}}" alt="" style="width: 100%;">
-    </div>
-    <div class="artist-item">
-      <img src="{{asset('shop_img/26.jpg')}}" alt="" style="width: 100%;">
-    </div>
+<!-- /Artistセクション -->
+
+
+<!-- infomationセクション -->
+
+@section('content6')
+  <div class="infomationTitle">
+      <h1>Shopping Guide</h1>
+  </div>
+  <div class="infomationContainer">
+      <div class='infomationLeft'>
+          <div class="shippingTitle">
+              <p>Shipping</p>
+          </div>
+          <h3>Items ordered by 11 AM are shipped during <br>the day.</h3>
+          <div class="shippingInner">
+              <p>Most items qualify for Free Standard Shipping in the USA.<br>
+              You can also pick up at a nearby bookstore or convenience store.<br>
+              Dispatch other than the USA is also possible.
+              </p>
+              <p class="fa fa-truck" aria-hidden="true"></p>
+          </div>
+      </div>
+      <div class='infomationRight'>
+          <div class="paymentTitle">
+              <p>Payment Method</p>
+          </div>
+          <h3>choose your preferred payment method such as credit card payment, convenience store payment</h3>
+          <div class="paymentInner">
+              <p>VISA,MASTERCARD,AMEX,JCB can be used.<br>
+              Those who are concerned about security can also pay by paypal.<br>
+              We also do cash on delivery shipping.
+              </p>
+              <div class="paymentIcons">
+                  <div class="paymentIcons_top">
+                      <p class="fa fa-cc-mastercard" aria-hidden="true"></p>
+                      <p class="fa fa-cc-visa" aria-hidden="true"></p>
+                  </div>
+                  <div class="paymentIcons_bottom">
+                    <p class="fa fa-cc-paypal" aria-hidden="true"></p>
+                    <p class="fa fa-cc-amex" aria-hidden="true"></p>
+                  </div>
+              </div>
+          </div>
+      </div>
   
   </div>
 
-</div>
-
 @endsection
-
-@section('content6')
-<h1>Shopping Guide</h1>
-<div class="shopping-guide-wrap">
-  <div class="shopping-guide-item">
-    <h3>Shipping</h3>
-    <div>
-    wordwordwordwordwordwordwordwordwordword
-    
-    </div>
-    <div class="wrap">
-      <div class="text-area">
-        <p>wordwordwordwordword</p>
-      </div>
-      <div class="icon-area">
-      <i class="fa fa-car fa-3x" aria-hidden="true"></i>
-      </div>
-    </div>
-  </div>
-
-  <div class="shopping-guide-item">
-    <h3>Payment method</h3>
-    <div>
-    wordwordwordwordwordwordwordwordwordword
-    </div>
-    <div class="wrap">
-      <div class="text-area">
-        <p>wordwordwordwordword</p>
-      </div>
-      <div class="icon-area">
-        <i class="fa fa-cc-mastercard fa-2x" aria-hidden="true"></i>
-        <i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i>
-        <i class="fa fa-cc-paypal fa-2x" aria-hidden="true"></i>
-        <i class="fa fa-cc-amex fa-2x" aria-hidden="true"></i>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-@endsection
+<!-- /infomationセクション -->
