@@ -3,90 +3,99 @@
 
 <!-- main左サイド部 -->
 @section('content0')
+<div class="mainWrapper">
+    <div class="leftSidebar">
   <ul>
           <a href=""><li>New Arrival</li><a>
           <a href=""><li>Category</li></a>
           <a href=""><li>Artist</li></a>
   </ul>
         <div></div>
+    </div>
 @endsection
-
 
 <!-- main中央部 -->
 @section('content1')
   <!-- 本の一覧表示 -->
-  <div class="mainVisual">
-      <!-- <a href=""><img src="{{asset('shop_img/main-visual.png')}}" alt=""></a>
-        <div class="subVisual">
-            <a href=""><img src="{{asset('shop_img/sub_visual_1.png')}}" alt="" ></a>
-            <a href=""><img src="{{asset('shop_img/sub_visual_2.png')}}" alt="" ></a>
-            <a href=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></a>
-        </div> -->
-        <ul class="slider thumb-item">
-            <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_1.png')}}" alt="" ></a></li>
-            <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_2.png')}}" alt="" ></a></li>
-            <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></a></li>
-            <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></a></li>
+  <div class="mainArea">
+        <div class="mainVisual">
+            <a href=""><img src="{{asset('shop_img/main-visual.png')}}" alt=""></a>
+                <div class="subVisual">
+                    <a href=""><img src="{{asset('shop_img/sub_visual_1.png')}}" alt="" ></a>
+                    <a href=""><img src="{{asset('shop_img/sub_visual_2.png')}}" alt="" ></a>
+                    <a href=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></a>
+                </div>
+                <!-- <ul class="slider thumb-item">
+                    <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_1.png')}}" alt="" ></a></li>
+                    <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_2.png')}}" alt="" ></a></li>
+                    <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></a></li>
+                    <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></a></li>
+                </ul>
+                <ul class="slider thumb-item-nav">
+                    <li class=""><img src="{{asset('shop_img/sub_visual_1.png')}}" alt="" ></li>
+                    <li class=""><img src="{{asset('shop_img/sub_visual_2.png')}}" alt="" ></li>
+                    <li class=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></li>
+                    <li class=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></li>
+                </ul> -->
+            </div>
+    </div>
+  @endsection
+  
+  
+  <!-- main右サイド部 -->
+  @section('content2')
+<div class="rightSidebar">
+    <div class="right-top">
+        <a href="" class="fa fa-facebook-official"></a>
+        <a href="" class="fa fa-instagram"></a>
+        <a href="" class="fa fa-twitter-square"></a>
+    </div>
+    <div class="right-under">
+        <div></div>
+        <ul>
+        <a href=""><li>Info</li></a>
+        <a href=""><li>Shipping</li></a>
+        <a href=""><li>About Us</li></a>
+        <a href=""><li>Help</li></a>
         </ul>
-        <ul class="slider thumb-item-nav">
-            <li class=""><img src="{{asset('shop_img/sub_visual_1.png')}}" alt="" ></li>
-            <li class=""><img src="{{asset('shop_img/sub_visual_2.png')}}" alt="" ></li>
-            <li class=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></li>
-            <li class=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></li>
-        </ul>
-  </div>
-@endsection
-
-
-<!-- main右サイド部 -->
-@section('content2')
-  <div class="right-top">
-    <a href="" class="fa fa-facebook-official"></a>
-    <a href="" class="fa fa-instagram"></a>
-    <a href="" class="fa fa-twitter-square"></a>
-  </div>
-  <div class="right-under">
-    <div></div>
-    <ul>
-      <a href=""><li>Info</li></a>
-      <a href=""><li>Shipping</li></a>
-      <a href=""><li>About Us</li></a>
-      <a href=""><li>Help</li></a>
-    </ul>
-  </div>
+    </div>
+    </div>
+</div>
 @endsection
 
 
 <!-- NewArrivalセクション -->
 @section('content3')
-<div class="newArrival-title">
-    <h1>New Arrival</h1>
-</div>
-<div class="new-arrival">
-    @if (count($products) > 0)
-        @foreach($products as $product)
-        <div class="new-arrival-item">
-            <a href="{{url('shop_item_page/'.$product->id)}}">
-                  <div class="itemImage">
-                      <img src="./pro_img/{{$product->pro_thumbnail}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-                  </div>
-                  <div class="itemWord">
-                      <p class="itemTitle">{{$product->pro_name}}</p>
-                      <p class="itemAuther">{{$product->pro_author}}</p>
-                      <p class="itemPrice">
-                        $
-                        <!-- {{$product->pro_price.'円'}} -->
-                      <?php
-                      $number =$product->pro_price;
-                      // 3桁ごとにカンマ区切りで出力
-                      echo number_format($number);
-                      ?>
-                      </p>
-                  </div>
-                </a>
-            </div>
-        @endforeach
-    @endif
+<div class="newArrival-wrapper">
+    <div class="newArrival-title">
+        <h1>New Arrival</h1>
+    </div>
+    <div class="new-arrival">
+        @if (count($products) > 0)
+            @foreach($products as $product)
+            <div class="new-arrival-item">
+                <a href="{{url('shop_item_page/'.$product->id)}}">
+                    <div class="itemImage">
+                        <img src="./pro_img/{{$product->pro_thumbnail}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
+                    </div>
+                    <div class="itemWord">
+                        <p class="itemTitle">{{$product->pro_name}}</p>
+                        <p class="itemAuther">{{$product->pro_author}}</p>
+                        <p class="itemPrice">
+                            $
+                            <!-- {{$product->pro_price.'円'}} -->
+                        <?php
+                        $number =$product->pro_price;
+                        // 3桁ごとにカンマ区切りで出力
+                        echo number_format($number);
+                        ?>
+                        </p>
+                    </div>
+                    </a>
+                </div>
+            @endforeach
+        @endif
+    </div>
 </div>
 @endsection
 <!-- /NewArrivalセクション -->
@@ -94,6 +103,7 @@
 <!-- Categoryセクション -->
 
 @section('content4')
+<div class="category-wrapper">
     <div class="categoryTitle">
         <h1>Category</h1>
     </div>
@@ -139,6 +149,7 @@
               </a>
           </div>
     </div>
+</div>
 @endsection
 
 <!-- /Categoryセクション -->
@@ -148,29 +159,31 @@
 <!-- Artistセクション -->
 
 @section('content5')
-<div class="artistTitle">
-  <h1>Artist</h1>
-</div>
-<div class="artistItems">
-    <div class="artistItem">
-        <a class="artist_1" href="">
-              <p>Nobuyoshi Araki</p>
-        </a>
+<div class="artist-wrapper">
+    <div class="artistTitle">
+    <h1>Artist</h1>
     </div>
-    <div class="artistItem">
-        <a class="artist_2" href="">
-              <p>Yusuke Yamatani</p>
-        </a>
-    </div>
-    <div class="artistItem">
-        <a class="artist_3" href="">
-              <p>KYNE</p>
-        </a>
-    </div>
-    <div class="artistItem">
-        <a class="artist_4" href="">
-              <p>Souhei Terui</p>
-        </a>
+    <div class="artistItems">
+        <div class="artistItem">
+            <a class="artist_1" href="">
+                <p>Nobuyoshi Araki</p>
+            </a>
+        </div>
+        <div class="artistItem">
+            <a class="artist_2" href="">
+                <p>Yusuke Yamatani</p>
+            </a>
+        </div>
+        <div class="artistItem">
+            <a class="artist_3" href="">
+                <p>KYNE</p>
+            </a>
+        </div>
+        <div class="artistItem">
+            <a class="artist_4" href="">
+                <p>Souhei Terui</p>
+            </a>
+        </div>
     </div>
 </div>
 
@@ -182,6 +195,7 @@
 <!-- infomationセクション -->
 
 @section('content6')
+<div class="infomation-wrapper">
   <div class="infomationTitle">
       <h1>Shopping Guide</h1>
   </div>
@@ -221,8 +235,7 @@
               </div>
           </div>
       </div>
-  
   </div>
-
+</div>
 @endsection
 <!-- /infomationセクション -->

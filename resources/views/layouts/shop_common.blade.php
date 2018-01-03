@@ -51,29 +51,13 @@
 
 
 <!-- メインセクション -->
-  <div class="mainWrapper">
-    <div class="leftSidebar">
       @yield('content0')
-    </div>
-    <div class="mainArea">
       @yield('content1')
-    </div>
-    <div class="rightSidebar">
       @yield('content2')
-    </div>
-  </div>
-  <div class="newArrival-wrapper">
-    @yield('content3')
-  </div>
-  <div class="category-wrapper">
-    @yield('content4')
-  </div>
-  <div class="artist-wrapper">
-    @yield('content5')
-  </div>
-  <div class="infomation-wrapper">
-    @yield('content6')
-  </div>
+      @yield('content3')
+      @yield('content4')
+      @yield('content5')
+      @yield('content6')
 
 <!-- フッターセクション -->
   <footer>

@@ -1,11 +1,12 @@
 @charset "utf-8";
-/* 共通部分 */
+/* ----共通部分---- */
 body{
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   color:rgb(43,43,43);
   width:1430px;
   margin:0 auto;
 }
+
 a{
   cursor:pointer;
   color:rgb(43,43,43);
@@ -161,13 +162,14 @@ footer{
 }
 
 /*--- /footerセクション ---*/
-/* /共通部分 */
+/* ----/共通部分---- */
 
 
 /*---mainセクション ---*/
 
 .mainWrapper{
   display: flex;
+  height:400px;
 }
 
 .leftSidebar{
@@ -193,9 +195,9 @@ footer{
 }
 
 .mainVisual{
-  /* text-align: center;
+  text-align: center;
   margin-top:40px;
-  display:flex; */
+  display:flex;
 }
 
 .subVisual{
@@ -552,7 +554,6 @@ img {
     max-width: 100%;
      height: auto;
 }
-
 
 /* /shop_top */
 
