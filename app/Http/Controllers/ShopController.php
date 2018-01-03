@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Datsalesproduct;
+use App\Datsale;
 use Validator;
 use Session;
+use DB;
 
 class ShopController extends Controller
 {
@@ -191,7 +194,48 @@ class ShopController extends Controller
                 'quantity' => $quantity
              ]
         );
-
-
     }
+    
+    public function shop_order_complete_view(Request $request){
+        $cart = Session::get('cart');
+        $quantity = Session::get('quantity');
+
+        foreach($cart as $key => $val){
+            $product[] = Product::find($val);
+        }
+
+        $datsales = new Datsale;
+        $datsales->c_id = 0;
+        $datsales->c_name = $request->c_name;
+        $datsales->c_email = $request->c_email;
+        $datsales->c_country = $request->c_country;
+        $datsales->c_postal1 = $request->c_postal1;
+        $datsales->c_postal2 = $request->c_postal2;
+        $datsales->c_address = $request->c_address;
+        $datsales->c_tel = $request->c_tel;
+        $datsales->save();
+
+        $lastid = DB::getPdo()->lastInsertId();
+
+        for($i=0; $i<count($cart); $i++){
+            $datsalesproducts = new Datsalesproduct;
+            $datsalesproducts->s_id = $lastid;
+            $datsalesproducts->pro_id = $cart[$i];
+            $datsalesproducts->pro_price = $product[$i]->pro_price;
+            $datsalesproducts->pro_quantity = $quantity[$i];
+            $datsalesproducts->save();
+        }
+        
+        $results = DB::select('select datsalesproducts.pro_id as p,sum(datsalesproducts.pro_price * datsalesproducts.pro_quantity) as goukei from datsales,datsalesproducts where datsales.id=datsalesproducts.s_id group by datsalesproducts.pro_id');
+
+
+
+
+
+
+
+
+        return view('shop/shop_order_complete',['r' => $results]);
+    }
+    
 }

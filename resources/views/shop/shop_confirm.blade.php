@@ -75,8 +75,6 @@
 <p>Shiping Cost: $8.99</p>
 <p>tax: $0.00</p>
 <p>Grand Total: {{$TotalAmount}}</p>
-
-<a href="{{url('shop_checkout')}}" class="btn btn-primary">Checkout</a>
 @endif
 </div>
 
@@ -117,10 +115,70 @@
       {{$request->c_postal1.'-'.$request->c_postal2}}
     </td>
   </tr>
+  <tr>
+    <td>
+      Address:
+    </td>
+    <td>
+      {{$request->c_address}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Telephone:
+    </td>
+    <td>
+      {{$request->c_tel}}
+    </td>
+  </tr>
 </table>
 
 
 <h1>Payment Method</h1>
+<table class="table">
+  <tr>
+    <td>
+      Card Type:
+    </td>
+    <td>
+      {{$request->c_card_type}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Card Number:
+    </td>
+    <td>
+      {{'****-****-****-'.substr($request->c_card_number,12,4)}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Expiration Date:
+    </td>
+    <td>
+      {{$request->c_card_month.'/'.substr($request->c_card_year,2,2)}}
+    </td>
+  </tr>
+</table>
+
+<form action="{{url('shop_order_complete')}}" method="post">
+  {{csrf_field()}}
+  <input type="hidden" name="c_name" value="{{$request->c_name}}">
+  <input type="hidden" name="c_email" value="{{$request->c_email}}">
+  <input type="hidden" name="c_country" value="{{$request->c_country}}">
+  <input type="hidden" name="c_postal1" value="{{$request->c_postal1}}">
+  <input type="hidden" name="c_postal2" value="{{$request->c_postal2}}">
+  <input type="hidden" name="c_address" value="{{$request->c_address}}">
+  <input type="hidden" name="c_tel" value="{{$request->c_tel}}">
+  <input type="hidden" name="c_pay_type" value="{{$request->c_pay_type}}">
+  <input type="hidden" name="c_card_type" value="{{$request->c_card_type}}">
+  <input type="hidden" name="c_card_number" value="{{$request->c_card_number}}">
+  <input type="hidden" name="c_card_month" value="{{$request->c_card_month}}">
+  <input type="hidden" name="c_card_year" value="{{$request->c_year}}">
+  <input type="hidden" name="c_card_security_code" value="{{$request->c_card_security_code}}">
+  <button type="submit" class="btn btn-primary">Submit Order</button>
+</form>
 
 
 @endsection
