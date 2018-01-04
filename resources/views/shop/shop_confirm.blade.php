@@ -112,7 +112,7 @@
       Postal Code:
     </td>
     <td>
-      {{$request->c_postal1.'-'.$request->c_postal2}}
+      {{$request->c_postal1}}
     </td>
   </tr>
   <tr>
@@ -168,7 +168,6 @@
   <input type="hidden" name="c_email" value="{{$request->c_email}}">
   <input type="hidden" name="c_country" value="{{$request->c_country}}">
   <input type="hidden" name="c_postal1" value="{{$request->c_postal1}}">
-  <input type="hidden" name="c_postal2" value="{{$request->c_postal2}}">
   <input type="hidden" name="c_address" value="{{$request->c_address}}">
   <input type="hidden" name="c_tel" value="{{$request->c_tel}}">
   <input type="hidden" name="c_pay_type" value="{{$request->c_pay_type}}">
