@@ -62,3 +62,6 @@ Route::get('/shop_checkout', 'shopController@shop_checkout_view');
 
 // 決済最終確認ページ表示
 Route::post('/shop_confirmation', 'shopController@shop_confirmation_view');
+
+// 注文完了表示
+Route::post('/shop_order_complete', 'shopController@shop_order_complete_view');

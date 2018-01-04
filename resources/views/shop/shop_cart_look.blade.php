@@ -6,7 +6,7 @@
   <table class="table">
     <tr>
       <th>
-        画像11
+        画像
       </th>
       <th>
         数量
@@ -93,9 +93,6 @@
 <p>Grand Total: {{$TotalAmount}}</p>
 
 <a href="{{url('shop_checkout')}}" class="btn btn-primary">Checkout</a>
-
-
-
 @endif
 </div>
 @endsection
@@ -133,7 +130,6 @@
         <i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i>
         <i class="fa fa-cc-paypal fa-2x" aria-hidden="true"></i>
         <i class="fa fa-cc-amex fa-2x" aria-hidden="true"></i>
-
       </div>
     </div>
   </div>
