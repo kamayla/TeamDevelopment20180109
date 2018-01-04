@@ -67,3 +67,9 @@ Route::post('/shop_confirmation', 'shopController@shop_confirmation_view');
 Route::post('/shop_order_complete', 'shopController@shop_order_complete_view');
 // カテゴリページ表示
 Route::get('shop_category/{genre}', 'shopController@shop_category_page_view');
+
+// レビュー表示
+Route::post('/shop_item_page/{product}', 'shopController@review_look');
+
+// レビュー追加
+Route::post('/review_add', 'shopController@review_add');
