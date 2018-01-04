@@ -43,8 +43,7 @@
                   <p>Year : {{date('Y', strtotime($product->pro_release_date))}}</p>
                   <p>Size : {{$product->pro_size}}cm</p>
                   <p>Weight : {{$product->pro_weight}}kg</p>
-                  <div>
-                    @if($product->pro_stock>0)
+                <div>
                     <form action="{{url('shop_cart_in/'.$product->id)}}" method="post">
                       {{csrf_field()}}
                       <select name="quantity" id="">
@@ -55,10 +54,7 @@
                       </select>
                       <button type="submit" class=""><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
                     </form>
-                    @else
-                      <button class=""><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
-                    @endif
-                  </div>
+                </div>
                   <div class="item_icons">
                     share: 
                     <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
@@ -130,9 +126,10 @@
               <div class="genre-item">
                   <a href="{{url('shop_item_page/'.$other_works_of_this_genre->id)}}">
                     <img src="{{asset('pro_img/'.$other_works_of_this_genre->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-                  <p>{{$other_works_of_this_genre->pro_name}}</p>
+                  <p>｢{{$other_works_of_this_genre->pro_name}}｣</p>
                   <p>{{$other_works_of_this_genre->pro_author}}</p>
-                  <p>{{$other_works_of_this_genre->pro_price}}</p>
+                  <p>${{$other_works_of_this_genre->pro_price}}</p>
+                  <p>{{date('Y', strtotime($other_works_of_this_genre->pro_release_date))}}</p>
                 </a>
               </div>
           @endforeach
