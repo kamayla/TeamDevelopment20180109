@@ -33,7 +33,8 @@ $(function() {
         $('.credit_pattern_1').show();
         });
 
-    $( '#c_pay_type2' ).change( function() {  
+    $( '#c_pay_type2' ).change( function() {
+        $('#paypalBtn').show();
         $('.credit_pattern_1').hide();
         $('.credit_pattern_3').hide();
         $('.credit_pattern_2').show(1000);
