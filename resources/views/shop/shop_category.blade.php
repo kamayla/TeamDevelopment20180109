@@ -37,20 +37,33 @@
 @endsection
 
 @section('content1')
+<h1>Top 5 of {{$genre}}</h1>
 <table>
-@foreach($rankings as $ranking)
+@for($i=0; $i<count($rankings); $i++)
 <tr>
   <td>
-    {{$ranking->goukei}}
+    {{$i+1}}
   </td>
   <td>
-    {{$ranking->name}}
+    <img src="{{asset('pro_img/'.$rankings[$i]->pro_thumbnail)}}" alt="" style="height: 150px;">
   </td>
   <td>
-    {{$ranking->genre}}
+    {{$rankings[$i]->pro_name}}
+  </td>
+  <td>
+    {{$rankings[$i]->pro_author}}
+  </td>
+  <td>
+    {{$rankings[$i]->pro_price}}
+  </td>
+  <td>
+    {{date('Y', strtotime($rankings[$i]->pro_release_date))}}
+  </td>
+  <td>
+    ★★★★★
   </td>
 </tr>
 
-@endforeach
+@endfor
 </table>
 @endsection
