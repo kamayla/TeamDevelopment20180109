@@ -1,5 +1,5 @@
 @charset "utf-8";
-/* ----共通部分---- */
+/* ------------共通部分------------ */
 body{
   font-family: Calibri , 'Seravek','Microsoft Sans Serif',Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   color:rgb(43,43,43);
@@ -162,9 +162,11 @@ footer{
 }
 
 /*--- /footerセクション ---*/
-/* ----/共通部分---- */
+/* -------------/共通部分---------------- */
 
 
+
+/* -----------ECトップページ-------------- */
 /*---mainセクション ---*/
 
 .mainWrapper{
@@ -529,73 +531,294 @@ color:white;
 
 /* ---/infomationセクション--- */
 
-
-/*左右の矢印の色を変える*/
-.slick-prev:before,
-.slick-next:before {
-    color: #000;
-}
-/*左右の矢印の位置を変える*/
-.slick-next {
-    right: 20px;
-    z-index: 99;
-}
-.slick-prev {
-     left: 15px;
-    z-index: 100;
-}
-/*スライド数のドットの色を変える*/
-.slick-dots li.slick-active button:before,
-.slick-dots li button:before {
-    color: #fff;
-}
-/*スライド画像の横幅可変*/
-img {
-    max-width: 100%;
-     height: auto;
-}
-
-/* /shop_top */
+/* -----------/ECトップページ----------------- */
 
 
 
 
-
-/* shop_item_page */
+/* ------------アイテム詳細ページ ----------------*/
 .pro-item-wrap{
   display: flex;
-  margin-bottom: 20px;
 }
 
-.pro-item-area{
-  width: 50%;
+.categoryRoute{
+  margin-left:-32px;
+  color:rgb(100,100,100);
 }
 
-.pro-review-area{
-  text-align: center;
-  height: 150px;
-  line-height: 150px;
+.categoryRoute a{
+  color:rgb(100,100,100);
 }
 
-.ow-wrap{
+.categoryRoute a:hover{
+  color:rgb(43,43,43);
+}
+
+.pro-item-area_left{
+  width: 15%;
+}
+
+.pro-item-area_left div{
+  width:180px;
+  border-bottom:1px solid rgb(43,43,43);
+  padding:40px 0 0 64px;
+  margin-bottom:16px;
+}
+
+.pro-item-area_left p{
+  display:inline;
+  font-size:26px;
+}
+
+.pro-item-area_left a{
+    display:block;
+    font-size:18px;
+    border-left:1px solid rgb(43,43,43);
+    margin-left:40px;
+    padding-left:8px;
+}
+
+.pro-item-area_center{
+  width: 60%;
+}
+
+.item_center_inner{
+  display:flex;
+  justify-content: center;
+  margin-top:80px;
+}
+
+.item_center_inner p{
+  margin-bottom:3px;
+  font-size:18px;
+  letter-spacing: 0.5px;
+}
+
+.item_center_inner img{
+  margin:0px;
+}
+
+.item_center_inner h2{
+  margin-left:-32px;
+}
+
+.item_center_inner select{
+  margin-top:14px;
+  height:51px;
+  width:48px;
+  font-size:20px;
+  background-color:white;
+  border:2px solid rgb(43,43,43);
+	border-radius: 0px;
+	padding: 8px 16px;
+  color: rgb(43,43,43);
+  cursor:pointer;
+  outline: none;
+}
+
+.item_center_inner button{
+  font-size:20px;
+  background-color:white;
+  border:2px solid rgb(43,43,43);
+  border-radius: 4px;
+  padding:8px 16px;
+  color: rgb(43,43,43);
+  margin-left:16px;
+}
+
+.item_center_inner button:hover{
+  color:white;
+  background-color:rgb(43,43,43);
+}
+
+.item_center_inner span{
+  margin-right: 8px;
+}
+
+.item_icons{
+  margin-top:16px;
+  font-size:20px;
+} 
+
+.item_icons i{
+  font-size:40px;
+  margin-left:8px;
+}
+
+.item_price{
+  text-align: right;
+}
+
+.review-area{
+  width:70%;
+  margin:24px auto 0;
+}
+
+.review-area h4{
+  font-size:20px;
+  display:inline-block;
+  border-bottom:1px solid rgb(43,43,43);
+}
+
+.review_user{
+  display:flex;
+}
+
+.review_user img{
+  border-radius: 1500px;
+}
+
+.review_user h3{
+  line-height: 60px;
+  margin: 0 24px;
+  font-size:28px;
+}
+
+.review_user p{
+  margin:auto 0 0 0;
+}
+
+.review_comment{
+  margin:8px 0;
+  font-size:20px;
+}
+
+.review-area button{
+  display:block;
+  border:2px solid rgb(43,43,43);
+  width:300px;
+  height:40px;
+  border-radius:4px;
+  margin:0 auto;
+  font-size:24px;
+  outline:none;
+}
+
+.review-area button:hover{
+  color:white;
+  background-color:rgb(43,43,43);
+}
+
+.write_review{
+  margin-top:16px;
+  display:none;
+}
+
+.write_review p{
+  margin-bottom:3px;
+}
+
+.write_review textarea{
+  font-size:24px;
+  letter-spacing: 1.5px;
+  resize: none;
+  border:1px solid rgb(43,43,43);
+  outline:none;
+}
+
+.review_bottom{
+  display:flex;
+  justify-content: space-between;
+  width:652px;
+}
+
+.review_bottom span{
+  font-size:18px;
+  margin-right:8px;
+}
+
+.review_bottom button{
+  width:150px;
+  font-size:24px;
+  margin:0 0 0 auto;
+}
+
+.review_bottom select{
+  font-size:20px;
+  background-color:white;
+  border:2px solid rgb(43,43,43);
+	border-radius: 0px;
+  color: rgb(43,43,43);
+  cursor:pointer;
+  outline: none;
+}
+
+.pro-item-area_right{
+  width: 25%;
+  margin-top:64px;
+}
+
+.pro-item-area_right h4:nth-of-type(2){
+  text-align: right;
+  padding-right:32px;
+  border-bottom:1px solid rgb(43,43,43);
+}
+
+
+.other-works-item{
+  width:300px;
+  overflow:hidden;
+}
+
+.other-works-item a{
   display: flex;
+}
 
+.other-works-item a:hover{
+  background-color:rgb(43,43,43);
+  color:white;
 }
 
 .ow-img{
-  width: 33.33%;
+  margin:auto 0 auto 12px;
 }
-
 .ow-info{
   width: 66.66%
 }
 
-.other-works-of-this-genre-wrap{
+.ow-info p{
+  margin:0 0 0 16px;
+}
+
+.ow-info p:nth-of-type(1){
+  font-size:20px;
+}
+
+.ow-info p:nth-of-type(3){
+  text-align:right;
+  margin-right:48px;
+}
+
+
+.ow-genre-title{
+  width:1300px;
+  margin:40px auto 16px;
+  border-bottom:1px solid rgb(43,43,43);
+}
+
+.ow-genre-title h3{
+  font-size: 32px;
+  margin-left:16px;
+}
+
+.ow-genre-items{
   display: flex;
 }
 
 .genre-item{
   width: 16.66%
+}
+
+.genre-item img{
+  padding-top:16px;
+}
+
+.genre-item:hover{
+  background-color:rgb(43,43,43);
+}
+
+.genre-item a:hover{
+  color:white;
 }
 
 .view-more{
@@ -604,8 +827,7 @@ img {
 }
 
 
-
-/* /shop_item_page */
+/* ------------アイテム詳細ページ ----------------*/
 
 
 /* shop_result_page */

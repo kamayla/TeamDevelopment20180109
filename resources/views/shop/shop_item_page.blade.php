@@ -2,129 +2,144 @@
 
 
 @section('content1')
-
 <div class="pro-item-wrap">
-  <div class="pro-item-area">
-    <div>
-      Category/{{$product->pro_genre}}
-    </div>
-    <div>
-      <h1>{{$product->pro_name}}</h1>
-    </div>
-    <div>
-      {{$product->pro_author}}
-    </div>
-    <div>
-    <?php
-         $number =$product->pro_price;
-        // 3桁ごとにカンマ区切りで出力
-        echo number_format($number);
-        ?>円
-    </div>
-    <div>
-      In Stock
-    </div>
-    <div>
-      ★★★★★ 4.4 scroe
-    </div>
-    <div>
-      Publisher:{{$product->pro_publisher}}
-    </div>
-    <div>
-      Year:{{date('Y', strtotime($product->pro_release_date))}}
-    </div>
-    <div>
-      Size{{$product->pro_size}}cm
-    </div>
-    <div>
-      Weight:{{$product->pro_weight}}kg
-    </div>
-    <div>
-      @if($product->pro_stock>0)
-      <form action="{{url('shop_cart_in/'.$product->id)}}" method="post">
-        {{csrf_field()}}
-        <select name="quantity" id="">
-          @for($i=0; $i<$product->pro_stock; $i++)
-          <option value="{{$i+1}}">{{$i+1}}</option>
-          @endfor
-        </select>
-        <button type="submit" class="btn btn-primary">+ Add To Cart</button>
-      </form>
-      @else
-        No Stock
-      @endif
-    </div>
-    <div>
-      share: 
-      <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
-      <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
-      <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+
+
+    <div class="pro-item-area_left">
+        <div>
+            <p>Category</p>
+        </div>
+          <a href="">Tokyo</a>
+          <a href="">Kyoto</a>
+          <a href="">Gokudo</a>
+          <a href="">Temple</a>
+          <a href="">Art</a>
+          <a href="">Fashion</a>
+          <a href="">Music</a>
+          <a href="">Other</a>
     </div>
 
-  </div>
-  <div class="pro-item-area"> 
-    <img src="{{asset('pro_img/'.$product->pro_thumbnail)}}" alt="" style="height: 470px; display: block; margin: 0 auto;">
-  </div>
+
+    <div class="pro-item-area_center">
+        <div class="item_center_inner">
+            <div class="">
+                  <p class="categoryRoute">Category/<a href="">{{$product->pro_genre}}</a></p>
+                  <h2>｢{{$product->pro_name}}｣</h2>
+                  <p><a href="">{{$product->pro_author}}</a></p>
+                  <p class="item_price">$
+                  <?php
+                      $number =$product->pro_price;
+                      // 3桁ごとにカンマ区切りで出力
+                      echo number_format($number);
+                      ?>
+                  </p>
+                  @if($product->pro_stock>0)
+                  <p><span class="fa fa-check-circle-o"></span>In Stock</p>
+                  @else
+                  <p><span class="fa fa-check-circle-o"></span>Out of Stock</p>
+                  @endif
+                  <p>★★★★★ 4.4 score</p>
+                  <p>Publisher : {{$product->pro_publisher}}</p>
+                  <p>Year : {{date('Y', strtotime($product->pro_release_date))}}</p>
+                  <p>Size : {{$product->pro_size}}cm</p>
+                  <p>Weight : {{$product->pro_weight}}kg</p>
+                  <div>
+                    @if($product->pro_stock>0)
+                    <form action="{{url('shop_cart_in/'.$product->id)}}" method="post">
+                      {{csrf_field()}}
+                      <select name="quantity" id="">
+                        @for($i=0; $i<$product->pro_stock; $i++)
+                        <option value="{{$i+1}}">{{$i+1}}</option>
+                        @endfor
+                        <!-- <span class="fa fa-chevron-down"></span> -->
+                      </select>
+                      <button type="submit" class=""><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
+                    </form>
+                    @else
+                      <button class=""><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
+                    @endif
+                  </div>
+                  <div class="item_icons">
+                    share: 
+                    <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
+                    <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+                    <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+                  </div>
+              </div>
+              <img src="{{asset('pro_img/'.$product->pro_thumbnail)}}" alt="" style="height: 400px;">
+        </div>
+            <div class="review-area">
+                <h4>User Review</h4>
+                <div class="review_user">
+                    <img src="{{asset('shop_img/gacha.jpg')}}"  width="60px;" height="60px" alt="">
+                    <h3>Gachapin</h3>
+                    <p>★★★★★ 4.4 score</p>
+                </div>
+                <p class="review_comment">
+                it was very good! The picture was also beautiful and drawn in! I also want to tell Mook!
+                </p>
+                <button id="reviewBtn">Write a review</button>
+                <form action="" class="write_review">
+                  <p>Write your review</p>
+                  <textarea name="" id="" cols="63" rows="4"></textarea>
+                  <div class="review_bottom">
+                      <select name="" id="">
+                        <option value="">★</option>
+                        <option value="">★★</option>
+                        <option value="">★★★</option>
+                        <option value="">★★★★</option>
+                        <option value="">★★★★★</option>
+                      </select>
+                      <button><span class="fa fa-share"></span>submit</button>
+                  </div>
+                </form>
+            </div>
+       </div>
+
+
+    <div class="pro-item-area_right">
+       <h4>Other works by</h4>
+       <h4>{{$product->pro_author}}</h4>
+         @foreach($otherworks as $otherwork)
+        <div class="other-works-item">
+            <a href="{{url('shop_item_page/'.$otherwork->id)}}">
+                    <div class="ow-img">
+                        <img src="{{asset('pro_img/'.$otherwork->pro_thumbnail)}}" alt="" style="height: 100px;">
+                    </div>
+                    <div class="ow-info">
+                        <p>｢{{$otherwork->pro_name}}｣</p>
+                        <p>{{$otherwork->pro_author}}</p>
+                        <p>$ {{$otherwork->pro_price}}</p>
+                        <p>{{date('Y', strtotime($otherwork->pro_release_date))}}</p>
+                        <p>{{$otherwork->pro_publisher}}</p>
+                    </div>
+            </a>
+        </div>
+           @endforeach
+    </div>
 </div>
 
-<div class="pro-review-area">
-  レビューエリア
-</div>
 
-<h4>Other works by</h4>
-<h4>{{$product->pro_author}}</h4>
-  @foreach($otherworks as $otherwork)
-    <div class="ow-wrap">
-      <div class="ow-img">
-        <a href="{{url('shop_item_page/'.$otherwork->id)}}">
-          <img src="{{asset('pro_img/'.$otherwork->pro_thumbnail)}}" alt="" style="height: 100px; display: block; margin: 0 auto;">
-        </a>
-      </div>
-      <div class="ow-info">
-        <p>{{$otherwork->pro_name}}</p>
-        <p>{{$otherwork->pro_ahtor}}</p>
-        <p>{{$otherwork->pro_price}}</p>
-        <p>{{date('Y', strtotime($otherwork->pro_release_date))}}</p>
-        <p>{{$otherwork->pro_publisher}}</p>
-      </div>
 
+<div class="ow-genre-wrapper">
+    <div class="ow-genre-title">
+        <h3>Other works of this genre</h3>
     </div>
-
-  @endforeach
-
-@endsection
-
-@section('content3')
-<h1>Other works of this genre</h1>
-<div class="other-works-of-this-genre-wrap">
-  @foreach($other_works_of_this_genres as $other_works_of_this_genre)
-    <div class="genre-item">
-      <div>
-        <a href="{{url('shop_item_page/'.$other_works_of_this_genre->id)}}">
-          <img src="{{asset('pro_img/'.$other_works_of_this_genre->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
-        </a>
-      </div>
-      <div>
-        {{$other_works_of_this_genre->pro_name}}
-      </div>
-      <div>
-        {{$other_works_of_this_genre->pro_author}}
-      </div>
-      <div>
-        {{$other_works_of_this_genre->pro_price}}
-      </div>
+    <div class="ow-genre-items">
+          @foreach($other_works_of_this_genres as $other_works_of_this_genre)
+              <div class="genre-item">
+                  <a href="{{url('shop_item_page/'.$other_works_of_this_genre->id)}}">
+                    <img src="{{asset('pro_img/'.$other_works_of_this_genre->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
+                  <p>{{$other_works_of_this_genre->pro_name}}</p>
+                  <p>{{$other_works_of_this_genre->pro_author}}</p>
+                  <p>{{$other_works_of_this_genre->pro_price}}</p>
+                </a>
+              </div>
+          @endforeach
     </div>
+</div>  
 
-  @endforeach
-</div>
-  
-  <button class="btn btn-primary view-more">View More</button>
-
-
-@endsection
-
-
-@section('content4')
+<!-- informationセクション -->
 <div class="infomation-wrapper">
   <div class="infomationTitle">
       <h1>Shopping Guide</h1>
@@ -167,4 +182,5 @@
       </div>
   </div>
 </div>
+<!-- /informationセクション -->
 @endsection

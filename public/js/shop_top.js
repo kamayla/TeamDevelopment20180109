@@ -14,4 +14,15 @@ $(function() {
          asNavFor: '.thumb-item', //スライダー本体のクラス名
          focusOnSelect: true,
     });
+
+    $("#reviewBtn").on("click",function(){
+        if($('.write_review').css("display","none")){
+            $('.write_review').show();
+            $("#reviewBtn").text('Close the window');
+        }else{
+            $('.write_review').hide();
+            $("#reviewBtn").text('Write a review');
+        }
+    })
 });
+
