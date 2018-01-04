@@ -40,6 +40,7 @@
       Weight:{{$product->pro_weight}}kg
     </div>
     <div>
+      @if($product->pro_stock>0)
       <form action="{{url('shop_cart_in/'.$product->id)}}" method="post">
         {{csrf_field()}}
         <select name="quantity" id="">
@@ -49,6 +50,9 @@
         </select>
         <button type="submit" class="btn btn-primary">+ Add To Cart</button>
       </form>
+      @else
+        No Stock
+      @endif
     </div>
     <div>
       share: 
