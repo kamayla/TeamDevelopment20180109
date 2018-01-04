@@ -109,42 +109,42 @@
     </div>
     <div class="categoryItems">
         <div class="categoryItem">
-              <a class="tokyo" href="">
+              <a class="tokyo" href="{{url('shop_category/Tokyo')}}">
                 <p>Tokyo</p>
               </a>
           </div>
         <div class="categoryItem">
-              <a class="kyoto" href="">
+              <a class="kyoto" href="{{url('shop_category/Kyoto')}}">
                 <p>Kyoto</p>
               </a>
           </div>
         <div class="categoryItem">
-              <a class="gokudo" href="">
+              <a class="gokudo" href="{{url('shop_category/Gokudo')}}">
                 <p>Gokudo</p>
               </a>
           </div>
         <div class="categoryItem">
-              <a class="temple" href="">
+              <a class="temple" href="{{url('shop_category/Temple')}}">
                 <p>Temple</p>
               </a>
           </div>
         <div class="categoryItem">
-              <a class="art" href="">
+              <a class="art" href="{{url('shop_category/Art')}}">
                 <p>Art</p>
               </a>
           </div>
         <div class="categoryItem">
-              <a class="fashion" href="">
+              <a class="fashion" href="{{url('shop_category/Fashion')}}">
                 <p>Fashion</p>
               </a>
           </div>
         <div class="categoryItem">
-              <a class="music" href="">
+              <a class="music" href="{{url('shop_category/Music')}}">
                 <p>Music</p>
               </a>
           </div>
         <div class="categoryItem">
-              <a class="other" href="">
+              <a class="other" href="{{url('shop_category/Other')}}">
                 <p>Other</p>
               </a>
           </div>

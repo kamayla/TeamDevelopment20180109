@@ -228,23 +228,36 @@ class ShopController extends Controller
             $product[$i]->pro_stock -= $quantity[$i];
             $product[$i]->save();
         }
-
-
-
         Session::forget('cart');
         Session::forget('quantity');
         Session::put('totalQuantity',0);
-        
-        $results = DB::select('select datsalesproducts.pro_id as p,sum(datsalesproducts.pro_price * datsalesproducts.pro_quantity) as goukei from datsales,datsalesproducts where datsales.id=datsalesproducts.s_id group by datsalesproducts.pro_id order by goukei DESC');
-
-
-
-
-
-
-
-
+        // ↓実験中
+        $results = DB::select('
+        select
+        datsalesproducts.pro_id as p,sum(datsalesproducts.pro_price * datsalesproducts.pro_quantity) as goukei 
+        from
+        datsales,datsalesproducts
+        where datsales.id=datsalesproducts.s_id 
+        group by datsalesproducts.pro_id order by goukei DESC');
         return view('shop/shop_order_complete',['r' => $results]);
+    }
+
+    public function shop_category_page_view($genre){
+        $products = Product::where('pro_genre',$genre)->get();
+        $rankings = DB::select("
+        select 
+        datsalesproducts.pro_id as p,
+        products.pro_name as name,
+        products.pro_genre as genre,
+        sum(datsalesproducts.pro_price * datsalesproducts.pro_quantity) as goukei
+        from 
+        datsales,datsalesproducts,products
+        where 
+        datsales.id=datsalesproducts.s_id
+        and datsalesproducts.pro_id = products.id
+        and products.pro_genre = '$genre'
+        group by datsalesproducts.pro_id order by goukei DESC");
+        return view('shop/shop_category',['products' => $products, 'genre' => $genre, 'rankings' => $rankings]);
     }
     
 }
