@@ -61,7 +61,7 @@
     @endfor
   </table>
   @else
-  <p class="cart-nothing">カートに何も入っていません。</p>
+  <p class="cart-nothing">There is nothing in the cart.</p>
   @endif
 </div>
 @endsection
