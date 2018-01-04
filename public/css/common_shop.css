@@ -558,6 +558,7 @@ color:white;
 
 .pro-item-area_left{
   width: 15%;
+  /* position:absolute; */
 }
 
 .pro-item-area_left div{
@@ -856,9 +857,32 @@ color:white;
 /* ------------アイテム詳細ページ ----------------*/
 
 
-/* shop_result_page */
+/* -------------検索結果ページ-------------- */
+
+
+.result_main_section{
+  width:1200px;
+  margin-bottom:64px;
+  min-height:505px;
+}
+
+.result_page_wrapper{
+  display:flex;
+}
+
+.result_main_title{
+  text-align:center;
+  margin:64px 0;
+}
+
+.result_main_title span{
+  font-size:20px;
+  margin-right:8px;
+}
 .question{
-  text-align: center;
+  display:inline;
+  padding:0 8px;
+  border-bottom:1px solid rgb(43,43,43);
 }
 
 .result-wrap{
@@ -866,12 +890,41 @@ color:white;
   flex-wrap: wrap;
 }
 
-.result-item{
-  width: 16.66%;
+.result-items {
+  width: 185px;
+  padding:16px 0;
+  margin:16px 0;
+}
+
+.result-items:hover{
+  background-color:rgb(43,43,43);
+}
+.result-items a:hover{
+  color:white;
+}
+
+.result-item img{
+  padding-bottom:8px;
+}
+
+.result-item p{
+  margin:0 8px 0;
+}
+
+.result-item p:nth-of-type(1){
+  font-size:20px;
+}
+
+.result-item p:nth-of-type(3){
+  text-align:right;
+}
+
+.result-item p:nth-of-type(5){
+  font-size:20px;
 }
 
 
-/* /shop_result_page */
+/* -------------/検索結果ページ-------------- */
 
 
 
