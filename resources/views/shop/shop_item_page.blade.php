@@ -2,9 +2,6 @@
 
 
 @section('content1')
-
-
-
 <div class="pro-item-wrap">
 
 
@@ -36,7 +33,11 @@
                       echo number_format($number);
                       ?>
                   </p>
+                  @if($product->pro_stock>0)
                   <p><span class="fa fa-check-circle-o"></span>In Stock</p>
+                  @else
+                  <p><span class="fa fa-check-circle-o"></span>Out of Stock</p>
+                  @endif
                   <p>★★★★★ 4.4 score</p>
                   <p>Publisher : {{$product->pro_publisher}}</p>
                   <p>Year : {{date('Y', strtotime($product->pro_release_date))}}</p>

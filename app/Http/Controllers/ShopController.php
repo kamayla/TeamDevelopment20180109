@@ -224,9 +224,18 @@ class ShopController extends Controller
             $datsalesproducts->pro_price = $product[$i]->pro_price;
             $datsalesproducts->pro_quantity = $quantity[$i];
             $datsalesproducts->save();
+
+            $product[$i]->pro_stock -= $quantity[$i];
+            $product[$i]->save();
         }
+
+
+
+        Session::forget('cart');
+        Session::forget('quantity');
+        Session::put('totalQuantity',0);
         
-        $results = DB::select('select datsalesproducts.pro_id as p,sum(datsalesproducts.pro_price * datsalesproducts.pro_quantity) as goukei from datsales,datsalesproducts where datsales.id=datsalesproducts.s_id group by datsalesproducts.pro_id');
+        $results = DB::select('select datsalesproducts.pro_id as p,sum(datsalesproducts.pro_price * datsalesproducts.pro_quantity) as goukei from datsales,datsalesproducts where datsales.id=datsalesproducts.s_id group by datsalesproducts.pro_id order by goukei DESC');
 
 
 
