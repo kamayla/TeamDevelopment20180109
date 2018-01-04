@@ -36,7 +36,7 @@
                   @if($product->pro_stock>0)
                   <p><span class="fa fa-check-circle-o"></span>In Stock</p>
                   @else
-                  <p><span class="fa fa-check-circle-o"></span>Out of Stock</p>
+                  <p><span class="fa fa-times-circle-o"></span>Out of Stock</p>
                   @endif
                   <p>★★★★★ 4.4 score</p>
                   <p>Publisher : {{$product->pro_publisher}}</p>

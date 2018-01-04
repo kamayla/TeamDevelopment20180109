@@ -863,6 +863,7 @@ color:white;
 .result_main_section{
   width:1200px;
   margin-bottom:64px;
+  min-height:505px;
 }
 
 .result_page_wrapper{
