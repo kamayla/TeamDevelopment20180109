@@ -1,138 +1,160 @@
 @extends('layouts.shop_common')
 
+@section('content2')
+<div class="cart_page_title">
+  
+  <h1><span><img src="{{asset('shop_img/cart_icon.png')}}" alt=""><span>In Your Cart</h1>
+</div>
+@endsection
+
 @section('content3')
-<div class="container">
+<div class="my_cart_wrapper">
   @if(isset($cart))
   <table class="table">
-    <tr>
-      <th>
-        画像
-      </th>
-      <th>
-        数量
-      </th>
-      <th>
-        価格
-      </th>
-      <th>
-        合計
-      </th>
-      <th>
-        削除
-      </th>
-    </tr>
+      <!-- <tr class="thead">
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr> -->
     @for($i=0; $i<count($cart); $i++)
-      <tr>
-        <td>
-          <img src="{{asset('pro_img/'.$product[$i]->pro_thumbnail)}}" alt="" style="height: 150px;">
+      <tr height="120px">
+        <!-- <td align="center" valign="middle">
+          </td> -->
+          <td class="cart_item_title">
+            <a href="">
+              <div class="cart_item_image">
+                <img src="{{asset('pro_img/'.$product[$i]->pro_thumbnail)}}" alt="" style="height: 100px;">
+              </div>
+                <div>
+                    <p>{{$product[$i]->pro_name}}</p>
+                    <p>{{$product[$i]->pro_author}}</p>
+                    <p>$ {{$product[$i]->pro_price}}</p>
+                      @if($product[$i]->pro_stock > 0)
+                      <p><span class="fa fa-check-circle-o"></span>In Stock</p>
+                      @else
+                      <p><span class="fa fa-times-circle-o"></span>Out of Stock</p>
+                      @endif
+                </div>
+                </a>
+            </td>
+        <td class="cart_item_count">
+            <form action="{{url('shop_cart_quantity_edit/'.$product[$i]->id)}}" method="post">
+                {{csrf_field()}}
+                ×　
+                <select name="quantity" id="" onchange="submit(this.form)">
+                  @for($j=0; $j<$product[$i]->pro_stock; $j++)
+                    <option value="{{$j+1}}"<?php if ($quantity[$i] == $j+1) { echo ' selected'; }; ?>>{{$j+1}}</option>
+                  @endfor
+                </select>
+            </form>
         </td>
+        <td class="cart_item_amount">$ {{$product[$i]->pro_price * $quantity[$i]}}</td>
         <td>
-          <form action="{{url('shop_cart_quantity_edit/'.$product[$i]->id)}}" method="post">
-            {{csrf_field()}}
-            ×
-            <select name="quantity" id="" onchange="submit(this.form)">
-              @for($j=0; $j<$product[$i]->pro_stock; $j++)
-                <option value="{{$j+1}}"<?php if ($quantity[$i] == $j+1) { echo ' selected'; }; ?>>{{$j+1}}</option>
-              @endfor
-            </select>
-          </form>
-        </td>
-        <td>
-          {{$product[$i]->pro_price.'円'}}
-        </td>
-        <td>
-          {{$product[$i]->pro_price * $quantity[$i]}}
-        </td>
-        <td>
-          <form action="{{url('shop_cart_delete/'.$product[$i]->id)}}" method="post">
-            {{csrf_field()}}
-            <button type="submit" class="btn btn-danger">
-              <i class="glyphicon glyphicon-trash"></i>削除
-            </button>
-          </form>
+            <form action="{{url('shop_cart_delete/'.$product[$i]->id)}}" method="post">
+                {{csrf_field()}}
+                <button type="submit" class="fa fa-trash-o cart_trashBtn"></button>
+            </form>
         </td>
       </tr>
       
     @endfor
   </table>
   @else
-  <p>カートに何も入っていません。</p>
+  <p class="cart-nothing">カートに何も入っていません。</p>
   @endif
-  
 </div>
 @endsection
+
+
+
+
 
 @section('content4')
 <?php 
   $TotalQuantity = 0; 
   $TotalAmount = 0;
 ?>
-<div class="container">
-@if(isset($cart))
-@for($i=0;$i<count($cart);$i++)
 
-  <?php 
-    $TotalQuantity += $quantity[$i];
-    $TotalAmount += ($product[$i]->pro_price * $quantity[$i]);
-  ?>
-@endfor
-
-
-<div class="total-wrap">
-  <div>
-    <p>Total Quantity:</p>
-    <p>{{$TotalQuantity}}</p>
-  </div>
-  <div>
-    <p>Total Amount:</p>
-    <p>{{$TotalAmount}}</p>
-  </div>
-</div>
-<p>Shiping Cost: $8.99</p>
-<p>tax: $0.00</p>
-<p>Grand Total: {{$TotalAmount}}</p>
-
-<a href="{{url('shop_checkout')}}" class="btn btn-primary">Checkout</a>
-@endif
+<div class="cart_total_amount_wrapper">
+  @if(isset($cart))
+      @for($i=0;$i<count($cart);$i++)
+      
+          <?php
+          $TotalQuantity += $quantity[$i];
+          $TotalAmount += ($product[$i]->pro_price * $quantity[$i]);
+          ?>
+      @endfor
+          
+          
+      <div class="cart_total_inner">
+          <div class="total-wrap">
+              <div class="cart_total_quantity">
+                <p>Total Quantity :</p>
+                <p>× {{$TotalQuantity}}</p>
+              </div class="cart_total_amount">
+              <div>
+                <p>Total Amount :</p>
+                <p>$ {{$TotalAmount}}</p>
+              </div>
+          </div>
+          <div class="total_amount_taxes">
+              <p>Shiping Cost : $4.99</p>
+              <p>Taxes : $0.00</p>
+              <p>Grand Total : $ {{$TotalAmount + 4.99}}</p>
+          </div>
+          <div class="cart_checkout_area">
+              <a href="{{url('shop_checkout')}}" class="cart_checkout_btn"><span class="fa fa-share"></span>Checkout</a>
+          </div>
+      @endif
+    </div>
 </div>
 @endsection
 
-@section('content6')
-<h1>Shopping Guide</h1>
-<div class="shopping-guide-wrap">
-  <div class="shopping-guide-item">
-    <h3>Shipping</h3>
-    <div>
-    wordwordwordwordwordwordwordwordwordword
-    
-    </div>
-    <div class="wrap">
-      <div class="text-area">
-        <p>wordwordwordwordword</p>
-      </div>
-      <div class="icon-area">
-      <i class="fa fa-car fa-3x" aria-hidden="true"></i>
-      </div>
-    </div>
-  </div>
 
-  <div class="shopping-guide-item">
-    <h3>Payment method</h3>
-    <div>
-    wordwordwordwordwordwordwordwordwordword
-    </div>
-    <div class="wrap">
-      <div class="text-area">
-        <p>wordwordwordwordword</p>
+<!-- shopping guideセクション -->
+
+@section('content6')
+<div class="infomation-wrapper">
+  <div class="infomationTitle">
+      <h1>Shopping Guide</h1>
+  </div>
+  <div class="infomationContainer">
+      <div class='infomationLeft'>
+          <div class="shippingTitle">
+              <p>Shipping</p>
+          </div>
+          <h3>Items ordered by 11 AM are shipped during <br>the day.</h3>
+          <div class="shippingInner">
+              <p>Most items qualify for Free Standard Shipping in the USA.<br>
+              You can also pick up at a nearby bookstore or convenience store.<br>
+              Dispatch other than the USA is also possible.
+              </p>
+              <p class="fa fa-truck" aria-hidden="true"></p>
+          </div>
       </div>
-      <div class="icon-area">
-        <i class="fa fa-cc-mastercard fa-2x" aria-hidden="true"></i>
-        <i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i>
-        <i class="fa fa-cc-paypal fa-2x" aria-hidden="true"></i>
-        <i class="fa fa-cc-amex fa-2x" aria-hidden="true"></i>
+      <div class='infomationRight'>
+          <div class="paymentTitle">
+              <p>Payment Method</p>
+          </div>
+          <h3>choose your preferred payment method such as credit card payment, convenience store payment</h3>
+          <div class="paymentInner">
+              <p>VISA,MASTERCARD,AMEX,JCB can be used.<br>
+              Those who are concerned about security can also pay by paypal.<br>
+              We also do cash on delivery shipping.
+              </p>
+              <div class="paymentIcons">
+                  <div class="paymentIcons_top">
+                      <p class="fa fa-cc-mastercard" aria-hidden="true"></p>
+                      <p class="fa fa-cc-visa" aria-hidden="true"></p>
+                  </div>
+                  <div class="paymentIcons_bottom">
+                    <p class="fa fa-cc-paypal" aria-hidden="true"></p>
+                    <p class="fa fa-cc-amex" aria-hidden="true"></p>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
   </div>
 </div>
-
 @endsection

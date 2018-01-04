@@ -928,10 +928,180 @@ color:white;
 
 
 
-/* shop_cart_look */
-.total-wrap{
-  display: flex;
+/* ------------カートページ-------- */
+
+.cart_page_title{
+  width:450px;
+  border-bottom:1px solid rgb(43,43,43);
+  margin:24px 0 32px;
 }
 
+.cart_page_title img{
+  margin:0 20px 12px 0;
+}
 
-/* /shop_cart_look */
+.cart_page_title h1{
+  margin-left:100px;
+  display:inline;
+}
+
+.my_cart_wrapper{
+  width:1000px;
+  margin:0 auto;
+  border-bottom:1px solid rgb(43,43,43);
+}
+
+.thead th:nth-of-type(1){
+  width:140px;
+}
+
+.cart_item_title{
+  width:500px;
+}
+
+.cart_item_image{
+  width:120px;
+  text-align: center;
+}
+
+.cart_item_title img{
+  margin:7px 0 0 16px;
+}
+
+.cart_item_title a{
+  display:flex;
+}
+
+.cart_item_title a:hover{
+  background:rgb(43,43,43);
+  color:white;
+}
+
+.cart_item_title p{
+  margin:0 0 0 32px;
+}
+
+.cart_item_title p:nth-of-type(1){
+  font-size:24px;
+}
+
+.cart_item_title p:nth-of-type(3){
+  margin-left:150px;
+}
+
+.cart_item_title p:nth-of-type(4){
+  font-size:20px;
+}
+
+.cart_item_title p:nth-of-type(4) span{
+  margin-right:5px;
+}
+
+.cart_item_price, .cart_item_amount{
+  font-size:20px;
+  /* border-right:1px solid rgb(135, 135, 135); */
+}
+
+.my_cart_wrapper select{
+  margin-top:14px;
+  height:40px;
+  width:52px;
+  font-size:20px;
+  background-color:white;
+  border:1px solid rgb(43,43,43);
+	border-radius: 0px;
+  color: rgb(43,43,43);
+  cursor:pointer;
+  outline: none;
+}
+
+.cart_item_count form{
+  margin-top:24px;
+}
+
+.cart_item_amount{
+  line-height: 120px;
+}
+
+.cart_trashBtn{
+  font-size:40px;
+  border:1px solid rgb(43,43,43);
+  margin-top:36px;
+}
+
+.cart_trashBtn:hover{
+  background-color:rgb(43,43,43);
+  color:white;
+}
+
+.cart-nothing{
+  font-size:32px;
+  text-align: center;
+  margin:120px 0;
+}
+
+.total-wrap{
+  display: flex;  
+  justify-content: flex-end;
+  margin-top:24px;
+}
+
+.total-wrap p{
+  font-size:24px;
+  margin:0;
+}
+
+.cart_total_quantity{
+  margin-right:40px;
+}
+
+.cart_total_amount_wrapper{
+  width:1000px;
+  margin:0 auto;
+}
+
+.cart_total_inner p{
+  text-align: right;
+}
+
+.total_amount_taxes{
+  margin-top:24px;
+  font-size:18px;
+  text-align: right;
+}
+
+.total_amount_taxes p{
+  margin-bottom:3px;
+}
+
+.total_amount_taxes p:nth-of-type(3){
+  display:inline;
+  font-size:32px;
+  border-bottom:1px solid rgb(43,43,43);
+}
+
+.total_amount_taxes a{
+  text-align: right;
+}
+
+.cart_checkout_btn{
+  padding:5px 8px;
+  font-size:32px;
+  border:1px solid rgb(43,43,43);
+}
+
+.cart_checkout_area a:hover{
+  background-color: rgb(43,43,43);
+  color:white;
+}
+
+.cart_checkout_btn span{
+  font-size:26px;
+  margin-right:8px;
+}
+
+.cart_checkout_area{
+  text-align: right;
+  margin-top:24px;
+}
+/* ------------/カートページ-------- */
