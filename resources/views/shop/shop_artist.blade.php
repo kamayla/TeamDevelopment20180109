@@ -1,7 +1,7 @@
 @extends('layouts.shop_common')
 
 @section('content0')
-<h1>Category/{{$genre}}</h1>
+<h1>Artist/{{$author}}</h1>
 <div class="container result-wrap">
   @if(count($products)>0)
     @foreach($products as $product)
@@ -41,7 +41,7 @@
 @endsection
 
 @section('content1')
-<h1>Top 5 of {{$genre}}</h1>
+<h1>Top 5 of {{$author}}</h1>
 @if(count($rankings)>0)
 @for($i=0; $i<count($rankings); $i++)
 <div class="other-works-item">

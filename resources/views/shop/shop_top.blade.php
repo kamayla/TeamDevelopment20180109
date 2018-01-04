@@ -165,22 +165,22 @@
     </div>
     <div class="artistItems">
         <div class="artistItem">
-            <a class="artist_1" href="">
+            <a class="artist_1" href="{{url('shop_artist/Nobuyashi Araki')}}">
                 <p>Nobuyoshi Araki</p>
             </a>
         </div>
         <div class="artistItem">
-            <a class="artist_2" href="">
+            <a class="artist_2" href="{{url('shop_artist/Yusuke Yamatani')}}">
                 <p>Yusuke Yamatani</p>
             </a>
         </div>
         <div class="artistItem">
-            <a class="artist_3" href="">
+            <a class="artist_3" href="{{url('shop_artist/KYNE')}}">
                 <p>KYNE</p>
             </a>
         </div>
         <div class="artistItem">
-            <a class="artist_4" href="">
+            <a class="artist_4" href="{{url('shop_artist/Souhei Terui')}}">
                 <p>Souhei Terui</p>
             </a>
         </div>

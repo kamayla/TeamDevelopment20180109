@@ -44,6 +44,7 @@
                   <p>Size : {{$product->pro_size}}cm</p>
                   <p>Weight : {{$product->pro_weight}}kg</p>
                 <div>
+                    @if($product->pro_stock>0)
                     <form action="{{url('shop_cart_in/'.$product->id)}}" method="post">
                       {{csrf_field()}}
                       <select name="quantity" id="">
@@ -54,6 +55,9 @@
                       </select>
                       <button type="submit" class=""><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
                     </form>
+                    @else
+                    <button class=""><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
+                    @endif
                 </div>
                   <div class="item_icons">
                     share: 
