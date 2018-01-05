@@ -36,7 +36,7 @@
     <!-- 3.ログイン & カート機能 -->
     <div class="loginSection">
       <img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt="">
-      <span id="login_btn">Login<span>
+      <p><span id="login_btn">Login<span></p>
       <span class="verticalBar">|</span>
       <a href="">Join</a>
       <a href="{{url('/shop_cart_look')}}" class="cartIcon"><img src="{{asset('shop_img/cart_icon.png')}}" alt=""></a>

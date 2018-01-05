@@ -60,6 +60,10 @@ nav div{
   font-size:22px;
 }
 
+.loginSection p{
+  display:inline;
+}
+
 #login_btn{
   padding:8px;
   cursor: pointer;

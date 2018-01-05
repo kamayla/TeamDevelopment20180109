@@ -5,12 +5,8 @@ $(function() {
         });
 
         $('.top-login-wrapper').mouseleave(function(){
-            $('.top-login-wrapper').css("display","none");
+            $(this).css("display","none");
         })  
-
-        $('#login_btn').click(function(){
-            $('.top-login-wrapper').css("display","none");
-        });
 
     $("#reviewBtn").on("click",function(){
         if($('.write_review').css("display","none")){
