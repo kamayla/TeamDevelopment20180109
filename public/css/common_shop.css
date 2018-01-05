@@ -1491,4 +1491,110 @@ border-radius:16px;
 #confirm,.credit_pattern_2,.credit_pattern_3{
   display:none;
 }
+
 /* ----------/チェックアウトページ---------- */
+
+/* --------------confirmページ ----------- */
+.confirm_myitem_wrapper{
+  margin-top:40px;
+}
+
+#table {
+  width:700px;
+  margin:0 auto;
+}
+
+#table td{
+  vertical-align: middle;
+}
+
+.confirm_item_titles{
+  display:flex;
+  /* justify-content:; */
+}
+
+.confirm-item-title p{
+  margin:0;
+}
+
+.confirm-item-title p:nth-of-type(1){
+  font-weight:bold;
+}
+
+.confirm-item-title p:nth-of-type(3){
+  margin-left:80px;
+}
+
+.confirm_item_count p{
+  height:60px;
+  width:100px;
+  text-align: center;
+  font-size:20px;
+  border-left: 1px solid rgb(151,151,151); 
+  border-right: 1px solid rgb(151,151,151); 
+  line-height: 60px;
+  margin:0;
+}
+
+.confirm_item_amount{
+  line-height: 60px;
+  /* font-size: 20px; */
+  padding-left:120px;
+}
+
+.confirm_total_quantity{
+  margin-right:32px;
+}
+
+.confirm_amount_taxes{
+  margin-top:24px;
+}
+
+.confirm_amount_taxes p{
+  margin:0;
+}
+
+.confirm_amount_taxes p:nth-of-type(3){
+  font-size:24px;
+}
+
+.confirm_address{
+  display:flex;
+  justify-content: center;  
+  margin:40px 0 80px;
+}
+
+.confirm_address h3{
+  width:500px;
+  font-size:24px;
+  border-bottom: 1px solid rgb(43,43,43);
+}
+
+.confirm_shipping_area,.confirm_payment_area{
+  margin: 0 30px;
+}
+
+.shipping_table td,.payment_table td{
+  font-size:20px;
+}
+
+.shipping_table tr td:nth-of-type(1),.payment_table tr td:nth-of-type(1){
+  text-align: right;
+  padding-right:16px;
+}
+
+.confirm_submitBtn{
+  display:block;
+  width:500px;
+  margin:0 auto;
+  border:2px solid rgb(43,43,43);
+  background:none;
+  font-size:28px;
+  margin-bottom:120px;
+}
+
+.confirm_submitBtn:hover{
+  background:rgb(43,43,43);
+  color:white;
+}
+/* --------------/confirmページ ----------- */
