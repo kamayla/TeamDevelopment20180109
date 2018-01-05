@@ -62,58 +62,59 @@
 
 
 <!-- メインセクション -->
-      @yield('content0')
-      @yield('content1')
-      @yield('content2')
-      @yield('content3')
-      @yield('content4')
-      @yield('content5')
-      @yield('content6')
+      <div class="yields">
+        @yield('content0')
+        @yield('content1')
+        @yield('content2')
+        @yield('content3')
+        @yield('content4')
+        @yield('content5')
+        @yield('content6')
+      </div>
 
 <!-- フッターセクション -->
   <footer>
-      <div class="footerLeft">
-          <div class="footerLeft_left">
-              <img src="{{asset('shop_img/booquet_logo2.png')}}" alt="" width="180px">
-                <p>Monday - Friday 08.30 - 17.00</p>
-                <p>booquet_japan@booquet.com</p>
-                <p>Find us on Google Maps</p>
+          <div class="footerLeft">
+              <div class="footerLeft_left">
+                  <img src="{{asset('shop_img/booquet_logo2.png')}}" alt="" width="180px">
+                    <p>Monday - Friday 08.30 - 17.00</p>
+                    <p>booquet_japan@booquet.com</p>
+                    <p>Find us on Google Maps</p>
+              </div>
+              <div class="footerLeft_right">
+                  <p>Join the conversation</p>
+                  <p>
+                      <span class="fa fa-facebook-official"></span>
+                      <span class="fa fa-instagram"></span>
+                      <span class="fa fa-twitter-square"></span>
+                  </p>
+              </div>
           </div>
-          <div class="footerLeft_right">
-              <p>Join the conversation</p>
-              <p>
-                  <span class="fa fa-facebook-official"></span>
-                  <span class="fa fa-instagram"></span>
-                  <span class="fa fa-twitter-square"></span>
-              </p>
+          <div class="footerRight">
+              <div class="footerRight_left">
+                  <h3>Language</h3>
+                    <div class="languages">
+                        <p>English</p>
+                        <p>日本語</p>
+                        <p>简体中文</p>
+                    </div>
+              </div>
+              <div class="footerRight_center">
+                  <h3>Document</h3>
+                    <div class="documents">
+                        <p>Sitemap</p>
+                        <p>Terms of service</p>
+                        <p>Privacy policy</p>
+                    </div>
+              </div>
+              <div class="footerRight_right">
+                  <p>Pay securely with...</p>
+                  <span class="fa fa-cc-visa"></span>
+                  <span class="fa fa-cc-mastercard"></span>
+                  <span class="fa fa-cc-amex"></span>
+                  <span class="fa fa-cc-paypal"></span>
+              </div>
           </div>
-      </div>
-      <div class="footerRight">
-          <div class="footerRight_left">
-              <h3>Language</h3>
-                <div class="languages">
-                    <p>English</p>
-                    <p>日本語</p>
-                    <p>简体中文</p>
-                </div>
-          </div>
-          <div class="footerRight_center">
-              <h3>Document</h3>
-                <div class="documents">
-                    <p>Sitemap</p>
-                    <p>Terms of service</p>
-                    <p>Privacy policy</p>
-                </div>
-          </div>
-          <div class="footerRight_right">
-              <p>Pay securely with...</p>
-              <span class="fa fa-cc-visa"></span>
-              <span class="fa fa-cc-mastercard"></span>
-              <span class="fa fa-cc-amex"></span>
-              <span class="fa fa-cc-paypal"></span>
-          </div>
-      </div>
-    
   </footer>
 <!-- フッターセクション -->
 

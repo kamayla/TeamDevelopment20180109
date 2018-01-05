@@ -2,11 +2,13 @@
 
 
 @section('content0')
-<div class="cart_page_title">
-<h1><i class="fa fa-check"></i>Confirm</h1>
-</div>
-<div class="checkout_back_btn">
-  <a href=""><span class="fa fa-reply"></span>Back to shopping</a>
+<div class="cart_titles">
+    <div class="cart_page_title">
+    <h1><i class="fa fa-check"></i>Confirm</h1>
+    </div>
+    <div class="checkout_back_btn">
+    <a href=""><span class="fa fa-reply"></span>Back to shopping</a>
+    </div>
 </div>
 
 @endsection

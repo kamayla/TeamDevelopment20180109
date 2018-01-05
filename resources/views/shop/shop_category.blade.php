@@ -1,21 +1,23 @@
 @extends('layouts.shop_common')
 
 @section('content0')
-<div class="pro-item-area_left">
-        <div>
-            <p>Category</p>
+<div class="category_main_top">
+        <div class="pro-item-area_left">
+                <div>
+                    <p>Category</p>
+                </div>
+                <a href="{{url('shop_category/Tokyo')}}">Tokyo</a>
+                <a href="{{url('shop_category/Kyoto')}}">Kyoto</a>
+                <a href="{{url('shop_category/Gokudo')}}">Gokudo</a>
+                <a href="{{url('shop_category/Temple')}}">Temple</a>
+                <a href="{{url('shop_category/Art')}}">Art</a>
+                <a href="{{url('shop_category/Fashion')}}">Fashion</a>
+                <a href="{{url('shop_category/Music')}}">Music</a>
+                <a href="{{url('shop_category/Other')}}">Other</a>
         </div>
-        <a href="{{url('shop_category/Tokyo')}}">Tokyo</a>
-        <a href="{{url('shop_category/Kyoto')}}">Kyoto</a>
-        <a href="{{url('shop_category/Gokudo')}}">Gokudo</a>
-        <a href="{{url('shop_category/Temple')}}">Temple</a>
-        <a href="{{url('shop_category/Art')}}">Art</a>
-        <a href="{{url('shop_category/Fashion')}}">Fashion</a>
-        <a href="{{url('shop_category/Music')}}">Music</a>
-        <a href="{{url('shop_category/Other')}}">Other</a>
-</div>
-<div class="category_main_image">
-    <img src="{{asset('shop_img/category_'.$genre.'.png')}}" alt="">
+        <div class="category_main_image">
+            <img src="{{asset('shop_img/category_'.$genre.'.png')}}" alt="">
+        </div>
 </div>
 
 
@@ -58,11 +60,12 @@
     </div>
 
     <div class="pro-item-area_right" id="category_ranking_area">
-        <h4 class="category_ranking">Top 5 of {{$genre}}</h4>
+        <h4 class="category_ranking">ranking of {{$genre}}</h4>
         @if(count($rankings)>0)
           @for($i=0; $i<count($rankings); $i++)
           <div class="other-works-item">
               <a href="{{url('shop_item_page/'.$rankings[$i]->pro_id)}}">
+                      <p class="ranking_int">{{$i+1}}</p>  
                       <div class="ow-img">
                           <img src="{{asset('pro_img/'.$rankings[$i]->pro_thumbnail)}}" alt="" style="height: 100px;">
                       </div>
