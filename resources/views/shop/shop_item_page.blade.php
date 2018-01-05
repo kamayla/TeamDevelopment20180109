@@ -9,14 +9,14 @@
         <div>
             <p>Category</p>
         </div>
-          <a href="">Tokyo</a>
-          <a href="">Kyoto</a>
-          <a href="">Gokudo</a>
-          <a href="">Temple</a>
-          <a href="">Art</a>
-          <a href="">Fashion</a>
-          <a href="">Music</a>
-          <a href="">Other</a>
+          <a href="{{url('shop_category/Tokyo')}}">Tokyo</a>
+          <a href="{{url('shop_category/Kyoto')}}">Kyoto</a>
+          <a href="{{url('shop_category/Gokudo')}}">Gokudo</a>
+          <a href="{{url('shop_category/Temple')}}">Temple</a>
+          <a href="{{url('shop_category/Art')}}">Art</a>
+          <a href="{{url('shop_category/Fashion')}}">Fashion</a>
+          <a href="{{url('shop_category/Music')}}">Music</a>
+          <a href="{{url('shop_category/Other')}}">Other</a>
     </div>
 
 

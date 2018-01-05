@@ -1598,3 +1598,49 @@ border-radius:16px;
   color:white;
 }
 /* --------------/confirmページ ----------- */
+
+/*------------- order completeページ------------- */
+
+.complete_wrapper h1{
+  width:350px;
+  margin:110px auto 0;
+  text-align:center;
+  border-bottom:1px solid rgb(43,43,43);
+}
+
+.complete_main{
+  display:flex;
+  justify-content: center;
+  margin-top:48px;
+}
+
+.complete_main div:nth-of-type(1) p{
+  font-size:124px;
+}
+
+.complete_main div:nth-of-type(2) p{
+  font-size:24px;
+  margin-bottom:0;
+  padding-left:64px;
+}
+
+.complete_backBtn{
+  margin:80px 0 100px 900px;
+}
+
+.complete_backBtn a{
+  border:2px solid rgb(43, 43, 43);
+  font-size:24px;
+  padding:4px 10px;
+}
+
+.complete_backBtn a:hover{
+  background-color:rgb(43,43,43);
+  color:white;
+}
+
+.complete_backBtn span{
+  margin-right:10px;
+}
+
+/*------------- /order completeページ------------- */
