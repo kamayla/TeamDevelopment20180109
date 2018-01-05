@@ -84,6 +84,7 @@ nav div{
 
 .top-login-wrapper {
   position: absolute;
+  z-index:99;
   top:40px;
   right:210px;
 	display: none;
@@ -1644,3 +1645,107 @@ border-radius:16px;
 }
 
 /*------------- /order completeページ------------- */
+
+/*------------- Artistページ------------- */
+
+.category_main_image img{
+  position:absolute;
+  top:130px;
+  left:300px;
+}
+
+.artist_main-wrapper{
+  display:flex;
+  justify-content: space-between;
+}
+
+.artist_main_left{
+  width:1000px;
+  margin:32px 0 0 64px;
+}
+
+.artist_main_title{
+  border-bottom:1px solid rgb(43,43,43);
+}
+
+.artist_page_items{
+  display:flex;
+  flex-wrap: wrap;
+  margin-top:16px;
+}
+
+.artist_page_item{
+  width:20%;
+}
+
+.artist_page_item a{
+  display:block;
+  height:100%;
+}
+
+.artist_page_item img{
+  padding-top:16px;
+}
+
+.artist_page_item p{
+  margin:0 0 0 16px;
+}
+
+.artist_page_item p:nth-of-type(3){
+  text-align: right;
+  padding-right:32px;
+}
+
+.artist_page_item p:nth-of-type(5){
+  font-size:20px;
+}
+
+.artist_page_item p:nth-of-type(5) span{
+  margin-right:5px;
+}
+
+.artist_page_item p:nth-of-type(1){
+  font-size:18px;
+  font-weight:bold;
+  margin:18px 0 10px 8px;
+}
+
+.artist_page_item a:hover{
+  color:white;
+}
+
+.artist_page_item a{
+  
+}
+
+.artist_page_item:hover{
+  background-color:rgb(43,43,43);
+}
+
+.artist_pagenation{
+  text-align: center;
+  margin:88px 0;
+}
+
+.artist_pagenation button{
+  font-size:20px;
+  border:1px solid rgb(43,43,43);
+  background:none;
+  width:40px;
+  height:40px;
+}
+
+.artist_pagenation button:hover{
+  background-color:rgb(43,43,43);
+  color:white;
+}
+
+.category_ranking{
+  padding-left:16px;
+  border-bottom:1px solid rgb(43,43,43);
+}
+
+#category_ranking_area{
+  padding-top:48px;
+}
+/*------------- /Artistページ------------- */
