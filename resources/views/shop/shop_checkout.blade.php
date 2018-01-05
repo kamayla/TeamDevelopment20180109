@@ -33,7 +33,7 @@
             <tr>
               <td>Country :</td>
               <td class="checkout-shipping-select">
-                  <select name="c_postal1" id="">
+                  <select name="c_country" id="">
                         <option value="USA">USA</option>
                         <option value="Japan">Japan</option>
                         <option value="China">China</option>
