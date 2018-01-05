@@ -25,6 +25,10 @@ div{
 }
 
 /*--- headerセクション ---*/
+header{
+  position:relative;
+}
+
 .navbar{
   display: flex;
   height:68px;
@@ -56,6 +60,11 @@ nav div{
   font-size:22px;
 }
 
+#login_btn{
+  padding:8px;
+  cursor: pointer;
+}
+
 .userLogo {
   margin-right:8px;
 }
@@ -67,6 +76,103 @@ nav div{
 
 .cartIcon{
   margin-left:32px;
+}
+
+.top-login-wrapper {
+  position: absolute;
+  top:40px;
+  right:210px;
+	display: none;
+ 	margin: 1.5em 0;
+	padding: 7px 10px;
+	min-width: 400px;
+ 	max-width: 100%;
+ 	color: white;
+	font-size: 16px;
+  background: rgb(20, 20, 20);
+  height:320px;
+  text-align: center;
+}
+
+.top-login-wrapper:before{
+	content: "";
+	position: absolute;
+	top: -30px;
+	left: 79%;
+ 	margin-left: -15px;
+	border: 15px solid transparent;
+	border-bottom: 15px solid rgb(20, 20, 20);;
+}
+
+.block{
+  position:absolute;
+  width:50px;
+  height:60px;
+  top:-50px;
+  right:65px;
+  background:black;
+  cursor: pointer;
+  opacity:0;
+}
+
+.top-login-wrapper h2{
+  letter-spacing: 2px;
+  border-bottom:1px solid white;
+  margin:16px 0;
+}
+
+.top-login-wrapper p {
+  font-size:18px;
+  letter-spacing:0.6px;
+}
+
+.top-login-wrapper input {
+  border:1px solid white;
+  outline:none;
+  margin-left:10px;
+}
+
+.top-login-wrapper p:nth-of-type(2) input {
+  margin-left:18px;
+}
+
+.top-login-wrapper p:nth-of-type(3){
+  border-bottom:1px solid rgba(202, 202, 202, 0.5);
+}
+
+.top-login-wrapper form {
+  margin:24px 0;
+}
+
+.top-login-wrapper form button {
+  width:100px;
+  border:1px solid white;
+  background:none;
+  color:white;
+  font-size:18px;
+  margin:8px 0 16px 270px;
+}
+
+.top-login-wrapper form button span {
+  margin-right:10px;
+  vertical-align: -2px;
+}
+
+.top-login-wrapper form button:hover {
+  background:white;
+  color:black;
+}
+
+.top-join a{
+  color:white;
+  border:1px solid white;
+  padding:8px;
+  margin-left:4px;
+}
+
+.top-join a:hover{
+  background:white;
+  color:black;
 }
 
 /*--- /headerセクション ---*/

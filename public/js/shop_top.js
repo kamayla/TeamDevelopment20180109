@@ -1,21 +1,16 @@
 $(function() {
-    // $('.thumb-item').slick({
-    //      infinite: true,
-    //      slidesToShow: 1,
-    //      slidesToScroll: 1,
-    //      arrows: false,
-    //      fade: true,
-    //      asNavFor: '.thumb-item-nav' //サムネイルのクラス名
-    // });
-    // $('.thumb-item-nav').slick({
-    //      infinite: true,
-    //      slidesToShow: 4,
-    //      slidesToScroll: 1,
-    //      asNavFor: '.thumb-item', //スライダー本体のクラス名
-    //      focusOnSelect: true,
-    // });
 
-    $('input[name=c_pay_type]:checked').show();
+        $('#login_btn').mouseover(function(){
+            $('.top-login-wrapper').css("display","inline-block");
+        });
+
+        $('.top-login-wrapper').mouseleave(function(){
+            $('.top-login-wrapper').css("display","none");
+        })  
+
+        $('#login_btn').click(function(){
+            $('.top-login-wrapper').css("display","none");
+        });
 
     $("#reviewBtn").on("click",function(){
         if($('.write_review').css("display","none")){

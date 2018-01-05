@@ -17,6 +17,7 @@
 <body>
 
   <!-- ヘッダーセクション -->
+<header>
   <nav class="navbar navbar-default">
     <!-- 1.サーチ機能 -->
     <div class="searchSection">
@@ -35,7 +36,7 @@
     <!-- 3.ログイン & カート機能 -->
     <div class="loginSection">
       <img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt="">
-      <span>Login<span>
+      <span id="login_btn">Login<span>
       <span class="verticalBar">|</span>
       <a href="">Join</a>
       <a href="{{url('/shop_cart_look')}}" class="cartIcon"><img src="{{asset('shop_img/cart_icon.png')}}" alt=""></a>
@@ -43,6 +44,20 @@
       <!-- <a href="{{url('/delete')}}" class="fa fa-trash ml-4"></a> -->
     </div>
   </nav>
+
+  <!-- ログイン、マウスオーバーイベント -->
+  <div class="top-login-wrapper">
+      <h2>Login</h2>
+      <form action="">
+          <p>UserName :<input type="text"></p>
+          <p>Password :<input type="text"></p>
+          <button type="submit"><span class="fa fa-sign-in"></span>Login</button>
+          <p><p>
+      </form>
+      <p class="top-join">Don't have a account yet? →<a href>Create one!</a></p>
+      <p class="block"></p>
+  </div>
+</header>
   <!-- /ヘッダーセクション -->
 
 
