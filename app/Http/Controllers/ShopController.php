@@ -342,6 +342,10 @@ class ShopController extends Controller
 
     public function customer_page_view(Customer $customer){
         $c_id = Session::get('c_id');
+        $cart = Session::get('cart');
+        $quantity = Session::get('quantity');
+        
+        
         $purchases = DB::select("
         select
         datsalesproducts.pro_id as pro_id,
@@ -349,7 +353,8 @@ class ShopController extends Controller
         products.pro_author as pro_author,
         products.pro_thumbnail as pro_thumbnail,
         products.pro_price as pro_price,
-        products.pro_release_date as pro_release_date
+        products.pro_release_date as pro_release_date,
+        products.pro_stock as pro_stock
         from 
         datsales,datsalesproducts,products
         where 
@@ -357,8 +362,24 @@ class ShopController extends Controller
         and datsalesproducts.pro_id = products.id
         and datsales.c_id = $c_id");
 
+        if(isset($cart)){
+            foreach($cart as $key => $val){
+                $products[] = Product::find($val); 
+            }
+            return view('shop/shop_customer_page',[
+                'customer'=>$customer,
+                'purchases'=>$purchases,
+                'cart'=>$cart,
+                'quantity'=>$quantity,
+                'products'=>$products
+            ]);
+        }
 
-        return view('shop/shop_customer_page',['customer'=>$customer, 'purchases'=>$purchases]);
+        return view('shop/shop_customer_page',[
+            'customer'=>$customer,
+            'purchases'=>$purchases,
+        ]);
+        
 
     }
 }
