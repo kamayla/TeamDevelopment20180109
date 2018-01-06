@@ -397,4 +397,32 @@ class ShopController extends Controller
         
 
     }
+
+    public function customer_edit_view(Customer $customer){
+
+        return view('shop/shop_customer_edit',['customer'=>$customer]);
+    }
+
+    public function shop_customer_edit_done(Customer $customer, Request $request){
+        // バリデーション
+        $validator = Validator::make($request->all(),[
+            'c_name' => 'required |min:1 |max:255',
+            'c_email' => 'required |min:1 |max:255|email',
+            'c_password1' => 'required |min:8 |max:255|',
+            'c_password2' => 'required |min:8 |max:255|same:c_password1',
+            
+        ]);
+
+        if ($validator->fails()){
+            return redirect()->to("shop_customer_edit/{$customer->id}")
+                ->withInput()
+                ->withErrors($validator);
+        }
+        $customer->c_name = $request->c_name;
+        $customer->c_email = $request->c_email;
+        $customer->c_password = password_hash($request->c_password1, PASSWORD_DEFAULT);
+        $customer->save();
+        return redirect()->to("shop_customer_page/{$customer->id}");
+
+    }
 }

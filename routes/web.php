@@ -85,5 +85,10 @@ Route::post('/shop_customer_login', 'shopController@customer_login_done');
 Route::get('/shop_customer_logout', 'shopController@cudtomer_logout_done');
 
 // ユーザーページ表示
-
 Route::get('/shop_customer_page/{customer}', 'shopController@customer_page_view');
+
+// ユーザーエディット表示
+Route::get('/shop_customer_edit/{customer}', 'shopController@customer_edit_view');
+
+// ユーザーエディット処理
+Route::post('/shop_customer_edit_done/{customer}', 'shopController@shop_customer_edit_done');

@@ -66,7 +66,7 @@
 
 <br>
 
-<a href="" class="btn btn-primary">Edit Your Profile</a>
+<a href="{{url('shop_customer_edit/'.$customer->id)}}" class="btn btn-primary">Edit Your Profile</a>
 
 
 
