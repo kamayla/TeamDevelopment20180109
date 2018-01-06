@@ -203,13 +203,6 @@ class ShopController extends Controller
             $product[] = Product::find($val);
         }
 
-        return view('shop/shop_order_complete', [
-            'product' => $product,
-            'request' => $request,
-            'cart' => $cart,
-            'quantity' => $quantity
-        ]);
-
         $datsales = new Datsale;
         $datsales->c_id = 0;
         $datsales->c_name = $request->c_name;
@@ -237,7 +230,12 @@ class ShopController extends Controller
         Session::forget('quantity');
         Session::put('totalQuantity',0);
 
-        return view('shop/shop_order_complete');
+        return view('shop/shop_order_complete', [
+            'product' => $product,
+            'request' => $request,
+            'cart' => $cart,
+            'quantity' => $quantity
+        ]);
     }
 
     public function shop_category_page_view($genre){
