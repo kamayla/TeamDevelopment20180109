@@ -71,3 +71,15 @@ Route::get('shop_category/{genre}', 'shopController@shop_category_page_view');
 
 // アーティストページ表示
 Route::get('shop_artist/{author}', 'shopController@shop_artist_page_view');
+
+// ユーザー登録画面の表示
+Route::get('/shop_user_register','shopController@shop_user_register_view');
+
+// ユーザー登録処理
+Route::post('/shop_user_register_done', 'shopController@shop_user_register_done');
+
+// ユーザー登録処理
+Route::post('/shop_customer_login', 'shopController@customer_login_done');
+
+// ユーザーログアウト
+Route::get('/shop_customer_logout', 'shopController@cudtomer_logout_done');

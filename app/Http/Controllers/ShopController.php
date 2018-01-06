@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Datsalesproduct;
 use App\Datsale;
+use App\Customer;
 use Validator;
 use Session;
 use DB;
@@ -203,6 +204,7 @@ class ShopController extends Controller
             $product[] = Product::find($val);
         }
 
+       
         $datsales = new Datsale;
         $datsales->c_id = 0;
         $datsales->c_name = $request->c_name;
@@ -226,6 +228,8 @@ class ShopController extends Controller
             $product[$i]->pro_stock -= $quantity[$i];
             $product[$i]->save();
         }
+        
+
         Session::forget('cart');
         Session::forget('quantity');
         Session::put('totalQuantity',0);
@@ -279,5 +283,54 @@ class ShopController extends Controller
         group by datsalesproducts.pro_id order by goukei DESC LIMIT 5");
         return view('shop/shop_artist',['products' => $products, 'author' => $author, 'rankings' => $rankings]);
     }
-    
+
+    public function shop_user_register_view(){
+        return view('shop/shop_user_register');
+    }
+
+    public function shop_user_register_done(Request $request){
+        // バリデーション
+        $validator = Validator::make($request->all(),[
+            'c_name' => 'required |min:1 |max:255',
+            'c_email' => 'required |min:1 |max:255|email',
+            'c_password1' => 'required |min:8 |max:255|',
+            'c_password2' => 'required |min:8 |max:255|same:c_password1',
+            
+        ]);
+
+        if ($validator->fails()){
+            return redirect('/shop_user_register')
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        $customer = new Customer;
+        $customer->c_name = $request->c_name;
+        $customer->c_email = $request->c_email;
+        $customer->c_password = password_hash($request->c_password1, PASSWORD_DEFAULT);
+        $customer->save();
+        return redirect('/booquet');
+    }
+
+    public function customer_login_done(Request $request){
+        $customer = Customer::where('c_email',$request->c_email)->first();
+        if(isset($customer)){
+            if(password_verify($request->c_password, $customer->c_password)){
+                Session::put('chk_ssid',Session::getId());
+                Session::put('name',$customer->c_name);
+                return redirect('/booquet');
+            }else{
+                return 'ログインNG';
+            }
+        }else{
+            return 'そんなんねーよ';
+        }
+        
+    }
+
+    public function cudtomer_logout_done(){
+        Session::forget('chk_ssid');
+        Session::forget('customer_login');
+        return redirect('/booquet');
+    }
 }

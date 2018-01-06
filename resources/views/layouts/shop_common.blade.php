@@ -35,10 +35,24 @@
 
     <!-- 3.ログイン & カート機能 -->
     <div class="loginSection">
-      <img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt="">
-      <p><span id="login_btn">Login<span></p>
-      <span class="verticalBar">|</span>
-      <a href="">Join</a>
+      
+    
+        @if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId())
+          <img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt="">
+          <p><span id="login_btn">Login<span></p>
+          <span class="verticalBar">|</span>
+          <a href="">Join</a>
+        @else
+          @php
+            Session::regenerate();
+            Session::put('chk_ssid',Session::getId());
+            Session::put('customer_login',1);
+          @endphp
+            <a href="{{url('shop_user_page')}}"><img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt=""></a>
+            {{Session::get('name')}}
+            |<a href="{{url('shop_customer_logout')}}">Logout</a>
+
+        @endif
       <a href="{{url('/shop_cart_look')}}" class="cartIcon"><img src="{{asset('shop_img/cart_icon.png')}}" alt=""></a>
       <?php echo Session::get('totalQuantity')?>
       <!-- <a href="{{url('/delete')}}" class="fa fa-trash ml-4"></a> -->
@@ -48,13 +62,14 @@
   <!-- ログイン、マウスオーバーイベント -->
   <div class="top-login-wrapper">
       <h2>Login</h2>
-      <form action="">
-          <p>UserName :<input type="text"></p>
-          <p>Password :<input type="text"></p>
+      <form action="{{url('shop_customer_login')}}" method="post">
+      {{csrf_field()}}
+          <p>EmailAdd :<input type="text" name="c_email"></p>
+          <p>Password :<input type="text" name="c_password"></p>
           <button type="submit"><span class="fa fa-sign-in"></span>Login</button>
           <p><p>
       </form>
-      <p class="top-join">Don't have a account yet? →<a href>Create one!</a></p>
+      <p class="top-join">Don't have a account yet? →<a href="{{url('shop_user_register')}}">Create one!</a></p>
       <p class="block"></p>
   </div>
 </header>
