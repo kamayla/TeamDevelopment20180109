@@ -338,10 +338,12 @@ class ShopController extends Controller
                 Session::put('c_id',$customer->id);
                 return redirect('/booquet');
             }else{
-                return 'ログインNG';
+                $err = 'Did you forget your password?';
+                return redirect('/booquet')->with('err',$err);
             }
         }else{
-            return 'そんなんねーよ';
+            $err = 'Account not registered.';
+            return redirect('/booquet')->with('err',$err);
         }
         
     }
