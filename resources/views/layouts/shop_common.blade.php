@@ -52,7 +52,7 @@
           @php
             Session::regenerate();
             Session::put('chk_ssid',Session::getId());
-            @endphp
+          @endphp
             <img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt="">
             <a class ="top_login_after" href="{{url('shop_customer_page/'.Session::get('c_id'))}}">
             <span>{{Session::get('name')}}</span>

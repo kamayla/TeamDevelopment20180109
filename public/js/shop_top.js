@@ -5,6 +5,7 @@ $(function() {
   slidesToScroll: 1,
   autoplay: true,
   fade: true,
+  arrows:false,
   autoplaySpeed: 3000,
   dots:true,
   pauseOnFocus:false
