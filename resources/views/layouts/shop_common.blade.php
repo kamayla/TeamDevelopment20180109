@@ -48,7 +48,7 @@
             Session::put('chk_ssid',Session::getId());
             Session::put('customer_login',1);
           @endphp
-            <a href="{{url('shop_user_page')}}"><img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt=""></a>
+            <a href="{{url('shop_customer_page/'.Session::get('c_id'))}}"><img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt=""></a>
             {{Session::get('name')}}
             |<a href="{{url('shop_customer_logout')}}">Logout</a>
 

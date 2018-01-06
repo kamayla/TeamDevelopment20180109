@@ -206,7 +206,11 @@ class ShopController extends Controller
 
        
         $datsales = new Datsale;
-        $datsales->c_id = 0;
+        if(empty(Session::get('c_id'))){
+            $datsales->c_id = 0;
+        }else{
+            $datsales->c_id = Session::get('c_id');
+        }
         $datsales->c_name = $request->c_name;
         $datsales->c_email = $request->c_email;
         $datsales->c_country = $request->c_country;
@@ -318,6 +322,7 @@ class ShopController extends Controller
             if(password_verify($request->c_password, $customer->c_password)){
                 Session::put('chk_ssid',Session::getId());
                 Session::put('name',$customer->c_name);
+                Session::put('c_id',$customer->id);
                 return redirect('/booquet');
             }else{
                 return 'ログインNG';
@@ -330,7 +335,30 @@ class ShopController extends Controller
 
     public function cudtomer_logout_done(){
         Session::forget('chk_ssid');
-        Session::forget('customer_login');
+        Session::forget('c_name');
+        Session::forget('c_id');
         return redirect('/booquet');
+    }
+
+    public function customer_page_view(Customer $customer){
+        $c_id = Session::get('c_id');
+        $purchases = DB::select("
+        select
+        datsalesproducts.pro_id as pro_id,
+        products.pro_name as pro_name,
+        products.pro_author as pro_author,
+        products.pro_thumbnail as pro_thumbnail,
+        products.pro_price as pro_price,
+        products.pro_release_date as pro_release_date
+        from 
+        datsales,datsalesproducts,products
+        where 
+        datsales.id=datsalesproducts.s_id
+        and datsalesproducts.pro_id = products.id
+        and datsales.c_id = $c_id");
+
+
+        return view('shop/shop_customer_page',['customer'=>$customer, 'purchases'=>$purchases]);
+
     }
 }

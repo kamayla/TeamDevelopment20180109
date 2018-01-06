@@ -83,3 +83,7 @@ Route::post('/shop_customer_login', 'shopController@customer_login_done');
 
 // ユーザーログアウト
 Route::get('/shop_customer_logout', 'shopController@cudtomer_logout_done');
+
+// ユーザーページ表示
+
+Route::get('/shop_customer_page/{customer}', 'shopController@customer_page_view');
