@@ -165,13 +165,13 @@
     </div>
     <div class="artistItems">
         <div class="artistItem">
-            <a class="artist_1" href="{{url('shop_artist/Nobuyashi Araki')}}">
+            <a class="artist_1" href="{{url('shop_artist/Nobuyoshi Araki')}}">
                 <p>Nobuyoshi Araki</p>
             </a>
         </div>
         <div class="artistItem">
-            <a class="artist_2" href="{{url('shop_artist/Yusuke Yamatani')}}">
-                <p>Yusuke Yamatani</p>
+            <a class="artist_4" href="{{url('shop_artist/Toshitsugu Yamawaki')}}">
+                <p>Toshitsugu Yamawaki</p>
             </a>
         </div>
         <div class="artistItem">
@@ -180,8 +180,8 @@
             </a>
         </div>
         <div class="artistItem">
-            <a class="artist_4" href="{{url('shop_artist/Souhei Terui')}}">
-                <p>Souhei Terui</p>
+            <a class="artist_2" href="{{url('shop_artist/Yoshirotten')}}">
+                <p>Yoshirotten</p>
             </a>
         </div>
     </div>

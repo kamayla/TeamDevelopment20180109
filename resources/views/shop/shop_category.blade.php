@@ -60,7 +60,7 @@
     </div>
 
     <div class="pro-item-area_right" id="category_ranking_area">
-        <h4 class="category_ranking">ranking of {{$genre}}</h4>
+        <h4 class="category_ranking">Ranking of {{$genre}}</h4>
         @if(count($rankings)>0)
           @for($i=0; $i<count($rankings); $i++)
           <div class="other-works-item">
