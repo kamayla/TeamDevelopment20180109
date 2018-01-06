@@ -356,6 +356,13 @@ class ShopController extends Controller
     }
 
     public function customer_page_view(Customer $customer){
+        if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId()){
+            return redirect('/booquet');
+        }else{
+            Session::regenerate();
+            Session::put('chk_ssid',Session::getId());
+        }
+         
         $c_id = Session::get('c_id');
         $cart = Session::get('cart');
         $quantity = Session::get('quantity');
@@ -399,11 +406,23 @@ class ShopController extends Controller
     }
 
     public function customer_edit_view(Customer $customer){
+        if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId()){
+            return redirect('/booquet');
+        }else{
+            Session::regenerate();
+            Session::put('chk_ssid',Session::getId());
+        }
 
         return view('shop/shop_customer_edit',['customer'=>$customer]);
     }
 
     public function shop_customer_edit_done(Customer $customer, Request $request){
+        if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId()){
+            return redirect('/booquet');
+        }else{
+            Session::regenerate();
+            Session::put('chk_ssid',Session::getId());
+        }
         // バリデーション
         $validator = Validator::make($request->all(),[
             'c_name' => 'required |min:1 |max:255',
