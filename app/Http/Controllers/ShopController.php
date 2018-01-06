@@ -166,16 +166,29 @@ class ShopController extends Controller
         $cart = Session::get('cart');
         $quantity = Session::get('quantity');
         // バリデーション
-        $validator = Validator::make($request->all(),[
-            'c_name' => 'required |min:1 |max:255',
-            'c_email' => 'required |min:1 |max:255',
-            'c_country' => 'required |min:1 |max:255',
-            'c_postal1' => 'required',
-            'c_address' => 'required |min:1 |max:255',
-            'c_tel' => 'required |min:1 |max:255',
-            'c_card_number' => 'required |min:1 |max:255',
-            'c_card_security_code' => 'required |min:1 |max:255',
-        ]);
+        if($request->c_pay_type=='Credit'){
+            $validator = Validator::make($request->all(),[
+                'c_name' => 'required |min:1 |max:255',
+                'c_email' => 'required |min:1 |max:255',
+                'c_country' => 'required |min:1 |max:255',
+                'c_postal1' => 'required',
+                'c_address' => 'required |min:1 |max:255',
+                'c_tel' => 'required |min:1 |max:255',
+                'c_card_number' => 'required |min:1 |max:255',
+                'c_card_security_code' => 'required |min:1 |max:255',
+            ]);
+
+        }else{
+            $validator = Validator::make($request->all(),[
+                'c_name' => 'required |min:1 |max:255',
+                'c_email' => 'required |min:1 |max:255',
+                'c_country' => 'required |min:1 |max:255',
+                'c_postal1' => 'required',
+                'c_address' => 'required |min:1 |max:255',
+                'c_tel' => 'required |min:1 |max:255',
+            ]);
+            
+        }
 
         if ($validator->fails()){
             return redirect('/shop_checkout')
@@ -325,10 +338,12 @@ class ShopController extends Controller
                 Session::put('c_id',$customer->id);
                 return redirect('/booquet');
             }else{
-                return 'ログインNG';
+                $err = 'Did you forget your password?';
+                return redirect('/booquet')->with('err',$err);
             }
         }else{
-            return 'そんなんねーよ';
+            $err = 'Account not registered.';
+            return redirect('/booquet')->with('err',$err);
         }
         
     }
@@ -341,7 +356,18 @@ class ShopController extends Controller
     }
 
     public function customer_page_view(Customer $customer){
+        if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId()){
+            return redirect('/booquet');
+        }else{
+            Session::regenerate();
+            Session::put('chk_ssid',Session::getId());
+        }
+         
         $c_id = Session::get('c_id');
+        $cart = Session::get('cart');
+        $quantity = Session::get('quantity');
+        
+        
         $purchases = DB::select("
         select
         datsalesproducts.pro_id as pro_id,
@@ -349,7 +375,8 @@ class ShopController extends Controller
         products.pro_author as pro_author,
         products.pro_thumbnail as pro_thumbnail,
         products.pro_price as pro_price,
-        products.pro_release_date as pro_release_date
+        products.pro_release_date as pro_release_date,
+        products.pro_stock as pro_stock
         from 
         datsales,datsalesproducts,products
         where 
@@ -357,8 +384,64 @@ class ShopController extends Controller
         and datsalesproducts.pro_id = products.id
         and datsales.c_id = $c_id");
 
+        if(isset($cart)){
+            foreach($cart as $key => $val){
+                $products[] = Product::find($val); 
+            }
+            return view('shop/shop_customer_page',[
+                'customer'=>$customer,
+                'purchases'=>$purchases,
+                'cart'=>$cart,
+                'quantity'=>$quantity,
+                'products'=>$products
+            ]);
+        }
 
-        return view('shop/shop_customer_page',['customer'=>$customer, 'purchases'=>$purchases]);
+        return view('shop/shop_customer_page',[
+            'customer'=>$customer,
+            'purchases'=>$purchases,
+        ]);
+        
+
+    }
+
+    public function customer_edit_view(Customer $customer){
+        if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId()){
+            return redirect('/booquet');
+        }else{
+            Session::regenerate();
+            Session::put('chk_ssid',Session::getId());
+        }
+
+        return view('shop/shop_customer_edit',['customer'=>$customer]);
+    }
+
+    public function shop_customer_edit_done(Customer $customer, Request $request){
+        if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId()){
+            return redirect('/booquet');
+        }else{
+            Session::regenerate();
+            Session::put('chk_ssid',Session::getId());
+        }
+        // バリデーション
+        $validator = Validator::make($request->all(),[
+            'c_name' => 'required |min:1 |max:255',
+            'c_email' => 'required |min:1 |max:255|email',
+            'c_password1' => 'required |min:8 |max:255|',
+            'c_password2' => 'required |min:8 |max:255|same:c_password1',
+            
+        ]);
+
+        if ($validator->fails()){
+            return redirect()->to("shop_customer_edit/{$customer->id}")
+                ->withInput()
+                ->withErrors($validator);
+        }
+        $customer->c_name = $request->c_name;
+        $customer->c_email = $request->c_email;
+        $customer->c_password = password_hash($request->c_password1, PASSWORD_DEFAULT);
+        $customer->save();
+        return redirect()->to("shop_customer_page/{$customer->id}");
 
     }
 }

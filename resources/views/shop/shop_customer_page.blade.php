@@ -76,7 +76,7 @@
 
 <br>
 
-<a href="" class="btn btn-primary">Edit Your Profile</a>
+<a href="{{url('shop_customer_edit/'.$customer->id)}}" class="btn btn-primary">Edit Your Profile</a>
 
 
 
@@ -95,9 +95,68 @@
 
 @section('content1')
 <h1>purchase history</h1>
-@foreach($purchases as $purchase)
-  {{$purchase->pro_name}}
+<div class="artist_page_items">
+  @if(count($purchases)>0)
+    @foreach($purchases as $purchase)
+      <div class="artist_page_item">
+        <a href="{{url('shop_item_page/'.$purchase->pro_id)}}">
+          <div>
+            <img src="{{asset('pro_img/'.$purchase->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
+          </div>
+          <p>｢{{$purchase->pro_name}}｣</p>
+          <p>{{$purchase->pro_author}}</p>
+          <p>$ 
+          <?php
+            $number =$purchase->pro_price;
+            echo number_format($number);
+          ?>
+          </p>
+          <p>★★★★★ 4.4</p>
+          <p>
+            @if($purchase->pro_stock > 0)
+            <span class="fa fa-check-circle-o"></span>In Stock
+            @else
+            <span class="fa fa-times-circle-o"></span>Out of Stock
+            @endif
+          </p>
+        </a>
+      </div>
+    @endforeach
+  @endif
+</div>
+@endsection
+
+@section('content2')
+<h1>In Your Cart</h1>
+<div class="artist_page_items">
+    @if(isset($products))
+        @foreach($products as $product)
+            <div class="artist_page_item">
+                <a href="{{url('shop_item_page/'.$product->id)}}">
+                    <div>
+                        <img src="{{asset('pro_img/'.$product->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
+                    </div>
+                    <p>｢{{$product->pro_name}}｣</p>
+                    <p>{{$product->pro_author}}</p>
+                    <p>$ 
+                    <?php
+                        $number =$product->pro_price;
+                        echo number_format($number);
+                      ?>
+                    </p>
+                    <p>★★★★★ 4.4</p>
+                    <p>
+                        @if($product->pro_stock > 0)
+                        <span class="fa fa-check-circle-o"></span>In Stock
+                        @else
+                        <span class="fa fa-times-circle-o"></span>Out of Stock
+                        @endif
+                    </p>
+                </a>
+            </div>
+        @endforeach
+    @endif
+</div>
 
 
-@endforeach
 @endsection

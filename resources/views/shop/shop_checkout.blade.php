@@ -16,7 +16,7 @@
   <!-- バリデーションエラーの表示に使用 -->
   @include('common.errors')
   <!-- バリデーションエラーの表示に使用 -->
-  <form action="{{url('/shop_confirmation')}}" method="post">
+  <form action="{{url('/shop_confirmation')}}" method="post" id="check_out">
     {{csrf_field()}}
     <div class="checkout_subtitle_1">
         <h3>Shipping Address</h3>
@@ -150,11 +150,11 @@
         <img src="{{ asset('shop_img/paypal2.png')}}"  width="300px" alt="">
         <img src="{{ asset('shop_img/paypal_btn.png')}}" width="300px" alt="" id="paypalBtn">
     </div>
-   <button type="submit" id="confirm">Confirm order</button>
+   <button type="submit" id="confirm" form="check_out">Confirm order</button>
 </div>
 
 <div class="credit_pattern_3">
-   <button type="submit">Confirm order</button>
+   <button type="submit" form="check_out">Confirm order</button>
 </div>
   
 

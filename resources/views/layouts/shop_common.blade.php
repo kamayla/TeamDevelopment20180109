@@ -38,7 +38,11 @@
 
     <!-- 3.ログイン & カート機能 -->
     <div class="loginSection">
-    
+        <!-- ログインエラー文書 -->
+        @if(!empty(session('err')))
+          {{session('err')}}
+        @endif
+        <!-- /ログインエラー文書 -->
         @if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId())
           <img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt="">
           <p><span id="login_btn">Login<span></p>
@@ -48,7 +52,6 @@
           @php
             Session::regenerate();
             Session::put('chk_ssid',Session::getId());
-            Session::put('customer_login',1);
             @endphp
             <img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt="">
             <a class ="top_login_after" href="{{url('shop_customer_page/'.Session::get('c_id'))}}">
