@@ -38,7 +38,7 @@
                   @else
                   <p><span class="fa fa-times-circle-o"></span>Out of Stock</p>
                   @endif
-                  <p>★★★★★ 4.4 score</p>
+                  <p>★★★★★ {{round($ave,1)}} score</p>
                   <p>Publisher : {{$product->pro_publisher}}</p>
                   <p>Year : {{date('Y', strtotime($product->pro_release_date))}}</p>
                   <p>Size : {{$product->pro_size}}cm</p>
@@ -68,27 +68,44 @@
               </div>
               <img src="{{asset('pro_img/'.$product->pro_thumbnail)}}" alt="" style="height: 400px;">
         </div>
+
             <div class="review-area">
                 <h4>User Review</h4>
                 <div class="review_user">
                     <img src="{{asset('shop_img/gacha.jpg')}}"  width="60px;" height="60px" alt="">
                     <h3>Gachapin</h3>
-                    <p>★★★★★ 4.4 score</p>
+                  
+                    <p> 5</p>
+
                 </div>
                 <p class="review_comment">
                 it was very good! The picture was also beautiful and drawn in! I also want to tell Mook!
+                @foreach ($revs as $rev)
+                <tr>
+                <!-- 本タイトル -->
+                <td class="table-text">
+                    <div>{{ $rev->review }}</div>
+                    <div>{{ $rev->point }}</div>
+                </td>
+                
+                </tr>
+                @endforeach
                 </p>
+               
                 <button id="reviewBtn">Write a review</button>
-                <form action="" class="write_review">
+                <!-- wev.phpで定義 -->
+                <form action="{{ url('review_add') }}" method="post" class="write_review">
+                {{csrf_field()}}
+                <input type="hidden" name="pro_id" value="{{$product->id}}">
                   <p>Write your review</p>
-                  <textarea name="" id="" cols="63" rows="4"></textarea>
+                  <textarea name="review" id="" cols="63" rows="4"></textarea>
                   <div class="review_bottom">
-                      <select name="" id="">
-                        <option value="">★</option>
-                        <option value="">★★</option>
-                        <option value="">★★★</option>
-                        <option value="">★★★★</option>
-                        <option value="">★★★★★</option>
+                      <select name="point" id="">
+                        <option value="1">★</option>
+                        <option value="2">★★</option>
+                        <option value="3">★★★</option>
+                        <option value="4">★★★★</option>
+                        <option value="5">★★★★★</option>
                       </select>
                       <button><span class="fa fa-share"></span>submit</button>
                   </div>

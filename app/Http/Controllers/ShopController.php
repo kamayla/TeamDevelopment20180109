@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Datsalesproduct;
 use App\Datsale;
+use App\Product_review;
 use Validator;
 use Session;
 use DB;
+use Auth;
 
 class ShopController extends Controller
 {
@@ -21,12 +23,44 @@ class ShopController extends Controller
     public function shop_item_page_view(Product $product){
         $otherworks = Product::where('pro_author',$product->pro_author)->get()->take(4);
         $other_works_of_this_genres = Product::where('pro_genre',$product->pro_genre)->get()->take(6);
+        //谷口追記、レビュー平均点算出表示
+        $revs = Product_review::orderBy('created_at', 'asc')->where('p_id',$product->id)->get();
+        $ave=0;
+        $count=0;
+        foreach ($revs as $rev){
+            $ave+=$rev->point;
+            $count++;
+        }
 
         return view('shop/shop_item_page', [
                 'product' => $product,
                 'otherworks' => $otherworks,
-                'other_works_of_this_genres' => $other_works_of_this_genres
+                'other_works_of_this_genres' => $other_works_of_this_genres,
+                'revs'=>$revs,
+                'ave'=>$ave/$count,
+                'count'=>$count
             ]);
+    }
+
+    public function review_add (Request $request) {
+        //バリデーション
+        $validator = Validator::make($request->all(), [
+                'review' => 'required|max:255',
+        ]);
+        //バリデーション:エラー
+        if ($validator->fails()) {
+                return redirect('/booquet')
+                ->withInput()
+                ->withErrors($validator);
+        }
+        $product = Product::where('id',(int)$request->pro_id)->first();
+        $revs = new Product_review;
+        $revs->p_id = $product->id;
+        $revs->contributor =0;
+        $revs->review = $request->review;
+        $revs->point = $request->point;
+        $revs->save(); 
+        return redirect()->back();
     }
 
     public function shop_result_page_view(Request $request){
