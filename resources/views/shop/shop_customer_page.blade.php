@@ -1,8 +1,18 @@
 @extends('layouts.shop_common')
 
 @section('content0')
-<h1>MyPage</h1>
-<table>
+<div class="cart_titles">
+    <div class="cart_page_title">
+    <h1><i class="fa fa-id-card-o"></i>Mypage</h1>
+    </div>
+    <div class="checkout_back_btn">
+    <a href=""><span class="fa fa-reply"></span>Back to shopping</a>
+    </div>
+</div>
+
+<div class="mypage_main_top">
+    <div class="mypage_top_left">
+    <table>
   <tr>
     <td>
       Name:
@@ -69,6 +79,14 @@
 <a href="" class="btn btn-primary">Edit Your Profile</a>
 
 
+
+    </div>
+    <div>
+
+    </div>
+</div>
+
+<h1>MyPage</h1>
 
 
 @endsection

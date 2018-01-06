@@ -8,14 +8,17 @@ body{
 a{
   cursor:pointer;
   color:rgb(43,43,43);
+  outline:none;
 }
 
 a:hover{
   text-decoration: none;
 }
 
+
 button{
   cursor:pointer;
+  outline:none;
 }
 
 div{
@@ -140,8 +143,8 @@ nav div{
   margin-left:10px;
 }
 
-.top-login-wrapper p:nth-of-type(2) input {
-  margin-left:18px;
+.top-login-wrapper p:nth-of-type(1){
+  margin-left:30px;
 }
 
 .top-login-wrapper p:nth-of-type(3){
@@ -179,8 +182,32 @@ nav div{
 }
 
 .top-join a:hover{
-  background:white;
-  color:black;
+  color:white;
+}
+
+.top_login_after span:hover{
+  background-color:rgb(43,43,43);
+  color:white;
+}
+
+.top_login_after:hover{
+  background-color:rgb(43,43,43);
+  color:white;
+}
+
+.cartIcon{
+  position:relative;
+}
+
+.top_cart_quantity{
+  background:rgb(255, 19, 58);
+  color:white;
+  border-radius:100px;
+  font-size:14px;
+  padding:1px 8px;
+  position:absolute;
+  top:-10px;
+  right:-16px;
 }
 
 /*--- /headerセクション ---*/
@@ -303,11 +330,22 @@ footer{
   font-size:26px;
   height:150px;
   margin:32px 0 0 32px;
+  width:170px;
+}
+
+.leftSidebar li:hover{
+  background-color:rgb(43,43,43);
+  color:white;
 }
 
 .mainArea{
   width: 1032px;
   margin:0 auto;
+}
+#slider{
+  width:800px;
+  margin:60px auto 0;
+  padding-bottom:16px;
 }
 
 .mainVisual{
@@ -338,7 +376,13 @@ footer{
 
 .right-top a{
   font-size:40px;
-  margin: 0 5px;
+  /* margin: 0 5px; */
+  padding:0 5px;
+}
+
+.right-top a:hover{
+ background-color:rgb(43,43,43);
+ color:white;
 }
 
 .right-under{
@@ -355,6 +399,12 @@ footer{
   font-size:26px;
   margin-left:auto;
   padding-left:58px;
+}
+
+.right-under li:hover{
+  width:100px;
+  background-color:rgb(43,43,43);
+  color:white;
 }
 
 /*---/mainセクション ---*/
