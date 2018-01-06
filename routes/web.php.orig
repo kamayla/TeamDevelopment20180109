@@ -74,6 +74,8 @@ Route::post('/review_add', 'shopController@review_add');
 
 // アーティストページ表示
 Route::get('shop_artist/{author}', 'shopController@shop_artist_page_view');
+<<<<<<< HEAD
+=======
 
 // ユーザー登録画面の表示
 Route::get('/shop_user_register','shopController@shop_user_register_view');
@@ -90,3 +92,4 @@ Route::get('/shop_customer_logout', 'shopController@cudtomer_logout_done');
 // ユーザーページ表示
 
 Route::get('/shop_customer_page/{customer}', 'shopController@customer_page_view');
+>>>>>>> f20e8ccb2b566d50f45e3a5d5f44cb158d167fa2

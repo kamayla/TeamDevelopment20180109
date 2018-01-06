@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Datsalesproduct;
 use App\Datsale;
+<<<<<<< HEAD
 use App\Product_review;
+=======
+use App\Customer;
+>>>>>>> f20e8ccb2b566d50f45e3a5d5f44cb158d167fa2
 use Validator;
 use Session;
 use DB;
@@ -238,8 +242,13 @@ class ShopController extends Controller
             $product[] = Product::find($val);
         }
 
+       
         $datsales = new Datsale;
-        $datsales->c_id = 0;
+        if(empty(Session::get('c_id'))){
+            $datsales->c_id = 0;
+        }else{
+            $datsales->c_id = Session::get('c_id');
+        }
         $datsales->c_name = $request->c_name;
         $datsales->c_email = $request->c_email;
         $datsales->c_country = $request->c_country;
@@ -262,9 +271,12 @@ class ShopController extends Controller
             $product[$i]->pro_stock -= $quantity[$i];
             $product[$i]->save();
         }
+        
+
         Session::forget('cart');
         Session::forget('quantity');
         Session::put('totalQuantity',0);
+<<<<<<< HEAD
         // ↓実験中
         $results = DB::select('
         select
@@ -274,6 +286,15 @@ class ShopController extends Controller
         where datsales.id=datsalesproducts.s_id 
         group by datsalesproducts.pro_id order by goukei DESC');
         return view('shop/shop_order_complete',['r' => $results]);
+=======
+
+        return view('shop/shop_order_complete', [
+            'product' => $product,
+            'request' => $request,
+            'cart' => $cart,
+            'quantity' => $quantity
+        ]);
+>>>>>>> f20e8ccb2b566d50f45e3a5d5f44cb158d167fa2
     }
 
     public function shop_category_page_view($genre){
@@ -293,5 +314,103 @@ class ShopController extends Controller
         group by datsalesproducts.pro_id order by goukei DESC");
         return view('shop/shop_category',['products' => $products, 'genre' => $genre, 'rankings' => $rankings]);
     }
+<<<<<<< HEAD
     
+=======
+
+    public function shop_artist_page_view($author){
+        $products = Product::where('pro_author',$author)->get();
+        $rankings = DB::select("
+        select
+        datsalesproducts.pro_id as pro_id,
+        products.pro_name as pro_name,
+        products.pro_author as pro_author,
+        products.pro_thumbnail as pro_thumbnail,
+        products.pro_price as pro_price,
+        products.pro_release_date as pro_release_date,
+        sum(datsalesproducts.pro_quantity) as goukei
+        from 
+        datsales,datsalesproducts,products
+        where 
+        datsales.id=datsalesproducts.s_id
+        and datsalesproducts.pro_id = products.id
+        and products.pro_author = '$author'
+        group by datsalesproducts.pro_id order by goukei DESC LIMIT 5");
+        return view('shop/shop_artist',['products' => $products, 'author' => $author, 'rankings' => $rankings]);
+    }
+
+    public function shop_user_register_view(){
+        return view('shop/shop_user_register');
+    }
+
+    public function shop_user_register_done(Request $request){
+        // バリデーション
+        $validator = Validator::make($request->all(),[
+            'c_name' => 'required |min:1 |max:255',
+            'c_email' => 'required |min:1 |max:255|email',
+            'c_password1' => 'required |min:8 |max:255|',
+            'c_password2' => 'required |min:8 |max:255|same:c_password1',
+            
+        ]);
+
+        if ($validator->fails()){
+            return redirect('/shop_user_register')
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        $customer = new Customer;
+        $customer->c_name = $request->c_name;
+        $customer->c_email = $request->c_email;
+        $customer->c_password = password_hash($request->c_password1, PASSWORD_DEFAULT);
+        $customer->save();
+        return redirect('/booquet');
+    }
+
+    public function customer_login_done(Request $request){
+        $customer = Customer::where('c_email',$request->c_email)->first();
+        if(isset($customer)){
+            if(password_verify($request->c_password, $customer->c_password)){
+                Session::put('chk_ssid',Session::getId());
+                Session::put('name',$customer->c_name);
+                Session::put('c_id',$customer->id);
+                return redirect('/booquet');
+            }else{
+                return 'ログインNG';
+            }
+        }else{
+            return 'そんなんねーよ';
+        }
+        
+    }
+
+    public function cudtomer_logout_done(){
+        Session::forget('chk_ssid');
+        Session::forget('c_name');
+        Session::forget('c_id');
+        return redirect('/booquet');
+    }
+
+    public function customer_page_view(Customer $customer){
+        $c_id = Session::get('c_id');
+        $purchases = DB::select("
+        select
+        datsalesproducts.pro_id as pro_id,
+        products.pro_name as pro_name,
+        products.pro_author as pro_author,
+        products.pro_thumbnail as pro_thumbnail,
+        products.pro_price as pro_price,
+        products.pro_release_date as pro_release_date
+        from 
+        datsales,datsalesproducts,products
+        where 
+        datsales.id=datsalesproducts.s_id
+        and datsalesproducts.pro_id = products.id
+        and datsales.c_id = $c_id");
+
+
+        return view('shop/shop_customer_page',['customer'=>$customer, 'purchases'=>$purchases]);
+
+    }
+>>>>>>> f20e8ccb2b566d50f45e3a5d5f44cb158d167fa2
 }

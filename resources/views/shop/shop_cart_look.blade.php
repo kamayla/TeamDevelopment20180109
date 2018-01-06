@@ -11,12 +11,6 @@
 <div class="my_cart_wrapper">
   @if(isset($cart))
   <table class="table">
-      <!-- <tr class="thead">
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-      </tr> -->
     @for($i=0; $i<count($cart); $i++)
       <tr height="120px">
         <!-- <td align="center" valign="middle">
@@ -61,7 +55,7 @@
     @endfor
   </table>
   @else
-  <p class="cart-nothing">カートに何も入っていません。</p>
+  <p class="cart-nothing">There is nothing in the cart.</p>
   @endif
 </div>
 @endsection
