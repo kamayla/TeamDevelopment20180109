@@ -1763,3 +1763,44 @@ border-radius:16px;
   margin:auto 0 auto 8px;
 }
 /*------------- /Artistページ------------- */
+
+
+/*------------- ユーザー登録ページ------------- */
+
+.register_page_title{
+  width:450px;
+  border-bottom:1px solid rgb(43,43,43);
+  margin:24px 0 32px;
+}
+
+.register_page_title h1{
+  margin-left:100px;
+}
+
+.register_page_title h1 i{
+  margin-right:10px;
+}
+
+.register_main_wrapper{
+  margin-left:330px;
+}
+
+.register_table tr{
+  border-top: 24px solid transparent;
+}
+
+.register_main_wrapper button{
+  border:1px solid rgb(43,43,43);
+  font-size:24px;
+  margin:40px 0 0 470px;
+}
+
+.register_main_wrapper button:hover{
+  background-color:rgb(43,43,43);
+  color:white;
+}
+
+.register_main_wrapper span{
+  margin-right:10px;
+}
+/*------------- /ユーザー登録ページ------------- */
