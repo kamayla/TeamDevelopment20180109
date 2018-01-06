@@ -166,16 +166,29 @@ class ShopController extends Controller
         $cart = Session::get('cart');
         $quantity = Session::get('quantity');
         // バリデーション
-        $validator = Validator::make($request->all(),[
-            'c_name' => 'required |min:1 |max:255',
-            'c_email' => 'required |min:1 |max:255',
-            'c_country' => 'required |min:1 |max:255',
-            'c_postal1' => 'required',
-            'c_address' => 'required |min:1 |max:255',
-            'c_tel' => 'required |min:1 |max:255',
-            'c_card_number' => 'required |min:1 |max:255',
-            'c_card_security_code' => 'required |min:1 |max:255',
-        ]);
+        if($request->c_pay_type=='Credit'){
+            $validator = Validator::make($request->all(),[
+                'c_name' => 'required |min:1 |max:255',
+                'c_email' => 'required |min:1 |max:255',
+                'c_country' => 'required |min:1 |max:255',
+                'c_postal1' => 'required',
+                'c_address' => 'required |min:1 |max:255',
+                'c_tel' => 'required |min:1 |max:255',
+                'c_card_number' => 'required |min:1 |max:255',
+                'c_card_security_code' => 'required |min:1 |max:255',
+            ]);
+
+        }else{
+            $validator = Validator::make($request->all(),[
+                'c_name' => 'required |min:1 |max:255',
+                'c_email' => 'required |min:1 |max:255',
+                'c_country' => 'required |min:1 |max:255',
+                'c_postal1' => 'required',
+                'c_address' => 'required |min:1 |max:255',
+                'c_tel' => 'required |min:1 |max:255',
+            ]);
+            
+        }
 
         if ($validator->fails()){
             return redirect('/shop_checkout')
