@@ -159,7 +159,25 @@ class ShopController extends Controller
     }
 
     public function shop_checkout_view(){
-        return view('shop/shop_checkout');
+        if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId()){
+            return view('shop/shop_checkout');
+        }else{
+            Session::regenerate();
+            Session::put('chk_ssid',Session::getId());
+
+            $c_id = Session::get('c_id');
+
+            $datsales = Datsale::where('c_id',$c_id)->orderBy('created_at', 'desc')->first();
+
+            if(isset($datsales)){
+                return view('shop/shop_checkout',['datsales'=>$datsales]);
+            }else{
+                return view('shop/shop_checkout');
+            }
+            
+        }
+
+        
     }
 
     public function shop_confirmation_view(Request $request){
@@ -311,8 +329,7 @@ class ShopController extends Controller
             'c_name' => 'required |min:1 |max:255',
             'c_email' => 'required |min:1 |max:255|email',
             'c_password1' => 'required |min:8 |max:255|',
-            'c_password2' => 'required |min:8 |max:255|same:c_password1',
-            
+            'c_password2' => 'required |min:8 |max:255|same:c_password1', 
         ]);
 
         if ($validator->fails()){
