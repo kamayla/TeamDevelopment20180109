@@ -9,9 +9,6 @@
     <a href="{{url('/booquet')}}"><span class="fa fa-reply"></span>Back to shopping</a>
     </div>
 </div>
-
-
-
 <div class="mypage_main">
       <div class="mypage_top">
             <div class="mypage_top_left">

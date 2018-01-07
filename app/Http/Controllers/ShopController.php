@@ -328,18 +328,21 @@ class ShopController extends Controller
     public function shop_category_page_view($genre){
         $products = Product::where('pro_genre',$genre)->get();
         $rankings = DB::select("
-        select 
-        datsalesproducts.pro_id as p,
-        products.pro_name as name,
-        products.pro_genre as genre,
-        sum(datsalesproducts.pro_price * datsalesproducts.pro_quantity) as goukei
+        select
+        datsalesproducts.pro_id as pro_id,
+        products.pro_name as pro_name,
+        products.pro_author as pro_author,
+        products.pro_thumbnail as pro_thumbnail,
+        products.pro_price as pro_price,
+        products.pro_release_date as pro_release_date,
+        sum(datsalesproducts.pro_quantity) as goukei
         from 
         datsales,datsalesproducts,products
         where 
         datsales.id=datsalesproducts.s_id
         and datsalesproducts.pro_id = products.id
         and products.pro_genre = '$genre'
-        group by datsalesproducts.pro_id order by goukei DESC");
+        group by datsalesproducts.pro_id order by goukei DESC LIMIT 5");
         return view('shop/shop_category',['products' => $products, 'genre' => $genre, 'rankings' => $rankings]);
     }
 
