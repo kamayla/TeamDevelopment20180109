@@ -67,13 +67,13 @@ Route::post('/shop_confirmation', 'ShopController@shop_confirmation_view');
 Route::post('/shop_order_complete', 'ShopController@shop_order_complete_view');
 
 // カテゴリページ表示
-Route::get('shop_category/{genre}', 'ShopController@shop_category_page_view');
+Route::get('/shop_category/{genre}', 'ShopController@shop_category_page_view');
 
 // レビュー追加
 Route::post('/review_add', 'shopController@review_add');
 
 // アーティストページ表示
-Route::get('shop_artist/{author}', 'ShopController@shop_artist_page_view');
+Route::get('/shop_artist/{author}', 'ShopController@shop_artist_page_view');
 
 // ユーザー登録画面の表示
 Route::get('/shop_user_register','ShopController@shop_user_register_view');
@@ -95,3 +95,6 @@ Route::get('/shop_customer_edit/{customer}', 'ShopController@customer_edit_view'
 
 // ユーザーエディット処理
 Route::post('/shop_customer_edit_done/{customer}', 'ShopController@shop_customer_edit_done');
+
+// WISHLIST処理
+Route::get('/shop_wish_done/{product}', 'ShopController@shop_wish_done');

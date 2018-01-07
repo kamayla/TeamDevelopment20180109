@@ -8,6 +8,7 @@ use App\Datsalesproduct;
 use App\Datsale;
 use App\Product_review;
 use App\Customer;
+use App\Wishlist;
 use Validator;
 use Session;
 use DB;
@@ -42,12 +43,14 @@ class ShopController extends Controller
 
         $otherworks = Product::where('pro_author',$product->pro_author)->where('id','<>',$product->id)->get()->take(4);
         $other_works_of_this_genres = Product::where('pro_genre',$product->pro_genre)->where('id','<>',$product->id)->get()->take(6);
+        $wishlist = Wishlist::where('pro_id',$product->id)->first();
 
 
         return view('shop/shop_item_page', [
                 'product' => $product,
                 'otherworks' => $otherworks,
                 'other_works_of_this_genres' => $other_works_of_this_genres,
+                'wishlist' => $wishlist,
                 'revs'=>$revs,
                 'ave'=>$ave,
                 'count'=>$count
@@ -128,8 +131,7 @@ class ShopController extends Controller
         }
         Session::put('totalQuantity',$totalQuantity);
         
-
-        return redirect('shop_item_page/'.$product->id);
+        return redirect()->back();
 
     }
 
@@ -426,6 +428,20 @@ class ShopController extends Controller
         $c_id = Session::get('c_id');
         $cart = Session::get('cart');
         $quantity = Session::get('quantity');
+
+        $wishlists = DB::select("
+        select
+        products.id as pro_id,
+        products.pro_name as pro_name,
+        products.pro_author as pro_author,
+        products.pro_thumbnail as pro_thumbnail,
+        products.pro_price as pro_price,
+        products.pro_release_date as pro_release_date,
+        products.pro_stock as pro_stock
+        from 
+        wishlists,products
+        where wishlists.pro_id = products.id
+        and wishlists.c_id = $c_id");
         
         
         $purchases = DB::select("
@@ -453,13 +469,15 @@ class ShopController extends Controller
                 'purchases'=>$purchases,
                 'cart'=>$cart,
                 'quantity'=>$quantity,
-                'products'=>$products
+                'products'=>$products,
+                'wishlists'=>$wishlists
             ]);
         }
 
         return view('shop/shop_customer_page',[
             'customer'=>$customer,
             'purchases'=>$purchases,
+            'wishlists'=>$wishlists
         ]);
         
 
@@ -502,6 +520,23 @@ class ShopController extends Controller
         $customer->c_password = password_hash($request->c_password1, PASSWORD_DEFAULT);
         $customer->save();
         return redirect()->to("shop_customer_page/{$customer->id}");
+
+    }
+
+    public function shop_wish_done(Product $product){
+        $wishlist = Wishlist::where('pro_id',$product->id)->first();
+
+        if(isset($wishlist)){
+            $wishlist->delete();
+            return redirect()->to("/shop_item_page/{$product->id}");
+            
+        }else{
+            $wishlist = new Wishlist;
+            $wishlist->c_id = Session::get('c_id');
+            $wishlist->pro_id = $product->id;
+            $wishlist->save();
+            return redirect()->to("/shop_item_page/{$product->id}");
+        }
 
     }
 }

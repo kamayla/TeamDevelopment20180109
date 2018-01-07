@@ -6,7 +6,7 @@
     <h1><i class="fa fa-id-card-o"></i>Mypage</h1>
     </div>
     <div class="checkout_back_btn">
-    <a href=""><span class="fa fa-reply"></span>Back to shopping</a>
+    <a href="{{url('/booquet')}}"><span class="fa fa-reply"></span>Back to shopping</a>
     </div>
 </div>
 <<<<<<< HEAD
@@ -183,9 +183,13 @@
             <h2>Purchase History</h2>
             <div class="mypage_bl_inner">
                   <div class="artist_page_items">
+                    <?php
+                        $i = 0;
+                    ?>
                     @if(count($purchases)>0)
                       @foreach($purchases as $purchase)
-                        <div class="artist_page_item" style="width:32%;">
+                      <?php $i++ ?>
+                        <div class="artist_page_item selection" id="paging_item_{!!$i!!}" style="width:32%;">
                           <a href="{{url('shop_item_page/'.$purchase->pro_id)}}">
                             <div>
                               <img src="{{asset('pro_img/'.$purchase->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
@@ -212,15 +216,57 @@
                     @endif
                   </div>
                   <div class="top_right_pagenation">
+                      <div id="paging"></div>
                       <button>1</button>
                   </div>
               </div>
             </div>
           <div class="mypage_bottom_right">
             <h2>Wishlist</h2>
+            <div class="artist_page_items">
+                @if(isset($wishlists))
+                    @foreach($wishlists as $wishlist)
+                        <div class="artist_page_item" style="width:25%;">
+                            <a href="{{url('shop_item_page/'.$wishlist->pro_id)}}">
+                                <div>
+                                    <img src="{{asset('pro_img/'.$wishlist->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
+                                </div>
+                                <p>｢{{$wishlist->pro_name}}｣</p>
+                                <p>{{$wishlist->pro_author}}</p>
+                                <p>$ 
+                                <?php
+                                    $number =$wishlist->pro_price;
+                                    echo number_format($number);
+                                  ?>
+                                </p>
+                                <p>★★★★★ 4.4</p>
+                                <p>
+                                    @if($wishlist->pro_stock > 0)
+                                    <span class="fa fa-check-circle-o"></span>In Stock
+                                    @else
+                                    <span class="fa fa-times-circle-o"></span>Out of Stock
+                                    @endif
+                                </p>
+                            </a>
+                            <div>
+                              @if($wishlist->pro_stock>0)
+                              <form action="{{url('shop_cart_in/'.$wishlist->pro_id)}}" method="post">
+                                {{csrf_field()}}
+                                <input type="hidden" name="quantity" value="1">
+                                <button type="submit" class=""><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
+                              </form>
+                              @else
+                              <button class=""><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
+                              @endif
+                          </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
           </div>
       </div>
 </div>
+
 @endsection
 
 

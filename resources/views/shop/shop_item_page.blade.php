@@ -21,9 +21,24 @@
 
 
     <div class="pro-item-area_center">
+        <!-- WISHLISTテスト用 -->
+        @if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId())
+            aaaa
+        @else
+            @php
+                Session::regenerate();
+                Session::put('chk_ssid',Session::getId());
+            @endphp
+            @if(isset($wishlist))
+                <a href="{{url('shop_wish_done/'.$product->id)}}" style="color: red">test</a>
+            @else
+                <a href="{{url('shop_wish_done/'.$product->id)}}">test</a>
+            @endif
+        @endif
+        <!-- WISHLISTテスト用 -->
         <div class="item_center_inner">
             <div class="">
-                  <p class="categoryRoute">Category/<a href="">{{$product->pro_genre}}</a></p>
+                  <p class="categoryRoute">Category/<a href="{{url('shop_category/'.$product->pro_genre)}}">{{$product->pro_genre}}</a></p>
                   <h2>｢{{$product->pro_name}}｣</h2>
                   <p><a href="">{{$product->pro_author}}</a></p>
                   <p class="item_price">$

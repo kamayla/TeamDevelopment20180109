@@ -222,6 +222,4 @@ class ProductsController extends Controller
         $products->save();
         return redirect('/');
     }
-
-
 }

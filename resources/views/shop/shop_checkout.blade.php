@@ -6,7 +6,7 @@
     <h1><i class="fa fa-calculator"></i>Checkout</h1>
     </div>
     <div class="checkout_back_btn">
-    <a href=""><span class="fa fa-reply"></span>Back to shopping</a>
+    <a href="{{url('/booquet')}}"><span class="fa fa-reply"></span>Back to shopping</a>
     </div>
 </div>
 @endsection
