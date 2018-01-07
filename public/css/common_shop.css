@@ -795,6 +795,44 @@ footer {
   margin-top: 80px;
 }
 
+.item_center_words{
+  position:relative;
+}
+
+.wishlist_btn{
+  position:absolute;
+  top:-20px;
+  left:100%;
+  font-size:24px;
+  border:1px solid rgb(43, 43, 43);
+  border-radius: 100px;
+  padding:8px;
+}
+
+.wishlist_btn:hover{
+  background:rgb(43, 43, 43);
+  color:white;
+}
+
+.wishlist_btn_check{
+  position:absolute;
+  top:-20px;
+  left:100%;
+  font-size:24px;
+  border:1px solid rgb(43, 43, 43);
+  border-radius: 100px;
+  padding:8px;
+  color:white;
+  background-color:red;
+}
+
+.wishlist_btn_check:hover{
+  background:white;
+  color:red;
+}
+
+
+
 .item_center_inner p {
   margin-bottom: 3px;
   font-size: 18px;
@@ -1823,8 +1861,6 @@ footer {
   color: white;
 }
 
-.artist_page_item a {}
-
 .artist_page_item:hover {
   background-color: rgb(43, 43, 43);
 }
@@ -2025,6 +2061,74 @@ footer {
   border-bottom: 1px solid rgb(43, 43, 43);
   width: 120px;
 }
+
+
+
+
+.mypage_wishlist_item {
+  width: 20%;
+}
+
+.mypage_wishlist_item a {
+  display: block;
+  height: 100%;
+}
+
+.mypage_wishlist_item img {
+  padding-top: 16px;
+}
+
+.mypage_wishlist_item p {
+  margin: 0 0 0 16px;
+}
+
+.mypage_wishlist_item p:nth-of-type(3) {
+  text-align: right;
+  padding-right: 32px;
+}
+
+.mypage_wishlist_item p:nth-of-type(5) {
+  font-size: 20px;
+}
+
+.mypage_wishlist_item p:nth-of-type(5) span {
+  margin-right: 5px;
+}
+
+.mypage_wishlist_item p:nth-of-type(1) {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 18px 0 10px 8px;
+}
+
+.mypage_wishlist_item a:hover {
+  color: white;
+}
+
+.mypage_wishlist_item a:hover {
+  background-color: rgb(43, 43, 43);
+}
+
+.mypage_cart_section{
+  text-align:right;
+}
+
+.mypage_cart_btn{
+  border:1px solid rgb(43, 43, 43);
+  background-color: none;
+  font-size:20px;
+}
+
+.mypage_cart_btn span{
+  margin-right:5px;
+}
+
+.mypage_cart_btn:hover{
+  background-color:rgb(43, 43, 43);
+  color:white;
+}
+
+
 /*------------- /ユーザーマイページ------------- */
 
 
