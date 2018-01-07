@@ -27,15 +27,24 @@ class ShopController extends Controller
         $other_works_of_this_genres = Product::where('pro_genre',$product->pro_genre)->get()->take(6);
         //谷口追記、レビュー平均点算出表示
         $revs = Product_review::orderBy('created_at', 'asc')->where('p_id',$product->id)->get();
-        $ave=0.00000000001;
-        $count=0.0000000001;
+        $sum=0;
+        $count=0;
         foreach ($revs as $rev){
-            $ave+=$rev->point;
+            $sum+=$rev->point;
             $count++;
         }
+
+        
+        if($count===0){
+            $ave=0;
+        }else{
+            $ave=$sum/$count;
+        }
+
         $otherworks = Product::where('pro_author',$product->pro_author)->where('id','<>',$product->id)->get()->take(4);
         $other_works_of_this_genres = Product::where('pro_genre',$product->pro_genre)->where('id','<>',$product->id)->get()->take(6);
         $wishlist = Wishlist::where('pro_id',$product->id)->first();
+
 
         return view('shop/shop_item_page', [
                 'product' => $product,
@@ -43,7 +52,7 @@ class ShopController extends Controller
                 'other_works_of_this_genres' => $other_works_of_this_genres,
                 'wishlist' => $wishlist,
                 'revs'=>$revs,
-                'ave'=>$ave/$count,
+                'ave'=>$ave,
                 'count'=>$count
             ]);
     }
@@ -319,18 +328,21 @@ class ShopController extends Controller
     public function shop_category_page_view($genre){
         $products = Product::where('pro_genre',$genre)->get();
         $rankings = DB::select("
-        select 
-        datsalesproducts.pro_id as p,
-        products.pro_name as name,
-        products.pro_genre as genre,
-        sum(datsalesproducts.pro_price * datsalesproducts.pro_quantity) as goukei
+        select
+        datsalesproducts.pro_id as pro_id,
+        products.pro_name as pro_name,
+        products.pro_author as pro_author,
+        products.pro_thumbnail as pro_thumbnail,
+        products.pro_price as pro_price,
+        products.pro_release_date as pro_release_date,
+        sum(datsalesproducts.pro_quantity) as goukei
         from 
         datsales,datsalesproducts,products
         where 
         datsales.id=datsalesproducts.s_id
         and datsalesproducts.pro_id = products.id
         and products.pro_genre = '$genre'
-        group by datsalesproducts.pro_id order by goukei DESC");
+        group by datsalesproducts.pro_id order by goukei DESC LIMIT 5");
         return view('shop/shop_category',['products' => $products, 'genre' => $genre, 'rankings' => $rankings]);
     }
 

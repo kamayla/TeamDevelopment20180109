@@ -10,8 +10,6 @@
     </div>
 </div>
 
-
-
 <div class="mypage_main">
       <div class="mypage_top">
             <div class="mypage_top_left">
