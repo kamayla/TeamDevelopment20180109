@@ -39,7 +39,16 @@
                   <p><span class="fa fa-times-circle-o"></span>Out of Stock</p>
                   @endif
                   @php
-                    if(round($ave,1)>=0&&round($ave,1)<=0.7){
+                    if(round($ave,1)==0){
+                        $score='
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        ';
+
+                    }elseif(round($ave,1)>=0.1&&round($ave,1)<=0.7){
                         $score='
                         <i class="fa fa-star-half-o" aria-hidden="true"></i>
                         <i class="fa fa-star-o" aria-hidden="true"></i>
@@ -47,6 +56,8 @@
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         ';
+
+                        
                     }elseif(round($ave,1)>=0.8&&round($ave,1)<=1.2){
                         $score='
                         <i class="fa fa-star" aria-hidden="true"></i>
