@@ -20,8 +20,8 @@ class ShopController extends Controller
 
     // ショップ個別ページの表示
     public function shop_item_page_view(Product $product){
-        $otherworks = Product::where('pro_author',$product->pro_author)->get()->take(4);
-        $other_works_of_this_genres = Product::where('pro_genre',$product->pro_genre)->get()->take(6);
+        $otherworks = Product::where('pro_author',$product->pro_author)->where('id','<>',$product->id)->get()->take(4);
+        $other_works_of_this_genres = Product::where('pro_genre',$product->pro_genre)->where('id','<>',$product->id)->get()->take(6);
 
         return view('shop/shop_item_page', [
                 'product' => $product,
