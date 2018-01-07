@@ -24,8 +24,16 @@
         <td><input type="text" name="pro_price" value="{{$product->pro_price}}"></td>
       </tr>
       <tr>
-        <td>画像</td>
-        <td><input type="file" name="pro_thumbnail"></td>
+        <td>画像1</td>
+        <td><input type="file" name="pro_thumbnail1"></td>
+      </tr>
+      <tr>
+        <td>画像2</td>
+        <td><input type="file" name="pro_thumbnail2"></td>
+      </tr>
+      <tr>
+        <td>画像3</td>
+        <td><input type="file" name="pro_thumbnail3"></td>
       </tr>
       <tr>
         <td>ジャンル</td>
