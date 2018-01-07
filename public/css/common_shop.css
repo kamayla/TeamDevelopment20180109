@@ -1860,11 +1860,9 @@ border-radius:16px;
 }
 /*------------- /ユーザー登録ページ------------- */
 
-/*------------- ユーザーマイページ------------- */
 
-.mypage_main{
-  display:flex;
-}
+
+/*------------- ユーザー編集ページ------------- */
 
 .edit_account_btn{
   border:1px solid rgb(43,43,43);
@@ -1879,4 +1877,101 @@ border-radius:16px;
   cursor: pointer;
 }
 
+.edit_back_btn:hover,.edit_account_btn:hover{
+  background-color:rgb(43,43,43);
+  color:white;
+}
+
+/*------------- /ユーザー編集ページ------------- */
+
+
+/*------------- ユーザーマイページ------------- */
+
+.mypage_top,.mypage_bottom{
+  display:flex;
+}
+
+.mypage_top_left{
+  width:50%;
+}
+.mypage_top_right{
+  width:50%;
+}
+
+.mypage_tl_inner,.mypage_bl_inner{
+  height:80%;
+  width:97%;
+  margin:32px 0;
+  border-right:1px solid rgb(135, 135, 135);
+}
+
+.mypage_top_left{
+  text-align: center;
+}
+
+.mypage_top_left p{
+  color:rgb(135, 135, 135);
+  margin:0;
+}
+
+.mypage_top_left table{
+  margin: 18px auto 24px;
+  font-size:24px;
+}
+
+.mypage_top_left a{
+  border:1px solid rgb(43,43,43);
+  font-size:24px;
+  padding:3px 10px;
+  margin-left:200px;
+}
+
+.mypage_top_left a:hover{
+  background-color:rgb(43,43,43);
+  color:white;
+}
+
+.mypage_top_left a span{
+  margin-right:10px;
+}
+
+.mypage_top_right h2{
+  border-bottom:1px solid rgb(43,43,43);
+  width:180px;
+}
+
+.top_right_pagenation{
+  text-align: center;
+  margin:40px 0;
+}
+
+.top_right_pagenation button{
+  width:36px;
+  font-size:20px;
+  border:1px solid rgb(43,43,43);
+}
+
+.top_right_pagenation button:hover{
+  color:white;
+  background-color:rgb(43,43,43);
+}
+
+.mypage_bottom_left{
+  width:50%;
+  padding-left:24px;
+}
+
+.mypage_bottom_right{
+  width:50%;
+}
+
+.mypage_bottom_left h2{
+  border-bottom:1px solid rgb(43,43,43);
+  width:250px;
+}
+
+.mypage_bottom_right h2{
+  border-bottom:1px solid rgb(43,43,43);
+  width:120px;
+}
 /*------------- /ユーザーマイページ------------- */
