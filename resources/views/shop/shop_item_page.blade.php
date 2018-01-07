@@ -125,7 +125,8 @@
               </div>
               <img src="{{asset('pro_img/'.$product->pro_thumbnail)}}" alt="" style="height: 400px;">
         </div>
-
+            <img src="{{asset('pro_img/'.$product->pro_thumbnail2)}}" alt="" style="height: 150px;">
+            <img src="{{asset('pro_img/'.$product->pro_thumbnail3)}}" alt="" style="height: 150px;">
             <div class="review-area">
                 <h4>User Review</h4>
                 <div class="review_user">

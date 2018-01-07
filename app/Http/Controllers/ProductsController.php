@@ -32,15 +32,45 @@ class ProductsController extends Controller
         ]);
         
         // ファイルを取得
-        $file = $request->file('pro_thumbnail');
+        $file = $request->file('pro_thumbnail1');
         // ファイルが空かどうか審査
         if(!empty($file)){
             // get file name
-            $filename = $file->getClientOriginalName();
+            $filename1 = $file->getClientOriginalName();
+            $extension = pathinfo($filename1, PATHINFO_EXTENSION);//拡張子をゲットする。
+            $filename1 = $filename1.date("YmdHis").md5(session_id()).".".$extension;
             // file move
-            $file->move('./pro_img/',$filename);
+            $file->move('./pro_img/',$filename1);
         }else{
-            $filename= '';
+            $filename1= '';
+        }
+
+        // ファイルを取得
+        $file = $request->file('pro_thumbnail2');
+        // ファイルが空かどうか審査
+        if(!empty($file)){
+            // get file name
+            $filename2 = $file->getClientOriginalName();
+            $extension = pathinfo($filename2, PATHINFO_EXTENSION);//拡張子をゲットする。
+            $filename2 = $filename2.date("YmdHis").md5(session_id()).".".$extension;
+            // file move
+            $file->move('./pro_img/',$filename2);
+        }else{
+            $filename2= '';
+        }
+
+        // ファイルを取得
+        $file = $request->file('pro_thumbnail3');
+        // ファイルが空かどうか審査
+        if(!empty($file)){
+            // get file name
+            $filename3 = $file->getClientOriginalName();
+            $extension = pathinfo($filename3, PATHINFO_EXTENSION);//拡張子をゲットする。
+            $filename3 = $filename3.date("YmdHis").md5(session_id()).".".$extension;
+            // file move
+            $file->move('./pro_img/',$filename3);
+        }else{
+            $filename3= '';
         }
 
         if ($validator->fails()){
@@ -53,7 +83,9 @@ class ProductsController extends Controller
         $products->pro_name = $request->pro_name;
         $products->pro_name_en = $request->pro_name_en;
         $products->pro_price = $request->pro_price;
-        $products->pro_thumbnail = $filename;
+        $products->pro_thumbnail = $filename1;
+        $products->pro_thumbnail2 = $filename2;
+        $products->pro_thumbnail3 = $filename3;
         $products->pro_genre = $request->pro_genre;
         $products->pro_author = $request->pro_author;
         $products->pro_author_en = $request->pro_author_en;
@@ -119,15 +151,46 @@ class ProductsController extends Controller
         ]);
 
         // ファイルを取得
-        $file = $request->file('pro_thumbnail');
+        $file = $request->file('pro_thumbnail1');
         // ファイルが空かどうか審査
         if(!empty($file)){
             // get file name
-            $filename = $file->getClientOriginalName();
+            $filename1 = $file->getClientOriginalName();
+            $extension = pathinfo($filename1, PATHINFO_EXTENSION);//拡張子をゲットする。
+            $filename1 = $filename1.date("YmdHis").md5(session_id()).".".$extension;
             // file move
-            $file->move('./pro_img/',$filename);
+            $file->move('./pro_img/',$filename1);
         }else{
-            $filename= '';
+            $filename1= '';
+        }
+
+        // ファイルを取得
+        $file = $request->file('pro_thumbnail2');
+        // ファイルが空かどうか審査
+        if(!empty($file)){
+            // get file name
+            $filename2 = $file->getClientOriginalName();
+            $extension = pathinfo($filename2, PATHINFO_EXTENSION);//拡張子をゲットする。
+            $filename2 = $filename2.date("YmdHis").md5(session_id()).".".$extension;
+            
+            // file move
+            $file->move('./pro_img/',$filename2);
+        }else{
+            $filename2= '';
+        }
+
+        // ファイルを取得
+        $file = $request->file('pro_thumbnail3');
+        // ファイルが空かどうか審査
+        if(!empty($file)){
+            // get file name
+            $filename3 = $file->getClientOriginalName();
+            $extension = pathinfo($filename3, PATHINFO_EXTENSION);//拡張子をゲットする。
+            $filename3 = $filename3.date("YmdHis").md5(session_id()).".".$extension;
+            // file move
+            $file->move('./pro_img/',$filename3);
+        }else{
+            $filename3= '';
         }
 
         if ($validator->fails()){
@@ -140,7 +203,9 @@ class ProductsController extends Controller
         $products->pro_name = $request->pro_name;
         $products->pro_name_en = $request->pro_name_en;
         $products->pro_price = $request->pro_price;
-        $products->pro_thumbnail = $filename;
+        $products->pro_thumbnail = $filename1;
+        $products->pro_thumbnail2 = $filename2;
+        $products->pro_thumbnail3 = $filename3;
         $products->pro_genre = $request->pro_genre;
         $products->pro_author = $request->pro_author;
         $products->pro_author_en = $request->pro_author_en;

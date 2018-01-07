@@ -40,7 +40,7 @@ $(function() {
         $('#paypalBtn').show();
         $('.credit_pattern_1').hide();
         $('.credit_pattern_3').hide();
-        $('.credit_pattern_2').show(1000);
+        $('.credit_pattern_2').show();
         });
 
     $( '#c_pay_type3' ).change( function() {  

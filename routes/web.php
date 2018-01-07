@@ -41,57 +41,57 @@ Route::post('/pro_edit_done', 'ProductsController@edit_done');
 // ショップトップページの表示
 Route::get('/booquet', 'ShopController@top_view');
 // 商品個別ページの表示
-Route::get('/shop_item_page/{product}', 'shopController@shop_item_page_view');
+Route::get('/shop_item_page/{product}', 'ShopController@shop_item_page_view');
 // 検索結果の表示
-Route::post('/shop_result_page', 'shopController@shop_result_page_view');
+Route::post('/shop_result_page', 'ShopController@shop_result_page_view');
 // カートに入れる処理
-Route::post('/shop_cart_in/{product}', 'shopController@shop_cart_in');
+Route::post('/shop_cart_in/{product}', 'ShopController@shop_cart_in');
 // カートの表示
-Route::get('/shop_cart_look','shopController@shop_cart_look');
+Route::get('/shop_cart_look','ShopController@shop_cart_look');
 
 // カートを消す（テスト期間用）
-Route::get('/delete', 'shopController@delete');
+Route::get('/delete', 'ShopController@delete');
 
 // カートを消す
-Route::post('/shop_cart_delete/{product}', 'shopController@shop_cart_delete');
+Route::post('/shop_cart_delete/{product}', 'ShopController@shop_cart_delete');
 
 // カートの数量変更
-Route::post('/shop_cart_quantity_edit/{product}', 'shopController@shop_cart_quantity_edit');
+Route::post('/shop_cart_quantity_edit/{product}', 'ShopController@shop_cart_quantity_edit');
 // チェクアウトページ表示
-Route::get('/shop_checkout', 'shopController@shop_checkout_view');
+Route::get('/shop_checkout', 'ShopController@shop_checkout_view');
 
 // 決済最終確認ページ表示
-Route::post('/shop_confirmation', 'shopController@shop_confirmation_view');
+Route::post('/shop_confirmation', 'ShopController@shop_confirmation_view');
 
 // 注文完了表示
-Route::post('/shop_order_complete', 'shopController@shop_order_complete_view');
+Route::post('/shop_order_complete', 'ShopController@shop_order_complete_view');
 
 // カテゴリページ表示
-Route::get('shop_category/{genre}', 'shopController@shop_category_page_view');
+Route::get('shop_category/{genre}', 'ShopController@shop_category_page_view');
 
 // レビュー追加
 Route::post('/review_add', 'shopController@review_add');
 
 // アーティストページ表示
-Route::get('shop_artist/{author}', 'shopController@shop_artist_page_view');
+Route::get('shop_artist/{author}', 'ShopController@shop_artist_page_view');
 
 // ユーザー登録画面の表示
-Route::get('/shop_user_register','shopController@shop_user_register_view');
+Route::get('/shop_user_register','ShopController@shop_user_register_view');
 
 // ユーザー登録処理
-Route::post('/shop_user_register_done', 'shopController@shop_user_register_done');
+Route::post('/shop_user_register_done', 'ShopController@shop_user_register_done');
 
 // ユーザー登録処理
-Route::post('/shop_customer_login', 'shopController@customer_login_done');
+Route::post('/shop_customer_login', 'ShopController@customer_login_done');
 
 // ユーザーログアウト
-Route::get('/shop_customer_logout', 'shopController@cudtomer_logout_done');
+Route::get('/shop_customer_logout', 'ShopController@cudtomer_logout_done');
 
 // ユーザーページ表示
-Route::get('/shop_customer_page/{customer}', 'shopController@customer_page_view');
+Route::get('/shop_customer_page/{customer}', 'ShopController@customer_page_view');
 
 // ユーザーエディット表示
-Route::get('/shop_customer_edit/{customer}', 'shopController@customer_edit_view');
+Route::get('/shop_customer_edit/{customer}', 'ShopController@customer_edit_view');
 
 // ユーザーエディット処理
-Route::post('/shop_customer_edit_done/{customer}', 'shopController@shop_customer_edit_done');
+Route::post('/shop_customer_edit_done/{customer}', 'ShopController@shop_customer_edit_done');
