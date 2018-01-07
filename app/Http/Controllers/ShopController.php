@@ -26,21 +26,30 @@ class ShopController extends Controller
         $other_works_of_this_genres = Product::where('pro_genre',$product->pro_genre)->get()->take(6);
         //谷口追記、レビュー平均点算出表示
         $revs = Product_review::orderBy('created_at', 'asc')->where('p_id',$product->id)->get();
-        $ave=0.00000000001;
-        $count=0.0000000001;
+        $sum=0;
+        $count=0;
         foreach ($revs as $rev){
-            $ave+=$rev->point;
+            $sum+=$rev->point;
             $count++;
         }
+
+        
+        if($count===0){
+            $ave=0;
+        }else{
+            $ave=$sum/$count;
+        }
+
         $otherworks = Product::where('pro_author',$product->pro_author)->where('id','<>',$product->id)->get()->take(4);
         $other_works_of_this_genres = Product::where('pro_genre',$product->pro_genre)->where('id','<>',$product->id)->get()->take(6);
+
 
         return view('shop/shop_item_page', [
                 'product' => $product,
                 'otherworks' => $otherworks,
                 'other_works_of_this_genres' => $other_works_of_this_genres,
                 'revs'=>$revs,
-                'ave'=>$ave/$count,
+                'ave'=>$ave,
                 'count'=>$count
             ]);
     }
