@@ -6,11 +6,8 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Datsalesproduct;
 use App\Datsale;
-<<<<<<< HEAD
 use App\Product_review;
-=======
 use App\Customer;
->>>>>>> f20e8ccb2b566d50f45e3a5d5f44cb158d167fa2
 use Validator;
 use Session;
 use DB;
@@ -29,8 +26,8 @@ class ShopController extends Controller
         $other_works_of_this_genres = Product::where('pro_genre',$product->pro_genre)->get()->take(6);
         //谷口追記、レビュー平均点算出表示
         $revs = Product_review::orderBy('created_at', 'asc')->where('p_id',$product->id)->get();
-        $ave=0;
-        $count=0;
+        $ave=0.00000000001;
+        $count=0.0000000001;
         foreach ($revs as $rev){
             $ave+=$rev->point;
             $count++;
@@ -276,17 +273,6 @@ class ShopController extends Controller
         Session::forget('cart');
         Session::forget('quantity');
         Session::put('totalQuantity',0);
-<<<<<<< HEAD
-        // ↓実験中
-        $results = DB::select('
-        select
-        datsalesproducts.pro_id as p,sum(datsalesproducts.pro_price * datsalesproducts.pro_quantity) as goukei 
-        from
-        datsales,datsalesproducts
-        where datsales.id=datsalesproducts.s_id 
-        group by datsalesproducts.pro_id order by goukei DESC');
-        return view('shop/shop_order_complete',['r' => $results]);
-=======
 
         return view('shop/shop_order_complete', [
             'product' => $product,
@@ -294,7 +280,6 @@ class ShopController extends Controller
             'cart' => $cart,
             'quantity' => $quantity
         ]);
->>>>>>> f20e8ccb2b566d50f45e3a5d5f44cb158d167fa2
     }
 
     public function shop_category_page_view($genre){
@@ -314,9 +299,6 @@ class ShopController extends Controller
         group by datsalesproducts.pro_id order by goukei DESC");
         return view('shop/shop_category',['products' => $products, 'genre' => $genre, 'rankings' => $rankings]);
     }
-<<<<<<< HEAD
-    
-=======
 
     public function shop_artist_page_view($author){
         $products = Product::where('pro_author',$author)->get();
@@ -412,5 +394,4 @@ class ShopController extends Controller
         return view('shop/shop_customer_page',['customer'=>$customer, 'purchases'=>$purchases]);
 
     }
->>>>>>> f20e8ccb2b566d50f45e3a5d5f44cb158d167fa2
 }
