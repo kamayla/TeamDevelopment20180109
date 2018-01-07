@@ -48,7 +48,7 @@ class ShopController extends Controller
     public function review_add (Request $request) {
         //バリデーション
         $validator = Validator::make($request->all(), [
-                'review' => 'required|max:255',
+                // 'review' => 'required|max:255',
         ]);
         //バリデーション:エラー
         if ($validator->fails()) {
@@ -59,7 +59,7 @@ class ShopController extends Controller
         $product = Product::where('id',(int)$request->pro_id)->first();
         $revs = new Product_review;
         $revs->p_id = $product->id;
-        $revs->contributor =0;
+        $revs->contributor =Session::get('c_id');
         $revs->review = $request->review;
         $revs->point = $request->point;
         $revs->save(); 
@@ -466,7 +466,6 @@ class ShopController extends Controller
 
         return view('shop/shop_customer_edit',['customer'=>$customer]);
     }
-<<<<<<< HEAD
 
     public function shop_customer_edit_done(Customer $customer, Request $request){
         if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId()){
@@ -484,25 +483,6 @@ class ShopController extends Controller
             
         ]);
 
-=======
-
-    public function shop_customer_edit_done(Customer $customer, Request $request){
-        if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId()){
-            return redirect('/booquet');
-        }else{
-            Session::regenerate();
-            Session::put('chk_ssid',Session::getId());
-        }
-        // バリデーション
-        $validator = Validator::make($request->all(),[
-            'c_name' => 'required |min:1 |max:255',
-            'c_email' => 'required |min:1 |max:255|email',
-            'c_password1' => 'required |min:8 |max:255|',
-            'c_password2' => 'required |min:8 |max:255|same:c_password1',
-            
-        ]);
-
->>>>>>> 5ba55233758025a1ba9d4757eff8252c8441854b
         if ($validator->fails()){
             return redirect()->to("shop_customer_edit/{$customer->id}")
                 ->withInput()

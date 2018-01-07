@@ -39,15 +39,15 @@
                   <p><span class="fa fa-times-circle-o"></span>Out of Stock</p>
                   @endif
                   @php
-                    if(round($ave,0)==0){
+                    if(round($ave,1)>=0&&round($ave,1)<=0.7){
                         $score='
-                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         ';
-                    }elseif(round($ave,0)==1){
+                    }elseif(round($ave,1)>=0.8&&round($ave,1)<=1.2){
                         $score='
                         <i class="fa fa-star" aria-hidden="true"></i>
                         <i class="fa fa-star-o" aria-hidden="true"></i>
@@ -56,7 +56,23 @@
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         ';
 
-                    }elseif(round($ave,0)==2){
+                    }elseif(round($ave,1)>=0.8&&round($ave,1)<=1.2){
+                        $score='
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        ';
+                    }elseif(round($ave,1)>=1.3&&round($ave,1)<=1.7){
+                        $score='
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        ';
+                    }elseif(round($ave,1)>=1.8&&round($ave,1)<=2.2){
                         $score='
                         <i class="fa fa-star" aria-hidden="true"></i>
                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -64,8 +80,15 @@
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         ';
-                        
-                    }elseif(round($ave,0)==3){
+                    }elseif(round($ave,1)>=2.3&&round($ave,1)<=2.7){
+                        $score='
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        ';
+                    }elseif(round($ave,1)>=2.8&&round($ave,1)<=3.2){
                         $score='
                         <i class="fa fa-star" aria-hidden="true"></i>
                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -73,8 +96,15 @@
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         ';
-                        
-                    }elseif(round($ave,0)==4){
+                    }elseif(round($ave,1)>=3.3&&round($ave,1)<=3.7){
+                        $score='
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        ';
+                    }elseif(round($ave,1)>=3.8&&round($ave,1)<=4.2){
                         $score='
                         <i class="fa fa-star" aria-hidden="true"></i>
                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -82,8 +112,15 @@
                         <i class="fa fa-star" aria-hidden="true"></i>
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         ';
-                        
-                    }elseif(round($ave,0)==5){
+                    }elseif(round($ave,1)>=4.3&&round($ave,1)<=4.7){
+                        $score='
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        ';
+                    }elseif(round($ave,1)>=4.8&&round($ave,1)<=5.0){
                         $score='
                         <i class="fa fa-star" aria-hidden="true"></i>
                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -95,7 +132,7 @@
 
                   @endphp
 
-                  <p>{!!$score!!} {{round($ave,0)}} score</p>
+                  <p>{!!$score!!} {{round($ave,1)}} score</p>
                   <p>Publisher : {{$product->pro_publisher}}</p>
                   <p>Year : {{date('Y', strtotime($product->pro_release_date))}}</p>
                   <p>Size : {{$product->pro_size}}cm</p>
@@ -142,6 +179,7 @@
                 <tr>
                 <!-- 本タイトル -->
                 <td class="table-text">
+                    <div>{{ $rev->contributor }}</div>
                     <div>{{ $rev->review }}</div>
                     <div>{{ $rev->point }}</div>
                 </td>
