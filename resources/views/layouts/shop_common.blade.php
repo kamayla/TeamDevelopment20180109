@@ -61,7 +61,9 @@
 
         @endif
       <a href="{{url('/shop_cart_look')}}" class="cartIcon"><img src="{{asset('shop_img/cart_icon.png')}}" alt="">
+      @if(Session::get('totalQuantity')>0)
       <p class="top_cart_quantity"><?php echo Session::get('totalQuantity')?></p>
+      @endif
       </a>
     </div>
   </nav>
