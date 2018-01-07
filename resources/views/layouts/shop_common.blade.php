@@ -47,7 +47,7 @@
           <img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt="">
           <p><span id="login_btn">Login<span></p>
           <span class="verticalBar">|</span>
-          <a href="">Join</a>
+          <a href="{{url('shop_user_register')}}">Join</a>
         @else
           @php
             Session::regenerate();
