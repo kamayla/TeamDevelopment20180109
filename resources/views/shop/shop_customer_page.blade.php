@@ -9,6 +9,7 @@
     <a href="{{url('/booquet')}}"><span class="fa fa-reply"></span>Back to shopping</a>
     </div>
 </div>
+
 <div class="mypage_main">
       <div class="mypage_top">
             <div class="mypage_top_left">
@@ -159,7 +160,7 @@
             <div class="artist_page_items">
                 @if(isset($wishlists))
                     @foreach($wishlists as $wishlist)
-                        <div class="artist_page_item" style="width:25%;">
+                        <div class="mypage_wishlist_item" style="width:25%;">
                             <a href="{{url('shop_item_page/'.$wishlist->pro_id)}}">
                                 <div>
                                     <img src="{{asset('pro_img/'.$wishlist->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
@@ -181,25 +182,24 @@
                                     @endif
                                 </p>
                             </a>
-                            <div>
+                            <div class="mypage_cart_section">
                               @if($wishlist->pro_stock>0)
                               <form action="{{url('shop_cart_in/'.$wishlist->pro_id)}}" method="post">
                                 {{csrf_field()}}
                                 <input type="hidden" name="quantity" value="1">
-                                <button type="submit" class=""><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
+                                <button type="submit" class="mypage_cart_btn"><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
                               </form>
                               @else
-                              <button class=""><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
+                              <div class="mypage_cart_btn_sold"><span class="fa fa-times" style="font-size:16px;"></span>Soldout</div>
                               @endif
                           </div>
-                        </div>
+                          </div>
                     @endforeach
                 @endif
             </div>
           </div>
       </div>
 </div>
-
 @endsection
 
 
