@@ -223,6 +223,46 @@
             </div>
           <div class="mypage_bottom_right">
             <h2>Wishlist</h2>
+            <div class="artist_page_items">
+                @if(isset($wishlists))
+                    @foreach($wishlists as $wishlist)
+                        <div class="artist_page_item" style="width:25%;">
+                            <a href="{{url('shop_item_page/'.$wishlist->pro_id)}}">
+                                <div>
+                                    <img src="{{asset('pro_img/'.$wishlist->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
+                                </div>
+                                <p>｢{{$wishlist->pro_name}}｣</p>
+                                <p>{{$wishlist->pro_author}}</p>
+                                <p>$ 
+                                <?php
+                                    $number =$wishlist->pro_price;
+                                    echo number_format($number);
+                                  ?>
+                                </p>
+                                <p>★★★★★ 4.4</p>
+                                <p>
+                                    @if($wishlist->pro_stock > 0)
+                                    <span class="fa fa-check-circle-o"></span>In Stock
+                                    @else
+                                    <span class="fa fa-times-circle-o"></span>Out of Stock
+                                    @endif
+                                </p>
+                            </a>
+                            <div>
+                              @if($wishlist->pro_stock>0)
+                              <form action="{{url('shop_cart_in/'.$wishlist->pro_id)}}" method="post">
+                                {{csrf_field()}}
+                                <input type="hidden" name="quantity" value="1">
+                                <button type="submit" class=""><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
+                              </form>
+                              @else
+                              <button class=""><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
+                              @endif
+                          </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
           </div>
       </div>
 </div>
