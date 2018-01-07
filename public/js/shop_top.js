@@ -12,20 +12,22 @@ $(function() {
 });
 
 
-        $('#login_btn').mouseover(function(){
-            $('.top-login-wrapper').css("display","inline-block");
-        });
+    $('#login_btn').mouseover(function(){
+        $('.top-login-wrapper').css("display","inline-block");
+    });
 
-        $('.top-login-wrapper').mouseleave(function(){
-            $(this).css("display","none");
-        })  
+    $('.top-login-wrapper').mouseleave(function(){
+        $(this).css("display","none");
+    })  
 
-    $("#reviewBtn").on("click",function(){
-        if($('.write_review').css("display","none")){
-            $('.write_review').show();
+
+    $("#reviewBtn").click(function(){
+        if($(".write_review").css('display') == 'none'){
+        // if($(".write_review").css('display','none')){
+            $('.write_review').slideDown(1000);
             $("#reviewBtn").text('Close the window');
         }else{
-            $('.write_review').hide();
+            $('.write_review').slideUp(1000);
             $("#reviewBtn").text('Write a review');
         }
     });
@@ -75,5 +77,15 @@ $(function() {
         //     $('.selection').hide()
         //     $(page).show()
         //     }
+
 });
 
+function changeimg(url,e) {
+    document.getElementById("img").src = url;
+    var nodes = document.getElementById("thumb_img");
+    var img_child = nodes.children; //id名「thumb_img」配下の子要素を取得
+    for (i = 0; i < img_child.length; i++) { //要素の数ループさせる
+        img_child[i].classList.remove('active') //要素に付与されているすべてのclass名「active」を削除する
+    }
+    e.classList.add('active'); //クリック（タップ）した要素にclass名「active」を付与する
+    }

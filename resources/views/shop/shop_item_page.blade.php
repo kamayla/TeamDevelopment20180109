@@ -39,7 +39,7 @@
                     <!-- WISHLISTテスト用 -->
                   <p class="categoryRoute">Category/<a href="{{url('shop_category/'.$product->pro_genre)}}">{{$product->pro_genre}}</a></p>
                   <h2>｢{{$product->pro_name}}｣</h2>
-                  <p><a href="">{{$product->pro_author}}</a></p>
+                  <p>{{$product->pro_author}}</p>
                   <p class="item_price">$
                   <?php
                       $number =$product->pro_price;
@@ -175,7 +175,9 @@
                       <button type="submit" class=""><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
                     </form>
                     @else
-                    <button class=""><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
+                    <div class="soldout_btn_area">
+                        <div class="soldout_btn"><span class="fa fa-times" style="font-size:16px;"></span>Soldout</div>
+                    </div>
                     @endif
                 </div>
                   <div class="item_icons">
@@ -185,10 +187,18 @@
                     <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
                   </div>
               </div>
-              <img src="{{asset('pro_img/'.$product->pro_thumbnail)}}" alt="" style="height: 400px;">
+              <div class="item_center_image">
+                    <div id="content">
+                        <img id="img" src="{{asset('pro_img/'.$product->pro_thumbnail)}}" alt="" style="height: 350px; max-width:500px">
+                    </div>
+                    <div class="item_thumbnails cf"  id="thumb_img">
+                        <img class="active" src="{{asset('pro_img/'.$product->pro_thumbnail)}}" onclick="changeimg('{{asset('pro_img/'.$product->pro_thumbnail)}}',this);" style="width: 80px;">
+                        <img src="{{asset('pro_img/'.$product->pro_thumbnail2)}}" onclick="changeimg('{{asset('pro_img/'.$product->pro_thumbnail2)}}',this);" style="width: 80px;">
+                        <img src="{{asset('pro_img/'.$product->pro_thumbnail3)}}" onclick="changeimg('{{asset('pro_img/'.$product->pro_thumbnail3)}}',this);" style="width: 80px;">
+                    </div>
+              </div>
         </div>
-            <img src="{{asset('pro_img/'.$product->pro_thumbnail2)}}" alt="" style="height: 150px;">
-            <img src="{{asset('pro_img/'.$product->pro_thumbnail3)}}" alt="" style="height: 150px;">
+            
             <div class="review-area">
                 <h4>User Review</h4>
                 <div class="review_user">
