@@ -169,6 +169,12 @@ nav div{
   vertical-align: -2px;
 }
 
+.login_error{
+  color:red;
+  border-bottom:1px solid red;
+  width:220px;
+}
+
 .top-login-wrapper form button:hover {
   background:white;
   color:black;
@@ -1975,3 +1981,9 @@ border-radius:16px;
   width:120px;
 }
 /*------------- /ユーザーマイページ------------- */
+
+
+.selection {display: none;}
+#paging_item_1 { display: block;}
+#paging_item_2 { display: block;}
+#paging_item_3 { display: block;}

@@ -14,6 +14,7 @@
   <!-- カルーセル用 css -->
   <link rel="stylesheet" href="{{asset('slick/slick.css')}}">
   <link rel="stylesheet" href="{{asset('slick/slick-theme.css')}}">
+  <link rel="stylesheet" href="{{asset('css/simplePagination.css')}}">
   <!-- self css -->
   <link rel="stylesheet" href="{{asset('css/common_shop.css')}}">
 </head>
@@ -38,10 +39,6 @@
 
     <!-- 3.ログイン & カート機能 -->
     <div class="loginSection">
-        <!-- ログインエラー文書 -->
-        @if(!empty(session('err')))
-          {{session('err')}}
-        @endif
         <!-- /ログインエラー文書 -->
         @if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId())
           <img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt="">
@@ -68,11 +65,18 @@
     </div>
   </nav>
 
+
+ 
   <!-- ログイン、マウスオーバーイベント -->
-  <div class="top-login-wrapper">
-      <h2>Login</h2>
-      <form action="{{url('shop_customer_login')}}" method="post">
+
+
+  @if(!empty(session('err')))
+  <div class="top-login-wrapper" style="display:block; height:350px">
+    <h2>Login</h2>
+    <form action="{{url('shop_customer_login')}}" method="post">
       {{csrf_field()}}
+      <!-- ログインエラー文書 -->
+          <h5 class="login_error" style="margin:-8px auto 24px;">{{session('err')}}</h5>
           <p>Email :<input type="text" name="c_email"></p>
           <p>Password :<input type="text" name="c_password"></p>
           <button type="submit"><span class="fa fa-sign-in"></span>Login</button>
@@ -81,6 +85,22 @@
       <p class="top-join">Don't have a account yet? →<a href="{{url('shop_user_register')}}">Create one!</a></p>
       <p class="block"></p>
   </div>
+  @else
+  <div class="top-login-wrapper">
+      <h2>Login</h2>
+      <form action="{{url('shop_customer_login')}}" method="post">
+      {{csrf_field()}}
+          <!-- ログインエラー文書 -->
+          <p>Email :<input type="text" name="c_email"></p>
+          <p>Password :<input type="text" name="c_password"></p>
+          <button type="submit"><span class="fa fa-sign-in"></span>Login</button>
+          <p><p>
+      </form>
+      <p class="top-join">Don't have a account yet? →<a href="{{url('shop_user_register')}}">Create one!</a></p>
+      <p class="block"></p>
+  </div>
+  @endif
+
 </header>
   <!-- /ヘッダーセクション -->
 
@@ -151,7 +171,7 @@
 <!-- カルーセル用プラグイン -->
 <script type="text/javascript" src="{{asset('slick/slick.min.js')}}"></script>
 <!-- ページネーション用プラグイン -->
-<!-- <script type="text/javascript" src="{{asset('js/jquery.bootpag.js')}}"></script> -->
+<script type="text/javascript" src="{{asset('js/jquery.simplePagination.js')}}"></script>
 <!-- self JS-->
 <script type="text/javascript" src="{{asset('js/shop_top.js')}}"></script>
 </body>

@@ -6,7 +6,7 @@
     <h1><i class="fa fa-id-card-o"></i>Mypage</h1>
     </div>
     <div class="checkout_back_btn">
-    <a href=""><span class="fa fa-reply"></span>Back to shopping</a>
+    <a href="{{url('/booquet')}}"><span class="fa fa-reply"></span>Back to shopping</a>
     </div>
 </div>
 
@@ -119,9 +119,13 @@
             <h2>Purchase History</h2>
             <div class="mypage_bl_inner">
                   <div class="artist_page_items">
+                    <?php
+                        $i = 0;
+                    ?>
                     @if(count($purchases)>0)
                       @foreach($purchases as $purchase)
-                        <div class="artist_page_item" style="width:32%;">
+                      <?php $i++ ?>
+                        <div class="artist_page_item selection" id="paging_item_{!!$i!!}" style="width:32%;">
                           <a href="{{url('shop_item_page/'.$purchase->pro_id)}}">
                             <div>
                               <img src="{{asset('pro_img/'.$purchase->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
@@ -148,6 +152,7 @@
                     @endif
                   </div>
                   <div class="top_right_pagenation">
+                      <div id="paging"></div>
                       <button>1</button>
                   </div>
               </div>
@@ -157,6 +162,7 @@
           </div>
       </div>
 </div>
+
 @endsection
 
 
