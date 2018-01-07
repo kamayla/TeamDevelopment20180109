@@ -10,24 +10,37 @@
     </div>
 </div>
 
+
+
+<div class="mypage_main">
+      <div class="mypage_top">
+          <div class="mypage_top_left">
+          </div>
+          <div class="mypage_top_right">
+          </div>
+      </div>
+      <div class="mypage_bottom">
+          <div class="mypage_bottom_left">
+          </div>
+          <div class="mypage_bottom_right">
+          </div>
+      </div>
+</div>
+
+
+
+
+
 <div class="mypage_main_top">
     <div class="mypage_top_left">
     <table>
   <tr>
-    <td>
-      Name:
-    </td>
-    <td>
-      {{$customer->c_name}}
-    </td>
+    <td>Name:</td>
+    <td>{{$customer->c_name}}</td>
   </tr>
   <tr>
-    <td>
-      Email:
-    </td>
-    <td>
-      {{$customer->c_email}}
-    </td>
+    <td>Email:</td>
+    <td>{{$customer->c_email}}</td>
   </tr>
 </table>
 @php
