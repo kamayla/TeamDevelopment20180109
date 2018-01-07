@@ -62,16 +62,18 @@ $(function() {
                     $("html, body").animate({scrollTop:position}, speed, "swing");
                     return false;
                 });
-            
+        // $("#paging").pagination({
+        //     items: 8,
+        //     displayedPages: 3,
+        //     cssStyle: 'light-theme',
+        //     prevText: '前',
+        //     nextText: '次',
+        //     onPageClick: function(pageNumber){show(pageNumber)}
+        //     })
+        // function show(pageNumber){
+        //     var page="#paging_item_"+pageNumber;
+        //     $('.selection').hide()
+        //     $(page).show()
+        //     }
 });
-
-// $(document).ready(function(){
-//     $('#slider').slick({
-//         dots: true,
-//         infinite: true,
-//         speed: 500,
-//         fade: true,
-//         cssEase: 'linear'
-//     });
-//   });
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use Validator;
+use App\Product_reviews;
 
 class ProductsController extends Controller
 {
