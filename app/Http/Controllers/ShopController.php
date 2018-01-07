@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Datsalesproduct;
 use App\Datsale;
+use App\Product_review;
 use App\Customer;
 use Validator;
 use Session;
 use DB;
+use Auth;
 
 class ShopController extends Controller
 {
@@ -20,14 +22,48 @@ class ShopController extends Controller
 
     // ショップ個別ページの表示
     public function shop_item_page_view(Product $product){
+        $otherworks = Product::where('pro_author',$product->pro_author)->get()->take(4);
+        $other_works_of_this_genres = Product::where('pro_genre',$product->pro_genre)->get()->take(6);
+        //谷口追記、レビュー平均点算出表示
+        $revs = Product_review::orderBy('created_at', 'asc')->where('p_id',$product->id)->get();
+        $ave=0.00000000001;
+        $count=0.0000000001;
+        foreach ($revs as $rev){
+            $ave+=$rev->point;
+            $count++;
+        }
         $otherworks = Product::where('pro_author',$product->pro_author)->where('id','<>',$product->id)->get()->take(4);
         $other_works_of_this_genres = Product::where('pro_genre',$product->pro_genre)->where('id','<>',$product->id)->get()->take(6);
 
         return view('shop/shop_item_page', [
                 'product' => $product,
                 'otherworks' => $otherworks,
-                'other_works_of_this_genres' => $other_works_of_this_genres
+                'other_works_of_this_genres' => $other_works_of_this_genres,
+                'revs'=>$revs,
+                'ave'=>$ave/$count,
+                'count'=>$count
             ]);
+    }
+
+    public function review_add (Request $request) {
+        //バリデーション
+        $validator = Validator::make($request->all(), [
+                // 'review' => 'required|max:255',
+        ]);
+        //バリデーション:エラー
+        if ($validator->fails()) {
+                return redirect('/booquet')
+                ->withInput()
+                ->withErrors($validator);
+        }
+        $product = Product::where('id',(int)$request->pro_id)->first();
+        $revs = new Product_review;
+        $revs->p_id = $product->id;
+        $revs->contributor =Session::get('c_id');
+        $revs->review = $request->review;
+        $revs->point = $request->point;
+        $revs->save(); 
+        return redirect()->back();
     }
 
     public function shop_result_page_view(Request $request){
@@ -246,6 +282,7 @@ class ShopController extends Controller
         $datsales->c_email = $request->c_email;
         $datsales->c_country = $request->c_country;
         $datsales->c_postal1 = $request->c_postal1;
+        $datsales->c_postal2 = $request->c_postal2;
         $datsales->c_address = $request->c_address;
         $datsales->c_tel = $request->c_tel;
         $datsales->save();
@@ -281,20 +318,17 @@ class ShopController extends Controller
         $products = Product::where('pro_genre',$genre)->get();
         $rankings = DB::select("
         select 
-        datsalesproducts.pro_id as pro_id,
-        products.pro_name as pro_name,
-        products.pro_author as pro_author,
-        products.pro_thumbnail as pro_thumbnail,
-        products.pro_price as pro_price,
-        products.pro_release_date as pro_release_date,
-        sum(datsalesproducts.pro_quantity) as goukei
+        datsalesproducts.pro_id as p,
+        products.pro_name as name,
+        products.pro_genre as genre,
+        sum(datsalesproducts.pro_price * datsalesproducts.pro_quantity) as goukei
         from 
         datsales,datsalesproducts,products
         where 
         datsales.id=datsalesproducts.s_id
         and datsalesproducts.pro_id = products.id
         and products.pro_genre = '$genre'
-        group by datsalesproducts.pro_id order by goukei DESC LIMIT 5");
+        group by datsalesproducts.pro_id order by goukei DESC");
         return view('shop/shop_category',['products' => $products, 'genre' => $genre, 'rankings' => $rankings]);
     }
 

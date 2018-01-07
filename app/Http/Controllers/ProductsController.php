@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use Validator;
+use App\Product_reviews;
 
 class ProductsController extends Controller
 {
@@ -36,6 +37,8 @@ class ProductsController extends Controller
         if(!empty($file)){
             // get file name
             $filename1 = $file->getClientOriginalName();
+            $extension = pathinfo($filename1, PATHINFO_EXTENSION);//拡張子をゲットする。
+            $filename1 = $filename1.date("YmdHis").md5(session_id()).".".$extension;
             // file move
             $file->move('./pro_img/',$filename1);
         }else{
@@ -48,6 +51,8 @@ class ProductsController extends Controller
         if(!empty($file)){
             // get file name
             $filename2 = $file->getClientOriginalName();
+            $extension = pathinfo($filename2, PATHINFO_EXTENSION);//拡張子をゲットする。
+            $filename2 = $filename2.date("YmdHis").md5(session_id()).".".$extension;
             // file move
             $file->move('./pro_img/',$filename2);
         }else{
@@ -60,6 +65,8 @@ class ProductsController extends Controller
         if(!empty($file)){
             // get file name
             $filename3 = $file->getClientOriginalName();
+            $extension = pathinfo($filename3, PATHINFO_EXTENSION);//拡張子をゲットする。
+            $filename3 = $filename3.date("YmdHis").md5(session_id()).".".$extension;
             // file move
             $file->move('./pro_img/',$filename3);
         }else{
@@ -149,6 +156,8 @@ class ProductsController extends Controller
         if(!empty($file)){
             // get file name
             $filename1 = $file->getClientOriginalName();
+            $extension = pathinfo($filename1, PATHINFO_EXTENSION);//拡張子をゲットする。
+            $filename1 = $filename1.date("YmdHis").md5(session_id()).".".$extension;
             // file move
             $file->move('./pro_img/',$filename1);
         }else{
@@ -161,6 +170,9 @@ class ProductsController extends Controller
         if(!empty($file)){
             // get file name
             $filename2 = $file->getClientOriginalName();
+            $extension = pathinfo($filename2, PATHINFO_EXTENSION);//拡張子をゲットする。
+            $filename2 = $filename2.date("YmdHis").md5(session_id()).".".$extension;
+            
             // file move
             $file->move('./pro_img/',$filename2);
         }else{
@@ -173,6 +185,8 @@ class ProductsController extends Controller
         if(!empty($file)){
             // get file name
             $filename3 = $file->getClientOriginalName();
+            $extension = pathinfo($filename3, PATHINFO_EXTENSION);//拡張子をゲットする。
+            $filename3 = $filename3.date("YmdHis").md5(session_id()).".".$extension;
             // file move
             $file->move('./pro_img/',$filename3);
         }else{
