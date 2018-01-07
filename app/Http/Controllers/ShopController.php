@@ -293,7 +293,6 @@ class ShopController extends Controller
         $datsales->c_email = $request->c_email;
         $datsales->c_country = $request->c_country;
         $datsales->c_postal1 = $request->c_postal1;
-        $datsales->c_postal2 = $request->c_postal2;
         $datsales->c_address = $request->c_address;
         $datsales->c_tel = $request->c_tel;
         $datsales->save();
