@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <!-- fontawesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- カルーセル用 css -->
+  <link rel="stylesheet" href="{{asset('slick/slick.css')}}">
+  <link rel="stylesheet" href="{{asset('slick/slick-theme.css')}}">
   <!-- self css -->
   <link rel="stylesheet" href="{{asset('css/common_shop.css')}}">
 </head>
@@ -35,8 +38,11 @@
 
     <!-- 3.ログイン & カート機能 -->
     <div class="loginSection">
-      
-    
+        <!-- ログインエラー文書 -->
+        @if(!empty(session('err')))
+          {{session('err')}}
+        @endif
+        <!-- /ログインエラー文書 -->
         @if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId())
           <img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt="">
           <p><span id="login_btn">Login<span></p>
@@ -46,16 +52,17 @@
           @php
             Session::regenerate();
             Session::put('chk_ssid',Session::getId());
-            Session::put('customer_login',1);
           @endphp
-            <a href="{{url('shop_customer_page/'.Session::get('c_id'))}}"><img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt=""></a>
-            {{Session::get('name')}}
-            |<a href="{{url('shop_customer_logout')}}">Logout</a>
+            <img src="{{asset('shop_img/user_icon.png')}}" class="userLogo" alt="">
+            <a class ="top_login_after" href="{{url('shop_customer_page/'.Session::get('c_id'))}}">
+            <span>{{Session::get('name')}}</span>
+            </a>
+              | <a class="top_login_after" href="{{url('shop_customer_logout')}}">Logout</a>
 
         @endif
-      <a href="{{url('/shop_cart_look')}}" class="cartIcon"><img src="{{asset('shop_img/cart_icon.png')}}" alt=""></a>
-      <?php echo Session::get('totalQuantity')?>
-      <!-- <a href="{{url('/delete')}}" class="fa fa-trash ml-4"></a> -->
+      <a href="{{url('/shop_cart_look')}}" class="cartIcon"><img src="{{asset('shop_img/cart_icon.png')}}" alt="">
+      <p class="top_cart_quantity"><?php echo Session::get('totalQuantity')?></p>
+      </a>
     </div>
   </nav>
 
@@ -64,7 +71,7 @@
       <h2>Login</h2>
       <form action="{{url('shop_customer_login')}}" method="post">
       {{csrf_field()}}
-          <p>EmailAdd :<input type="text" name="c_email"></p>
+          <p>Email :<input type="text" name="c_email"></p>
           <p>Password :<input type="text" name="c_password"></p>
           <button type="submit"><span class="fa fa-sign-in"></span>Login</button>
           <p><p>
@@ -136,12 +143,13 @@
 
 
 <!-- Bootstrap JS-->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- カルーセル用プラグイン -->
+<script type="text/javascript" src="{{asset('slick/slick.min.js')}}"></script>
 <!-- ページネーション用プラグイン -->
-<script type="text/javascript" src="{{asset('js/jquery.bootpag.js')}}"></script>
+<!-- <script type="text/javascript" src="{{asset('js/jquery.bootpag.js')}}"></script> -->
 <!-- self JS-->
 <script type="text/javascript" src="{{asset('js/shop_top.js')}}"></script>
 </body>

@@ -6,9 +6,9 @@
 <div class="mainWrapper">
     <div class="leftSidebar">
   <ul>
-          <a href=""><li>New Arrival</li><a>
-          <a href=""><li>Category</li></a>
-          <a href=""><li>Artist</li></a>
+          <a href="#newarrival"><li>New Arrival</li><a>
+          <a href="#category"><li>Category</li></a>
+          <a href="#artist"><li>Artist</li></a>
   </ul>
         <div></div>
     </div>
@@ -18,25 +18,13 @@
 @section('content1')
   <!-- 本の一覧表示 -->
   <div class="mainArea">
-        <div class="mainVisual">
-            <a href=""><img src="{{asset('shop_img/main-visual.png')}}" alt=""></a>
-                <div class="subVisual">
-                    <a href=""><img src="{{asset('shop_img/sub_visual_1.png')}}" alt="" ></a>
-                    <a href=""><img src="{{asset('shop_img/sub_visual_2.png')}}" alt="" ></a>
-                    <a href=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></a>
-                </div>
-                <!-- <ul class="slider thumb-item">
-                    <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_1.png')}}" alt="" ></a></li>
-                    <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_2.png')}}" alt="" ></a></li>
-                    <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></a></li>
-                    <li class=""><a href=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></a></li>
-                </ul>
-                <ul class="slider thumb-item-nav">
-                    <li class=""><img src="{{asset('shop_img/sub_visual_1.png')}}" alt="" ></li>
-                    <li class=""><img src="{{asset('shop_img/sub_visual_2.png')}}" alt="" ></li>
-                    <li class=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></li>
-                    <li class=""><img src="{{asset('shop_img/sub_visual_3.png')}}" alt="" ></li>
-                </ul> -->
+        <div class="slideImage">
+                <div id="slider" width="1000px">
+                    <div class=""><a href=""><img src="{{asset('shop_img/top_goitami.png')}}" width="800px"alt=""></a></div>
+                    <div class=""><a href=""><img src="{{asset('shop_img/top_kosuke.png')}}" width="800px" alt=""></a></div>
+                    <div class=""><a href=""><img src="{{asset('shop_img/top_araki.png')}}" width="800px" alt=""></a></div>
+                    <div class=""><a href=""><img src="{{asset('shop_img/top_yamawaki.png')}}" width="800px" alt=""></a></div>
+                </div>  
             </div>
     </div>
   @endsection
@@ -66,7 +54,7 @@
 
 <!-- NewArrivalセクション -->
 @section('content3')
-<div class="newArrival-wrapper">
+<div class="newArrival-wrapper" id="newarrival">
     <div class="newArrival-title">
         <h1>New Arrival</h1>
     </div>
@@ -103,7 +91,7 @@
 <!-- Categoryセクション -->
 
 @section('content4')
-<div class="category-wrapper">
+<div class="category-wrapper" id="category">
     <div class="categoryTitle">
         <h1>Category</h1>
     </div>
@@ -159,7 +147,7 @@
 <!-- Artistセクション -->
 
 @section('content5')
-<div class="artist-wrapper">
+<div class="artist-wrapper" id="artist">
     <div class="artistTitle">
     <h1>Artist</h1>
     </div>

@@ -1,6 +1,7 @@
 @extends('layouts.shop_common')
 
 @section('content0')
+
 <div class="register_page_title">
     <h1 class="register_title"><i class="fa fa-check"></i>Let's register now</h1>
 </div>

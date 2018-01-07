@@ -38,7 +38,64 @@
                   @else
                   <p><span class="fa fa-times-circle-o"></span>Out of Stock</p>
                   @endif
-                  <p>★★★★★ {{round($ave,1)}} score</p>
+                  @php
+                    if(round($ave,0)==0){
+                        $score='
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        ';
+                    }elseif(round($ave,0)==1){
+                        $score='
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        ';
+
+                    }elseif(round($ave,0)==2){
+                        $score='
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        ';
+                        
+                    }elseif(round($ave,0)==3){
+                        $score='
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        ';
+                        
+                    }elseif(round($ave,0)==4){
+                        $score='
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        ';
+                        
+                    }elseif(round($ave,0)==5){
+                        $score='
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        ';
+                    }
+
+                  @endphp
+
+                  <p>{!!$score!!} {{round($ave,0)}} score</p>
                   <p>Publisher : {{$product->pro_publisher}}</p>
                   <p>Year : {{date('Y', strtotime($product->pro_release_date))}}</p>
                   <p>Size : {{$product->pro_size}}cm</p>

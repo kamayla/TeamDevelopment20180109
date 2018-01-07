@@ -16,13 +16,51 @@
   <!-- バリデーションエラーの表示に使用 -->
   @include('common.errors')
   <!-- バリデーションエラーの表示に使用 -->
-  <form action="{{url('/shop_confirmation')}}" method="post">
+  <form action="{{url('/shop_confirmation')}}" method="post" id="check_out">
     {{csrf_field()}}
     <div class="checkout_subtitle_1">
         <h3>Shipping Address</h3>
     </div>
     <div class="checkout-shipping">
         <p>All Required Field</p>
+        @if(isset($datsales))
+        <table class="checkout-shipping-table" align="center">
+            <tr>
+              <td>Name :</td>
+              <td><input type="text" name="c_name" value="{{$datsales->c_name}}"></td>
+            </tr>
+            <tr>
+              <td>Email :</td>
+              <td><input type="text" name="c_email" value="{{$datsales->c_email}}"></td>
+            </tr>
+            <tr>
+              <td>Country :</td>
+              <td class="checkout-shipping-select">
+                  <select name="c_country" id="">
+                        <option value="USA" <?php if($datsales->c_country == 'USA') echo ' selected';?>>USA</option>
+                        <option value="Japan" <?php if($datsales->c_country == 'Japan') echo ' selected';?>>Japan</option>
+                        <option value="China" <?php if($datsales->c_country == 'China') echo ' selected';?>>China</option>
+                        <option value="England" <?php if($datsales->c_country == 'England') echo ' selected';?>>England</option>
+                        <option value="France" <?php if($datsales->c_country == 'France') echo ' selected';?>>France</option>
+                        <option value="Italy" <?php if($datsales->c_country == 'Italy') echo ' selected';?>>Italy</option>
+                        <option value="Zimbabwe" <?php if($datsales->c_country == 'Zimbabwe') echo ' selected';?>>Zimbabwe</option>
+                    </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Postal Code :</td>
+              <td><input type="text" name="c_postal1" value="{{$datsales->c_postal1}}"></td>
+            </tr>
+            <tr>
+              <td>Address :</td>
+              <td><input type="text" name="c_address" value="{{$datsales->c_address}}"></td>
+            </tr>
+            <tr>
+              <td>Telephone :</td>
+              <td><input type="text" name="c_tel" value="{{$datsales->c_tel}}"></td>
+            </tr>
+        </table>
+        @else
         <table class="checkout-shipping-table" align="center">
             <tr>
               <td>Name :</td>
@@ -59,6 +97,7 @@
               <td><input type="text" name="c_tel"></td>
             </tr>
         </table>
+        @endif
     </div>
 
 
@@ -150,11 +189,11 @@
         <img src="{{ asset('shop_img/paypal2.png')}}"  width="300px" alt="">
         <img src="{{ asset('shop_img/paypal_btn.png')}}" width="300px" alt="" id="paypalBtn">
     </div>
-   <button type="submit" id="confirm">Confirm order</button>
+   <button type="submit" id="confirm" form="check_out">Confirm order</button>
 </div>
 
 <div class="credit_pattern_3">
-   <button type="submit">Confirm order</button>
+   <button type="submit" form="check_out">Confirm order</button>
 </div>
   
 

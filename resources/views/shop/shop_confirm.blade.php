@@ -116,6 +116,7 @@
 
     <div class="confirm_payment_area">
         <h3> Payment Method</h3>
+        @if($request->c_pay_type==='Credit')
         <table class="payment_table">
             <tr>
                 <td>Card Type :</td>
@@ -130,6 +131,21 @@
                 <td>{{$request->c_card_month.'/'.substr($request->c_card_year,2,2)}}</td>
             </tr>
         </table>
+        @elseif($request->c_pay_type==='Paypal')
+        <table class="payment_table">
+            <tr>
+                <td>Payment Type :</td>
+                <td>Paypal</td>
+            </tr>
+        </table>
+        @else
+        <table class="payment_table">
+            <tr>
+                <td>Payment Type :</td>
+                <td>Cash on delivery</td>
+            </tr>
+        </table>
+        @endif
     </div>
 </div>
 
