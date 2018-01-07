@@ -341,7 +341,14 @@ class ShopController extends Controller
         datsales.id=datsalesproducts.s_id
         and datsalesproducts.pro_id = products.id
         and products.pro_genre = '$genre'
-        group by datsalesproducts.pro_id order by goukei DESC LIMIT 5");
+        group by
+        datsalesproducts.pro_id,
+        products.pro_name,
+        products.pro_author,
+        products.pro_thumbnail,
+        products.pro_price,
+        products.pro_release_date
+        order by goukei DESC LIMIT 5");
         return view('shop/shop_category',['products' => $products, 'genre' => $genre, 'rankings' => $rankings]);
     }
 
@@ -362,7 +369,14 @@ class ShopController extends Controller
         datsales.id=datsalesproducts.s_id
         and datsalesproducts.pro_id = products.id
         and products.pro_author = '$author'
-        group by datsalesproducts.pro_id order by goukei DESC LIMIT 5");
+        group by
+        datsalesproducts.pro_id,
+        products.pro_name,
+        products.pro_author,
+        products.pro_thumbnail,
+        products.pro_price,
+        products.pro_release_date
+        order by goukei DESC LIMIT 5");
         return view('shop/shop_artist',['products' => $products, 'author' => $author, 'rankings' => $rankings]);
     }
 
