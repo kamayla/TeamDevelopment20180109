@@ -1,6 +1,4 @@
 @extends('layouts.shop_common')
-
-
 <!-- main左サイド部 -->
 @section('content0')
 <div class="mainWrapper">
@@ -87,6 +85,7 @@
 </div>
 @endsection
 <!-- /NewArrivalセクション -->
+
 
 <!-- Categoryセクション -->
 
