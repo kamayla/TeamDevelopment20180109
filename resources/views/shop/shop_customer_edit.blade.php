@@ -1,4 +1,5 @@
 @extends('layouts.shop_common')
+@inject('func','App\Http\Controllers\ShopController')
 
 @section('content0')
 <div class="register_page_title">

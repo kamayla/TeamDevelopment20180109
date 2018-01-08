@@ -16,6 +16,129 @@ use Auth;
 
 class ShopController extends Controller
 {
+    // レビュー平均点の共通関数
+    public function takeave($id){
+        $revs = Product_review::orderBy('created_at', 'asc')->where('p_id',$id)->get();
+        $sum=0;
+        $count=0;
+        foreach ($revs as $rev){
+            $sum+=$rev->point;
+            $count++;
+        }
+
+        if($count===0){
+            return 0;
+
+        }else{
+            return round($sum/$count,1);
+        }
+    }
+
+    public function takestar($ave){
+        if(round($ave,1)==0){
+            $score='
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            ';
+
+        }elseif(round($ave,1)>=0.1&&round($ave,1)<=0.7){
+            $score='
+            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            ';
+
+            
+        }elseif(round($ave,1)>=0.8&&round($ave,1)<=1.2){
+            $score='
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            ';
+
+        }elseif(round($ave,1)>=0.8&&round($ave,1)<=1.2){
+            $score='
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            ';
+        }elseif(round($ave,1)>=1.3&&round($ave,1)<=1.7){
+            $score='
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            ';
+        }elseif(round($ave,1)>=1.8&&round($ave,1)<=2.2){
+            $score='
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            ';
+        }elseif(round($ave,1)>=2.3&&round($ave,1)<=2.7){
+            $score='
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            ';
+        }elseif(round($ave,1)>=2.8&&round($ave,1)<=3.2){
+            $score='
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            ';
+        }elseif(round($ave,1)>=3.3&&round($ave,1)<=3.7){
+            $score='
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            ';
+        }elseif(round($ave,1)>=3.8&&round($ave,1)<=4.2){
+            $score='
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            ';
+        }elseif(round($ave,1)>=4.3&&round($ave,1)<=4.7){
+            $score='
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+            ';
+        }elseif(round($ave,1)>=4.8&&round($ave,1)<=5.0){
+            $score='
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            ';
+        }
+        return $score;
+    }
+
     public function top_view(){
         $products = Product::orderBy('created_at', 'desc')->get()->take(12);;
         return view('shop/shop_top', ['products' => $products]);
@@ -34,13 +157,12 @@ class ShopController extends Controller
             $count++;
         }
 
-        
         if($count===0){
             $ave=0;
         }else{
             $ave=$sum/$count;
         }
-
+        // ---------------------------
         $otherworks = Product::where('pro_author',$product->pro_author)->where('id','<>',$product->id)->get()->take(4);
         $other_works_of_this_genres = Product::where('pro_genre',$product->pro_genre)->where('id','<>',$product->id)->get()->take(6);
         $wishlist = Wishlist::where('pro_id',$product->id)->first();
