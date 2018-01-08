@@ -258,7 +258,11 @@
                     <div class="ow-info">
                         <p>｢{{$otherwork->pro_name}}｣</p>
                         <p>{{$otherwork->pro_author}}</p>
-                        <p>$ {{$otherwork->pro_price}}</p>
+                        <p>$<?php
+                            $number =$otherwork->pro_price;
+                            echo number_format($number,2);
+                            ?>
+                        </p>
                         <p>{{date('Y', strtotime($otherwork->pro_release_date))}}</p>
                         <p>{{$otherwork->pro_publisher}}</p>
                     </div>
@@ -281,7 +285,11 @@
                     <img src="{{asset('pro_img/'.$other_works_of_this_genre->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
                   <p>｢{{$other_works_of_this_genre->pro_name}}｣</p>
                   <p>{{$other_works_of_this_genre->pro_author}}</p>
-                  <p>${{$other_works_of_this_genre->pro_price}}</p>
+                  <p>$<?php
+                     $number =$otherwork->pro_price;
+                     echo number_format($number,2);
+                     ?>
+                  </p>
                   <p>{{date('Y', strtotime($other_works_of_this_genre->pro_release_date))}}</p>
                 </a>
               </div>
