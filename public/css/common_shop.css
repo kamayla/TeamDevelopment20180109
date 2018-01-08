@@ -2179,6 +2179,23 @@ footer {
   padding:8px;
 }
 
+.add_user_image{
+  font-size:18px;
+  padding:4px;
+  margin-top:16px;
+  cursor: pointer;
+}
+
+.add_user_image:hover{
+  background:rgb(43, 43, 43);
+  color:white;
+}
+
+.add_user_image span{
+  margin-right:5px;
+}
+
+
 /*------------- /ユーザーマイページ------------- */
 
 /* -----ページネーションCSS---- */

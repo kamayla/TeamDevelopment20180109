@@ -2,6 +2,28 @@
 @inject('func','App\Http\Controllers\ShopController')
 
 @section('content0')
+<style>
+  .default_user_image{
+    height:200px;
+    width:200px;
+    margin:0 auto;
+    border-radius:150px;
+    background-image:url("{{asset('shop_img/user_default.png')}}");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .changed_user_image{
+    height:200px;
+    width:200px;
+    margin:0 auto;
+    border-radius:150px;
+    background-image:url("{{asset('cus_img/'.$customer->c_thumbnail)}}");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+</style>
 <div class="cart_titles">
     <div class="cart_page_title">
     <h1><i class="fa fa-id-card-o"></i>Mypage</h1>
@@ -17,15 +39,15 @@
                 <div class="mypage_tl_inner">
                   <div class="mypage_user_image">
                     @if(empty($customer->c_thumbnail))
-                      <img src="{{asset('shop_img/user_default.png')}}" alt="">
+                      <div class="default_user_image"></div>
                     @else
-                      <img src="{{asset('cus_img/'.$customer->c_thumbnail)}}" alt="" style="height: 150px;">
+                      <div class="changed_user_image"></div>
                     @endif
                   </div>
                     <form action="{{url('shop_customer_img_edit/'.$customer->id)}}" method="post" enctype="multipart/form-data">
                       {{csrf_field()}}
-                      <label for="file_photo" style="border: 1px solid black;">
-                        ＋Add your picture
+                      <label class="add_user_image" for="file_photo" style="border: 1px solid black;">
+                        <span class="fa fa-refresh"></span>Change your picture
                         <input type="file" name="c_thumbnail" id="file_photo" style="display:none;" accept="image/*" onchange="submit(this.form)">
                       </label>
                     </form>
@@ -103,7 +125,8 @@
                                     <p>{{$product->pro_author}}</p>
                                     <p>$ 
                                     <?php
-                                    
+                                        $number =$product->pro_price;
+                                        echo number_format($number);
                                       ?>
                                     </p>
                                     <p>{!!$func->takestar($func->takeave($product->id))!!}{{$func->takeave($product->id)}}</p>

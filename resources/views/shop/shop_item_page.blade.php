@@ -205,9 +205,7 @@
                 <div class="review_user">
                     <img src="{{asset('shop_img/gacha.jpg')}}"  width="60px;" height="60px" alt="">
                     <h3>Gachapin</h3>
-                  
                     <p> 5</p>
-
                 </div>
                 <p class="review_comment">
                 it was very good! The picture was also beautiful and drawn in! I also want to tell Mook!
@@ -219,7 +217,6 @@
                     <div>{{ $rev->review }}</div>
                     <div>{{ $rev->point }}</div>
                 </td>
-                
                 </tr>
                 @endforeach
                 </p>
