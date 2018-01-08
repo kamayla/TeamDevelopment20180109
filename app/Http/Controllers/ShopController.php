@@ -366,6 +366,9 @@ class ShopController extends Controller
     public function shop_confirmation_view(Request $request){
         $cart = Session::get('cart');
         $quantity = Session::get('quantity');
+        if(!isset($cart)){
+            return redirect('/booquet');
+        }
         // バリデーション
         if($request->c_pay_type=='Credit'){
             $validator = Validator::make($request->all(),[
@@ -579,6 +582,11 @@ class ShopController extends Controller
             return redirect('/shop_user_register')
                 ->withInput()
                 ->withErrors($validator);
+        }
+
+        $chkcus = Customer::where('c_email',$request->c_email)->get();
+        if(count($chkcus)>0){
+            return redirect()->back();
         }
 
         $customer = new Customer;
