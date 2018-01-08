@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Booquet</title>
   <!-- CSSとJavaScript -->
-
+  
   <!-- Bootstrap CSS-->
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <!-- fontawesome -->

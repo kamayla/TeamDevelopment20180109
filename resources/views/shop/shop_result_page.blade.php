@@ -1,4 +1,5 @@
 @extends('layouts.shop_common')
+@inject('func','App\Http\Controllers\ShopController')
 
 @section('content1')
 <div class="result_page_wrapper">
@@ -37,7 +38,7 @@
                         echo number_format($number);
                         ?>
                       </p>
-                      <p>★★★★★ 4.4</p>
+                      <p>{!!$func->takestar($func->takeave($product->id))!!}{{$func->takeave($product->id)}}</p>
                       @if($product->pro_stock>0)
                       <p><span class="fa fa-check-circle-o"></span>In Stock</p>
                       @else
