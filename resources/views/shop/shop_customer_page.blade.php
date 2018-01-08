@@ -78,9 +78,11 @@
             <div class="mypage_top_right">
                 <h2>In Your Cart</h2>
                 <div class="artist_page_items">
+                  <?php $r=0 ?>
                     @if(isset($products))
                         @foreach($products as $product)
-                            <div class="artist_page_item" style="width:25%;">
+                            <?php $r++ ?>
+                            <div class="artist_page_item selection2" id="paging_item2_{{$r}}" style="width:25%;">
                                 <a href="{{url('shop_item_page/'.$product->id)}}">
                                     <div>
                                         <img src="{{asset('pro_img/'.$product->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
@@ -106,8 +108,10 @@
                         @endforeach
                     @endif
                 </div>
-                <div class="top_right_pagenation">
-                  <button>1</button>
+                <div class="bottom_left_pagenation">
+                    <div id="paging2" class="paginate"></div>
+                </div>
+                <input id="purchaseNum2" type="hidden" value="{{$r}}">
                 </div>
 
             </div>
@@ -123,7 +127,7 @@
                     @if(count($purchases)>0)
                       @foreach($purchases as $purchase)
                       <?php $i++ ?>
-                        <div class="artist_page_item selection" id="paging_item_{!!$i!!}" style="width:32%;">
+                        <div class="artist_page_item selection" id="paging_item_{{$i}}" style="width:32%;">
                           <a href="{{url('shop_item_page/'.$purchase->pro_id)}}">
                             <div>
                               <img src="{{asset('pro_img/'.$purchase->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
@@ -149,18 +153,23 @@
                       @endforeach
                     @endif
                   </div>
-                  <div class="top_right_pagenation">
-                      <div id="paging"></div>
-                      <button>1</button>
+                  <div class="bottom_left_pagenation">
+                      <div id="paging" class="paginate"></div>
                   </div>
               </div>
             </div>
+
+          <input id="purchaseNum" type="hidden" value="{{$i}}">
+
+
           <div class="mypage_bottom_right">
             <h2>Wishlist</h2>
             <div class="artist_page_items">
+              <?php $t=0 ?>
                 @if(isset($wishlists))
                     @foreach($wishlists as $wishlist)
-                        <div class="mypage_wishlist_item" style="width:25%;">
+                        <?php $t++ ?>
+                        <div class="mypage_wishlist_item selection4" id="paging_item4_{{$t}}" style="width:25%;">
                             <a href="{{url('shop_item_page/'.$wishlist->pro_id)}}">
                                 <div>
                                     <img src="{{asset('pro_img/'.$wishlist->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
@@ -197,17 +206,73 @@
                     @endforeach
                 @endif
             </div>
+            <div class="bottom_left_pagenation">
+                      <div id="paging4" class="paginate"></div>
+            </div>
+            <input id="purchaseNum4" type="hidden" value="{{$t}}">
           </div>
       </div>
 </div>
-@endsection
 
-
-
-@section('content1')
 
 @endsection
 
-@section('content2')
+@section('content7')
+<script>
+  $(function(){
+    　　//購入履歴
+      let purchaseNum = Math.ceil($("#purchaseNum").val() / 3); 
+      $("#paging").pagination({
+          items: purchaseNum,
+          displayedPages: 3,
+          onPageClick: function(pageNumber){show(pageNumber,0)}
+          })
 
+    　　//カート内
+      let purchaseNum2 = Math.ceil($("#purchaseNum2").val() / 4); 
+      $("#paging2").pagination({
+          items: purchaseNum2,
+          displayedPages: 4,
+          onPageClick: function(pageNumber){show(pageNumber,2)}
+          })
+
+    　　//ウィッシュリスト
+      let purchaseNum4 = Math.ceil($("#purchaseNum4").val() / 4); 
+      $("#paging4").pagination({
+          items: purchaseNum4,
+          displayedPages: 4,
+          onPageClick: function(pageNumber){show(pageNumber,1)}
+          })
+
+
+          function show(pageNumber,flag){
+            // console.log(flag);
+            if(flag===0){
+              let pageNumMax = pageNumber * 3;
+              let pageNumMin = pageNumMax - 2;
+              $('.selection').hide();
+              for(pageNumMin;pageNumMax >= pageNumMin;pageNumMin++){
+                  var page="#paging_item_" + pageNumMin;
+                  $(page).show();
+              }
+            }else if(flag==1){
+              let pageNumMax = pageNumber * 4;
+              let pageNumMin = pageNumMax - 3;
+              $('.selection4').hide();
+              for(pageNumMin;pageNumMax >= pageNumMin;pageNumMin++){
+                  var page="#paging_item4_" + pageNumMin;
+                  $(page).show();
+            }
+            }else{
+              let pageNumMax = pageNumber * 4;
+              let pageNumMin = pageNumMax - 3;
+              $('.selection2').hide();
+              for(pageNumMin;pageNumMax >= pageNumMin;pageNumMin++){
+                  var page="#paging_item2_" + pageNumMin;
+                  $(page).show();
+            }
+            }
+          }
+  })
+</script>
 @endsection
