@@ -16,8 +16,19 @@
             <div class="mypage_top_left">
                 <div class="mypage_tl_inner">
                   <div class="mypage_user_image">
+                    @if(empty($customer->c_thumbnail))
                       <img src="{{asset('shop_img/user_default.png')}}" alt="">
+                    @else
+                      <img src="{{asset('cus_img/'.$customer->c_thumbnail)}}" alt="" style="height: 150px;">
+                    @endif
                   </div>
+                    <form action="{{url('shop_customer_img_edit/'.$customer->id)}}" method="post" enctype="multipart/form-data">
+                      {{csrf_field()}}
+                      <label for="file_photo" style="border: 1px solid black;">
+                        ＋Add your picture
+                        <input type="file" name="c_thumbnail" id="file_photo" style="display:none;" accept="image/*" onchange="submit(this.form)">
+                      </label>
+                    </form>
                   <table id="mypage_user_table">
                       <tr>
                           <td font-size="16px">Name :</td>
@@ -90,8 +101,7 @@
                                     <p>{{$product->pro_author}}</p>
                                     <p>$ 
                                     <?php
-                                        $number =$product->pro_price;
-                                        echo number_format($number);
+                                    
                                       ?>
                                     </p>
                                     <p>{!!$func->takestar($func->takeave($product->id))!!}{{$func->takeave($product->id)}}</p>
