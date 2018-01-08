@@ -148,6 +148,7 @@ class ShopController extends Controller
     public function shop_item_page_view(Product $product){
         $otherworks = Product::where('pro_author',$product->pro_author)->get()->take(4);
         $other_works_of_this_genres = Product::where('pro_genre',$product->pro_genre)->get()->take(6);
+        $existence = Product_review::where('contributor', Session::get('c_id'))->where('p_id',$product->id)->get();
         //谷口追記、レビュー平均点算出表示
         $revs = DB::select("
         select
@@ -187,7 +188,8 @@ class ShopController extends Controller
                 'wishlist' => $wishlist,
                 'revs'=>$revs,
                 'ave'=>$ave,
-                'count'=>$count
+                'count'=>$count,
+                'existence' => $existence
             ]);
     }
 

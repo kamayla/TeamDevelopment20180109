@@ -199,7 +199,13 @@
                     </div>
               </div>
         </div>
-            
+            <!-- 投稿したか否か判定 -->
+            @if(count($existence)>0)
+                投稿した
+            @else
+                投稿してない
+            @endif
+            <!-- 投稿したか否か判定 -->
             <div class="review-area">
                 <h4>User Review</h4>
                 <div class="review_user">
