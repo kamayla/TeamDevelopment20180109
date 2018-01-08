@@ -294,7 +294,7 @@
                   <p>｢{{$other_works_of_this_genre->pro_name}}｣</p>
                   <p>{{$other_works_of_this_genre->pro_author}}</p>
                   <p>$<?php
-                     $number =$otherwork->pro_price;
+                     $number =$other_works_of_this_genre->pro_price;
                      echo number_format($number,2);
                      ?>
                   </p>
