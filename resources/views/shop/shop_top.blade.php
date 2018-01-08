@@ -184,31 +184,27 @@
 @section('content6')
 <div class="infomation-wrapper">
   <div class="infomationTitle">
-      <h1>Shopping Guide</h1>
+      <h1>Online Order Help</h1>
   </div>
   <div class="infomationContainer">
       <div class='infomationLeft'>
           <div class="shippingTitle">
-              <p>Shipping</p>
+              <p>World Wide Shipping</p>
           </div>
-          <h3>Items ordered by 11 AM are shipped during <br>the day.</h3>
+          <h3>In-stock orders received by 11am on a business <br>day (Mo-Fr) ship the same day.</h3>
           <div class="shippingInner">
-              <p>Shipping charges to the United States will be handled by an unprecedented shipping fee.<br>
-              You can also pick up at a nearby bookstore or convenience store.<br>
-              Dispatch other than the USA is also possible.
+              <p>The actual shipping cost typically depends on your total order weight, delivery location (zip code/country).
               </p>
               <p class="fa fa-truck" aria-hidden="true"></p>
           </div>
       </div>
       <div class='infomationRight'>
           <div class="paymentTitle">
-              <p>Payment Method</p>
+              <p>Payment Information</p>
           </div>
-          <h3>choose your preferred payment method such as credit card payment, convenience store payment</h3>
+          <h3>We accept Visa, Mastercard, American Express and PayPal. We also arrange COD upon your request.</h3>
           <div class="paymentInner">
-              <p style="font-size:18px;">VISA,MASTERCARD,AMEX,JCB can be used.<br>
-              Those who are concerned about security can also pay by paypal.<br>
-              We also do cash on delivery shipping.
+              <p style="font-size:18px;">In order to prevent online fraud, we reserve the right to hold potentially fraudulent orders until we receive satisfactory documentation verifying the legitimacy of the purchase.
               </p>
               <div class="paymentIcons">
                   <div class="paymentIcons_top">
