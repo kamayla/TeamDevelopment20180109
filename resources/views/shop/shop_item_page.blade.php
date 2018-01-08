@@ -216,8 +216,9 @@
                 <!-- 本タイトル -->
                 <td class="table-text">
                     <div>{{ $rev->contributor }}</div>
-                    <div>{{ $rev->review }}</div>
+                    <div>{!! $rev->review !!}</div>
                     <div>{{ $rev->point }}</div>
+                    <div>{{ $rev->c_name }}</div>
                     <div>
                         @if(empty($rev->c_thumbnail))
                             ない

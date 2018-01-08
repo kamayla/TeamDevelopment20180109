@@ -154,7 +154,8 @@ class ShopController extends Controller
         product_reviews.contributor as contributor,
         product_reviews.review as review,
         product_reviews.point as point,
-        customers.c_thumbnail as c_thumbnail
+        customers.c_thumbnail as c_thumbnail,
+        customers.c_name as c_name
         from 
         product_reviews,customers
         where 
