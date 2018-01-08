@@ -977,12 +977,12 @@ footer {
 }
 
 .review-area-inner{
-  height:200px;
+  max-height:200px;
   width:100%;
   overflow: scroll;
-  border:1px solid rgb(225, 225, 225);
   padding:8px 16px;
   margin-bottom:40px;
+  /* border:1px solid rgb(225, 225, 225); */
 }
 
 .write_review {

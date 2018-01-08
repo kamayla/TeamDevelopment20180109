@@ -209,20 +209,14 @@
                     <div id="content">
                         <img id="img" src="{{asset('pro_img/'.$product->pro_thumbnail)}}" alt="" style="height: 350px; max-width:500px">
                     </div>
-                    <div class="item_thumbnails cf"  id="thumb_img">
+                    <div class="item_thumbnails cf"  id="thumb_img" style="margin-top:16px;">
                         <img class="active" src="{{asset('pro_img/'.$product->pro_thumbnail)}}" onclick="changeimg('{{asset('pro_img/'.$product->pro_thumbnail)}}',this);" style="width: 80px;">
                         <img src="{{asset('pro_img/'.$product->pro_thumbnail2)}}" onclick="changeimg('{{asset('pro_img/'.$product->pro_thumbnail2)}}',this);" style="width: 80px;">
                         <img src="{{asset('pro_img/'.$product->pro_thumbnail3)}}" onclick="changeimg('{{asset('pro_img/'.$product->pro_thumbnail3)}}',this);" style="width: 80px;">
                     </div>
               </div>
         </div>
-            <!-- 投稿したか否か判定 -->
-            @if(count($existence)>0)
-                投稿した
-            @else
-                投稿してない
-            @endif
-            <!-- 投稿したか否か判定 -->
+
             <div class="review-area">
                 <h4>User Review</h4>
                 <div class="review-area-inner">
@@ -348,8 +342,15 @@
                     @if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId())
 
                     @else
-                    <button id="reviewBtn">Write a review</button>
+                        @if(count($existence)>0)
+                        @else
+                        <button id="reviewBtn">Write a review</button>
+                        @endif
                     @endif
+
+                    <!-- 投稿したか否か判定 -->
+                    
+                    <!-- 投稿したか否か判定 -->
 
 
                 <!-- wev.phpで定義 -->
@@ -428,7 +429,7 @@
           </div>
           <h3>Items ordered by 11 AM are shipped during <br>the day.</h3>
           <div class="shippingInner">
-              <p>Most items qualify for Free Standard Shipping in the USA.<br>
+              <p>Shipping charges to the United States will be handled by an unprecedented shipping fee.<br>
               You can also pick up at a nearby bookstore or convenience store.<br>
               Dispatch other than the USA is also possible.
               </p>
@@ -441,7 +442,7 @@
           </div>
           <h3>choose your preferred payment method such as credit card payment, convenience store payment</h3>
           <div class="paymentInner">
-              <p>VISA,MASTERCARD,AMEX,JCB can be used.<br>
+              <p style="font-size:18px;">VISA,MASTERCARD,AMEX,JCB can be used.<br>
               Those who are concerned about security can also pay by paypal.<br>
               We also do cash on delivery shipping.
               </p>

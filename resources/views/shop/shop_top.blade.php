@@ -193,7 +193,7 @@
           </div>
           <h3>Items ordered by 11 AM are shipped during <br>the day.</h3>
           <div class="shippingInner">
-              <p>Most items qualify for Free Standard Shipping in the USA.<br>
+              <p>Shipping charges to the United States will be handled by an unprecedented shipping fee.<br>
               You can also pick up at a nearby bookstore or convenience store.<br>
               Dispatch other than the USA is also possible.
               </p>
@@ -206,7 +206,7 @@
           </div>
           <h3>choose your preferred payment method such as credit card payment, convenience store payment</h3>
           <div class="paymentInner">
-              <p>VISA,MASTERCARD,AMEX,JCB can be used.<br>
+              <p style="font-size:18px;">VISA,MASTERCARD,AMEX,JCB can be used.<br>
               Those who are concerned about security can also pay by paypal.<br>
               We also do cash on delivery shipping.
               </p>
