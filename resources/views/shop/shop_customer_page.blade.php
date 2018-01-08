@@ -148,7 +148,7 @@
                             <p>$ 
                             <?php
                               $number =$purchase->pro_price;
-                              echo number_format($number);
+                              echo number_format($number,2);
                             ?>
                             </p>
                             <p></p>
@@ -190,7 +190,7 @@
                                 <p>$ 
                                 <?php
                                     $number =$wishlist->pro_price;
-                                    echo number_format($number);
+                                    echo number_format($number,2);
                                   ?>
                                 </p>
                                 <p>{!!$func->takestar($func->takeave($wishlist->pro_id))!!}{{$func->takeave($wishlist->pro_id)}}</p>
