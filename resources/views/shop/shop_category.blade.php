@@ -42,7 +42,7 @@
                           <p>$ 
                           <?php
                               $number =$product->pro_price;
-                              echo number_format($number);
+                              echo number_format($number,2);
                             ?>
                           </p>
                           <p>{!!$func->takestar($func->takeave($product->id))!!}{{$func->takeave($product->id)}}</p>

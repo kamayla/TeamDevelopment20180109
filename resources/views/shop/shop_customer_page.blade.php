@@ -144,7 +144,7 @@
                             <p>$ 
                             <?php
                               $number =$purchase->pro_price;
-                              echo number_format($number);
+                              echo number_format($number,2);
                             ?>
                             </p>
                             <p></p>
@@ -181,10 +181,10 @@
                                 <p>$ 
                                 <?php
                                     $number =$wishlist->pro_price;
-                                    echo number_format($number);
+                                    echo number_format($number,2);
                                   ?>
                                 </p>
-                                <p>{!!$func->takestar($func->takeave($product->id))!!}{{$func->takeave($product->id)}}</p>
+                                <p>{!!$func->takestar($func->takeave($wishlist->pro_id))!!}{{$func->takeave($wishlist->pro_id)}}</p>
                                 <p>
                                     @if($wishlist->pro_stock > 0)
                                     <span class="fa fa-check-circle-o"></span>In Stock

@@ -73,7 +73,7 @@
                         <?php
                         $number =$product->pro_price;
                         // 3桁ごとにカンマ区切りで出力
-                        echo number_format($number);
+                        echo number_format($number,2);
                         ?>
                         </p>
                     </div>
