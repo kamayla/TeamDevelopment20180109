@@ -946,8 +946,9 @@ footer {
 
 .review_user h3 {
   line-height: 60px;
-  margin: 0 24px;
-  font-size: 28px;
+  width:50%;
+  margin-left:32px;
+  font-size: 24px;
 }
 
 .review_user p {
@@ -973,6 +974,15 @@ footer {
 .review-area button:hover {
   color: white;
   background-color: rgb(43, 43, 43);
+}
+
+.review-area-inner{
+  height:200px;
+  width:100%;
+  overflow: scroll;
+  border:1px solid rgb(225, 225, 225);
+  padding:8px 16px;
+  margin-bottom:40px;
 }
 
 .write_review {

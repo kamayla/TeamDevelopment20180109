@@ -3,6 +3,25 @@
 
 
 @section('content1')
+
+<style>
+  .item_user_image_default{
+    display:inline;
+    height:60px;
+    width:60px;
+    border-radius:150px;
+    margin-left:24px;
+    margin: auto 0 auto 16px;
+  }
+  .item_user_image_changed{
+    display:inline;
+    height:60px;
+    width:60px;
+    border-radius:150px;
+    margin: auto 0 auto 8px;
+  }
+</style>
+
 <div class="pro-item-wrap">
 
 
@@ -37,7 +56,7 @@
                             <a class="fa fa-heart-o wishlist_btn" href="{{url('shop_wish_done/'.$product->id)}}"></a>
                         @endif
                     @endif
-                    <!-- WISHLISTテスト用 -->
+                    <!-- WISHLIST -->
                   <p class="categoryRoute">Category/<a href="{{url('shop_category/'.$product->pro_genre)}}">{{$product->pro_genre}}</a></p>
                   <h2>｢{{$product->pro_name}}｣</h2>
                   <p>{{$product->pro_author}}</p>
@@ -72,7 +91,6 @@
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         ';
 
-                        
                     }elseif(round($ave,1)>=0.8&&round($ave,1)<=1.2){
                         $score='
                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -155,7 +173,6 @@
                         <i class="fa fa-star" aria-hidden="true"></i>
                         ';
                     }
-
                   @endphp
 
                   <p>{!!$score!!} {{round($ave,1)}} score</p>
@@ -202,34 +219,133 @@
             
             <div class="review-area">
                 <h4>User Review</h4>
-                <div class="review_user">
-                    <img src="{{asset('shop_img/gacha.jpg')}}"  width="60px;" height="60px" alt="">
-                    <h3>Gachapin</h3>
-                    <p> 5</p>
-                </div>
-                <p class="review_comment">
-                it was very good! The picture was also beautiful and drawn in! I also want to tell Mook!
-                @foreach ($revs as $rev)
-                    <tr>
-                    <!-- 本タイトル -->
-                        <td class="table-text">
-                            <div>{{ $rev->contributor }}</div>
-                            <div>{!! $rev->review !!}</div>
-                            <div>{{ $rev->point }}</div>
-                            <div>{{ $rev->c_name }}</div>
-                            <div>
-                                @if(empty($rev->c_thumbnail))
-                                    ない
-                                @else
-                                    <img src="{{asset('cus_img/'.$rev->c_thumbnail)}}" alt="" style="height:70px;">
-                                @endif
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-                </p>
-               
-                <button id="reviewBtn">Write a review</button>
+                <div class="review-area-inner">
+                        @foreach ($revs as $rev)
+                        <div class="review_user">
+                                    @if(empty($rev->c_thumbnail))
+                                        <div class="item_user_image_default" style="background:url('{{asset('shop_img/user_default_2.png')}}'); background-size: cover;background-position: center;background-repeat: no-repeat;"></div>
+                                    @else
+                                        <div class="item_user_image_changed" style="background:url('{{asset('cus_img/'.$rev->c_thumbnail)}}');background-size: cover;background-position: center;background-repeat: no-repeat;"></div>
+                                    @endif
+                            <h3>{{ $rev->c_name }}</h3>
+                            @php
+                            if(round($rev->point,1)==0){
+                                $score2='
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                ';
+
+                            }elseif(round($rev->point,1)>=0.1&&round($rev->point,1)<=0.7){
+                                $score2='
+                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                ';
+
+                            }elseif(round($rev->point,1)>=0.8&&round($rev->point,1)<=1.2){
+                                $score2='
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                ';
+
+                            }elseif(round($rev->point,1)>=0.8&&round($rev->point,1)<=1.2){
+                                $score2='
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                ';
+                            }elseif(round($rev->point,1)>=1.3&&round($rev->point,1)<=1.7){
+                                $score2='
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                ';
+                            }elseif(round($rev->point,1)>=1.8&&round($rev->point,1)<=2.2){
+                                $score2='
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                ';
+                            }elseif(round($rev->point,1)>=2.3&&round($rev->point,1)<=2.7){
+                                $score2='
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                ';
+                            }elseif(round($rev->point,1)>=2.8&&round($rev->point,1)<=3.2){
+                                $score2='
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                ';
+                            }elseif(round($rev->point,1)>=3.3&&round($rev->point,1)<=3.7){
+                                $score2='
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                ';
+                            }elseif(round($rev->point,1)>=3.8&&round($rev->point,1)<=4.2){
+                                $score2='
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                ';
+                            }elseif(round($rev->point,1)>=4.3&&round($rev->point,1)<=4.7){
+                                $score2='
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                ';
+                            }elseif(round($rev->point,1)>=4.8&&round($rev->point,1)<=5.0){
+                                $score2='
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                ';
+                            }
+                        @endphp
+                            <p style="font-size:20px; text-align:right; padding-right:24px">{!!$score2!!} {{ $rev->point }}.0score</p>
+                        </div>
+                        <p class="review_comment" style="font-size:18px; padding:0 40px 16px 40px;">
+                            {!! $rev->review !!}
+                        </p>
+                        @endforeach
+                    </div>
+
+
+                    @if(empty(Session::get('chk_ssid')) || Session::get('chk_ssid') != Session::getId())
+
+                    @else
+                    <button id="reviewBtn">Write a review</button>
+                    @endif
+
+
                 <!-- wev.phpで定義 -->
                 <form action="{{ url('review_add') }}" method="post" class="write_review">
                 {{csrf_field()}}
@@ -337,5 +453,6 @@
       </div>
   </div>
 </div>
+
 <!-- /informationセクション -->
 @endsection
