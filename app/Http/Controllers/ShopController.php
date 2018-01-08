@@ -555,4 +555,27 @@ class ShopController extends Controller
         }
 
     }
+
+    public function shop_customer_img_edit(Customer $customer, Request $request){
+        // ファイルを取得
+        $file = $request->file('c_thumbnail');
+        // ファイルが空かどうか審査
+        if(!empty($file)){
+            // get file name
+            $filename = $file->getClientOriginalName();
+            $extension = pathinfo($filename, PATHINFO_EXTENSION);//拡張子をゲットする。
+            $filename = $filename.date("YmdHis").md5(session_id()).".".$extension;
+            // file move
+            $file->move('./cus_img/',$filename);
+        }else{
+            $filename= '';
+        }
+
+        $customer->c_thumbnail = $filename;
+        $customer->save();
+
+        return redirect()->back();
+
+
+    }
 }
