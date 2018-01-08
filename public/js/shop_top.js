@@ -1,5 +1,9 @@
 $(function() {
-
+    // TEST--------------------------------------------
+    
+    $('#slider').fadeIn(300);
+    
+    // TEST--------------------------------------------
  $('#slider').slick({
     slidesToShow: 1,
   slidesToScroll: 1,

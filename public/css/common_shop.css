@@ -377,6 +377,7 @@ footer {
 }
 
 #slider {
+  display: none;/*test*/
   width: 800px;
   margin: 60px auto 0;
   padding-bottom: 16px;

@@ -14,7 +14,7 @@
   <!-- カルーセル用 css -->
   <link rel="stylesheet" href="{{asset('slick/slick.css')}}">
   <link rel="stylesheet" href="{{asset('slick/slick-theme.css')}}">
-  <!-- <link rel="stylesheet" href="{{asset('css/simplePagination.css')}}"> -->
+  <script type="text/javascript" src="{{asset('slick/slick.min.js')}}"></script>
   <!-- self css -->
   <link rel="stylesheet" href="{{asset('css/common_shop.css')}}">
 </head>

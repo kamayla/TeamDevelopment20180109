@@ -16,7 +16,7 @@
         <!-- <td align="center" valign="middle">
           </td> -->
           <td class="cart_item_title">
-            <a href="">
+            <a href="{{url('shop_item_page/'.$product[$i]->id)}}">
               <div class="cart_item_image">
                 <img src="{{asset('pro_img/'.$product[$i]->pro_thumbnail)}}" alt="" style="height: 100px;">
               </div>
