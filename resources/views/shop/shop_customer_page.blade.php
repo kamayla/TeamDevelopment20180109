@@ -1,4 +1,5 @@
 @extends('layouts.shop_common')
+@inject('func','App\Http\Controllers\ShopController')
 
 @section('content0')
 <div class="cart_titles">
@@ -93,7 +94,7 @@
                                         echo number_format($number);
                                       ?>
                                     </p>
-                                    <p>★★★★★ 4.4</p>
+                                    <p>{!!$func->takestar($func->takeave($product->id))!!}{{$func->takeave($product->id)}}</p>
                                     <p>
                                         @if($product->pro_stock > 0)
                                         <span class="fa fa-check-circle-o"></span>In Stock
@@ -136,7 +137,7 @@
                               echo number_format($number);
                             ?>
                             </p>
-                            <p>★★★★★ 4.4</p>
+                            <p></p>
                             <p>
                               @if($purchase->pro_stock > 0)
                               <span class="fa fa-check-circle-o"></span>In Stock
@@ -173,7 +174,7 @@
                                     echo number_format($number);
                                   ?>
                                 </p>
-                                <p>★★★★★ 4.4</p>
+                                <p>{!!$func->takestar($func->takeave($product->id))!!}{{$func->takeave($product->id)}}</p>
                                 <p>
                                     @if($wishlist->pro_stock > 0)
                                     <span class="fa fa-check-circle-o"></span>In Stock
