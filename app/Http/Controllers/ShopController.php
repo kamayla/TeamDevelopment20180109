@@ -149,7 +149,18 @@ class ShopController extends Controller
         $otherworks = Product::where('pro_author',$product->pro_author)->get()->take(4);
         $other_works_of_this_genres = Product::where('pro_genre',$product->pro_genre)->get()->take(6);
         //谷口追記、レビュー平均点算出表示
-        $revs = Product_review::orderBy('created_at', 'asc')->where('p_id',$product->id)->get();
+        $revs = DB::select("
+        select
+        product_reviews.contributor as contributor,
+        product_reviews.review as review,
+        product_reviews.point as point,
+        customers.c_thumbnail as c_thumbnail
+        from 
+        product_reviews,customers
+        where 
+        product_reviews.contributor = customers.id
+        and product_reviews.p_id = $product->id
+        ");
         $sum=0;
         $count=0;
         foreach ($revs as $rev){
