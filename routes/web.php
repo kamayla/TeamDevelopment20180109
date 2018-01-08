@@ -98,3 +98,6 @@ Route::post('/shop_customer_edit_done/{customer}', 'ShopController@shop_customer
 
 // WISHLIST処理
 Route::get('/shop_wish_done/{product}', 'ShopController@shop_wish_done');
+
+// WISHLIST処理
+Route::post('/shop_customer_img_edit/{customer}', 'ShopController@shop_customer_img_edit');
