@@ -404,7 +404,6 @@ class ShopController extends Controller
             $product[] = Product::find($val);
         }
 
-       
         $datsales = new Datsale;
         if(empty(Session::get('c_id'))){
             $datsales->c_id = 0;

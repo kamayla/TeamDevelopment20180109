@@ -30,9 +30,11 @@
         <h3>Category / {{$genre}}</h3>
       </div>
       <div class="artist_page_items">
+          <?php $i=0;?>
           @if(count($products)>0)
               @foreach($products as $product)
-                  <div class="artist_page_item">
+              <?php $i++; ?>
+                  <div class="artist_page_item selection10" id="paging_item10_{{$i}}">
                       <a href="{{url('shop_item_page/'.$product->id)}}">
                           <div>
                               <img src="{{asset('pro_img/'.$product->pro_thumbnail)}}" alt="" style="height: 150px; display: block; margin: 0 auto;">
@@ -58,7 +60,13 @@
               @endforeach
           @endif
       </div>
+        <div class="bottom_left_pagenation">
+            <div id="paging10" class="paginate"></div>
+        </div>
     </div>
+
+    <input id="purchaseNum10" type="hidden" value="{{$i}}">
+
 
     <div class="pro-item-area_right" id="category_ranking_area">
         <h4 class="category_ranking">Ranking of {{$genre}}</h4>
@@ -83,8 +91,28 @@
     </div>
 </div>
 
-<div class="artist_pagenation">
-  <button>1</button>
-</div>
+@endsection
 
+@section('content7')
+<script>
+  $(function(){
+        // 表示数10の時
+        let purchaseNum10 = Math.ceil($("#purchaseNum10").val() / 10);
+        $("#paging10").pagination({
+            items: purchaseNum10,
+            displayedPages: 10,
+            onPageClick: function(pageNumber){show(pageNumber)}
+            })
+        function show(pageNumber){
+                let pageNumMax = pageNumber * 10;
+                let pageNumMin = pageNumMax - 9;
+
+                $('.selection10').hide();
+                for(pageNumMin;pageNumMax >= pageNumMin;pageNumMin++){
+                    var page="#paging_item10_" + pageNumMin;
+                    $(page).show();
+                };
+            }
+  })
+</script>
 @endsection

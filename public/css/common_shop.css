@@ -353,7 +353,6 @@ footer {
 }
 
 .leftSidebar div {
-  margin-top: -16px;
   width: 170px;
   border-top: 1px solid rgb(43, 43, 43);
 }
@@ -409,7 +408,6 @@ footer {
 
 .right-top a {
   font-size: 40px;
-  /* margin: 0 5px; */
   padding: 0 5px;
 }
 
@@ -2081,6 +2079,7 @@ footer {
 
 .mypage_bottom_right {
   width: 50%;
+  margin-bottom:40px;
 }
 
 .mypage_bottom_left h2 {
@@ -2098,6 +2097,7 @@ footer {
 
 .mypage_wishlist_item {
   width: 20%;
+  margin-bottom:32px;
 }
 
 .mypage_wishlist_item a {
@@ -2179,11 +2179,115 @@ footer {
   padding:8px;
 }
 
-
 /*------------- /ユーザーマイページ------------- */
 
-
+/* -----ページネーションCSS---- */
 .selection {display: none;}
+.selection10 {display: none;}
+.selection12 {display: none;}
+.selection4 {display: none;}
+.selection2 {display: none;}
+
 #paging_item_1 { display: block;}
 #paging_item_2 { display: block;}
 #paging_item_3 { display: block;}
+
+#paging_item4_1 { display: block;}
+#paging_item4_2 { display: block;}
+#paging_item4_3 { display: block;}
+#paging_item4_4 { display: block;}
+
+#paging_item2_1 { display: block;}
+#paging_item2_2 { display: block;}
+#paging_item2_3 { display: block;}
+#paging_item2_4 { display: block;}
+
+#paging_item10_1 { display: block;}
+#paging_item10_2 { display: block;}
+#paging_item10_3 { display: block;}
+#paging_item10_4 { display: block;}
+#paging_item10_5 { display: block;}
+#paging_item10_6 { display: block;}
+#paging_item10_7 { display: block;}
+#paging_item10_8 { display: block;}
+#paging_item10_9 { display: block;}
+#paging_item10_10 { display: block;}
+
+#paging_item12_1 { display: block;}
+#paging_item12_2 { display: block;}
+#paging_item12_3 { display: block;}
+#paging_item12_4 { display: block;}
+#paging_item12_5 { display: block;}
+#paging_item12_6 { display: block;}
+#paging_item12_7 { display: block;}
+#paging_item12_8 { display: block;}
+#paging_item12_9 { display: block;}
+#paging_item12_10 { display: block;}
+#paging_item12_11 { display: block;}
+#paging_item12_12 { display: block;}
+
+
+#paging ul{
+  display:flex;
+  color:rgb(43, 43, 43);
+  list-style: none;
+  justify-content: center;
+  margin-top:32px;
+}
+
+#paging li{
+  width:40px;
+  height:40px;
+  color:rgb(43, 43, 43);
+  margin-left:10px;
+}
+
+#paging  a{
+  width:40px;
+  border:1px solid rgb(43, 43, 43);
+  height:40px;
+  color:rgb(43, 43, 43);
+  text-align: center;
+}
+
+#paging10 ul,#paging12 ul,#paging4 ul,#paging2 ul{
+  display:flex;
+  justify-content: center;
+  color:rgb(43, 43, 43);
+  list-style: none;
+  margin:32px 0 32px;
+}
+
+#paging10 li,#paging12 li,#paging4 li,#paging2 li{
+  width:40px;
+  height:40px;
+  color:rgb(43, 43, 43);
+  margin-left:10px;
+}
+
+#paging10 a,#paging12 a,#paging4 a,#paging2 a{
+  width:40px;
+  border:1px solid rgb(43, 43, 43);
+  height:40px;
+  color:rgb(43, 43, 43);
+  text-align: center;
+}
+
+
+.active{
+  background:rgb(43, 43, 43);
+  text-align: center;
+  line-height: 40px;
+}
+.active span{
+  color:white;
+}
+
+.next,.prev{
+  display:none;
+}
+
+
+
+/* -----/ページネーションCSS---- */
+
