@@ -411,6 +411,9 @@ class ShopController extends Controller
     public function shop_order_complete_view(Request $request){
         $cart = Session::get('cart');
         $quantity = Session::get('quantity');
+        if(!isset($cart)){
+            return redirect('/booquet');
+        }
 
         foreach($cart as $key => $val){
             $product[] = Product::find($val);
@@ -443,6 +446,50 @@ class ShopController extends Controller
             $product[$i]->pro_stock -= $quantity[$i];
             $product[$i]->save();
         }
+
+
+        // メール文章作成
+        $mailsentence ='';
+        $mailsentence .= $request->c_name."Thank you for your order.\n";
+        $mailsentence .= 'We sent an order email to your email address ['.$request->c_email."]\n";
+        $mailsentence .= "We will send the item to this address.\n";
+        $mailsentence .= $request->c_postal1."\n";
+        $mailsentence .= $request->c_address."\n";
+        $mailsentence .= $request->c_tel."\n";
+        $mailsentence .= "\n";
+        $mailsentence .= 'To'.$request->c_name."\n\nThank you for your order this time.\n\n";
+        $mailsentence .= "Order items\n";
+        $mailsentence .= "--------------------------------\n";
+
+        for($i=0; $i<count($cart); $i++){
+            $name = $product[$i]->pro_name;
+            $price = $product[$i]->pro_price;
+            $q = $quantity[$i];
+            $total = $price * $q;
+
+            $mailsentence .= $name.' ';
+            $mailsentence .= '$'.$price.' ';
+            $mailsentence .= '×'.$q.' = ';
+            $mailsentence .= '$'.$total."\n";
+        }
+
+        $mailsentence .= "--------------------------------\n";
+        $mailsentence .= "□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□\n";
+        $mailsentence .= "Booquet\n";
+        $mailsentence .= "\n";
+        $mailsentence .= "Address: 1-1 Udagawacho Shibuya-ku. Tokyo\n";
+        $mailsentence .= "Tel: 090-0000-0000\n";
+        $mailsentence .= "Email: booquet@booquet.co.jp\n";
+        $mailsentence .= "□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□\n";
+        // /メール文章作成
+
+        $title = 'Thank you for your order';
+        $header = 'From:ippei_kamimura@icloud.com';
+        $mailsentence = html_entity_decode($mailsentence, ENT_QUOTES, 'UTF-8');
+        mb_language('English');
+        mb_internal_encoding('UTF-8');
+        mb_send_mail($request->c_email, $title, $mailsentence, $header);
+
         
 
         Session::forget('cart');
