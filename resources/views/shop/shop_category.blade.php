@@ -23,7 +23,6 @@
 
 
 
-
 <div class="artist_main-wrapper">
   <div class="artist_main_left">
       <div class="artist_main_title">

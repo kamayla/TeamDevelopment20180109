@@ -120,7 +120,7 @@
   <footer>
           <div class="footerLeft">
               <div class="footerLeft_left">
-                  <img src="{{asset('shop_img/booquet_logo2.png')}}" alt="" width="180px">
+                  <img src="{{asset('shop_img/Booquet_logo2.png')}}" alt="" width="180px">
                     <p>Monday - Friday 08.30 - 17.00</p>
                     <p>booquet_japan@booquet.com</p>
                     <p>Find us on Google Maps</p>
