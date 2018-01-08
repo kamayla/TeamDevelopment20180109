@@ -45,7 +45,7 @@
                   <?php
                       $number =$product->pro_price;
                       // 3桁ごとにカンマ区切りで出力
-                      echo number_format($number);
+                      echo number_format($number,2);
                       ?>
                   </p>
                   @if($product->pro_stock>0)
@@ -210,14 +210,14 @@
                 <p class="review_comment">
                 it was very good! The picture was also beautiful and drawn in! I also want to tell Mook!
                 @foreach ($revs as $rev)
-                <tr>
-                <!-- 本タイトル -->
-                <td class="table-text">
-                    <div>{{ $rev->contributor }}</div>
-                    <div>{{ $rev->review }}</div>
-                    <div>{{ $rev->point }}</div>
-                </td>
-                </tr>
+                    <tr>
+                    <!-- 本タイトル -->
+                        <td class="table-text">
+                            <div>{{ $rev->contributor }}</div>
+                            <div>{{ $rev->review }}</div>
+                            <div>{{ $rev->point }}</div>
+                        </td>
+                    </tr>
                 @endforeach
                 </p>
                

@@ -23,7 +23,12 @@
                 <div>
                     <p>{{$product[$i]->pro_name}}</p>
                     <p>{{$product[$i]->pro_author}}</p>
-                    <p>$ {{$product[$i]->pro_price}}</p>
+                    <p>$<?php
+                     $number =$product[$i]->pro_price;
+                     echo number_format($number,2);
+                     ?> 
+                    </p>
+
                       @if($product[$i]->pro_stock > 0)
                       <p><span class="fa fa-check-circle-o"></span>In Stock</p>
                       @else
@@ -89,13 +94,20 @@
               </div class="cart_total_amount">
               <div>
                 <p>Total Amount :</p>
-                <p>$ {{$TotalAmount}}</p>
+                <p>$<?php
+                    $number =$TotalAmount;
+                    echo number_format($number,2);
+                    ?>
+                 </p>
               </div>
           </div>
           <div class="total_amount_taxes">
               <p>Shiping Cost : $4.99</p>
               <p>Taxes : $0.00</p>
-              <p>Grand Total : $ {{$TotalAmount + 4.99}}</p>
+              <p>Grand Total : $<?php
+                    $number =$TotalAmount;
+                    echo number_format($number,2);
+                    + 4.99 ?></p>
           </div>
           <div class="cart_checkout_area">
               <a href="{{url('shop_checkout')}}" class="cart_checkout_btn"><span class="fa fa-share"></span>Checkout</a>

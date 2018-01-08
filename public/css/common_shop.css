@@ -353,7 +353,7 @@ footer {
 }
 
 .leftSidebar div {
-  width: 170px;
+  width: 210px;
   border-top: 1px solid rgb(43, 43, 43);
 }
 
@@ -362,7 +362,8 @@ footer {
   font-size: 26px;
   height: 150px;
   margin: 32px 0 0 32px;
-  width: 170px;
+  width: 190px;
+  margin-bottom:16px;
 }
 
 .leftSidebar li:hover {
