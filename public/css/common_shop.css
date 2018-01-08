@@ -22,8 +22,8 @@ button {
   outline: none;
 }
 
-div {
-  /* border: 1px solid red; */
+button:focus {
+  outline: none;
 }
 
 .yields {
@@ -225,6 +225,13 @@ nav div {
   color: rgb(10, 10, 10);
 }
 
+.header_join{
+  padding:0 5px;
+}
+.header_join:hover{
+  background-color:rgb(43, 43, 43);
+  color: white;
+}
 
 /*--- /headerセクション ---*/
 
@@ -795,8 +802,18 @@ footer {
   margin-top: 80px;
 }
 
+
+
 .item_center_words{
   position:relative;
+  width:30%;
+  /* margin-left:120px; */
+}
+
+.item_center_image{
+  width:50%;
+  text-align:center;
+  margin-top:24px;
 }
 
 .wishlist_btn{
@@ -875,6 +892,20 @@ footer {
 .item_center_inner button:hover {
   color: white;
   background-color: rgb(43, 43, 43);
+}
+
+.soldout_btn_area{
+  margin:24px 0 28px 100px;
+}
+
+.soldout_btn{
+  display:inline;
+  font-size: 20px;
+  background-color: rgb(43, 43, 43);
+  border: 2px solid rgb(43, 43, 43);
+  border-radius: 4px;
+  padding: 8px 16px;
+  color: white;
 }
 
 .item_center_inner span {
@@ -1638,7 +1669,7 @@ footer {
 }
 
 #table {
-  width: 700px;
+  width: 800px;
   margin: 0 auto;
 }
 
@@ -2126,6 +2157,26 @@ footer {
 .mypage_cart_btn:hover{
   background-color:rgb(43, 43, 43);
   color:white;
+}
+
+.mypage_cart_btn_sold{
+  display:inline;
+  background-color: rgb(43, 43, 43);
+  color:white;
+  font-size:20px;
+  padding: 7px 16px;
+}
+
+.mypage_cart_btn_sold span{
+  margin-right:8px;
+}
+
+.item_thumbnails {
+  text-align: center;
+}
+
+.item_thumbnails img {
+  padding:8px;
 }
 
 

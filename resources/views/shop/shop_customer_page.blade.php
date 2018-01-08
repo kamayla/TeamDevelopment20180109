@@ -190,7 +190,7 @@
                                 <button type="submit" class="mypage_cart_btn"><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
                               </form>
                               @else
-                              <button class="mypage_cart_btn"><span class="fa fa-plus" style="font-size:16px;"></span>Add To Cart</button>
+                              <div class="mypage_cart_btn_sold"><span class="fa fa-times" style="font-size:16px;"></span>Soldout</div>
                               @endif
                           </div>
                           </div>
