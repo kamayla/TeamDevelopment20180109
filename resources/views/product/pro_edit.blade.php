@@ -113,7 +113,6 @@
 
 <script>
   let genre = document.getElementById('genre').value;
-
   if(genre=='Tokyo'){
     document.getElementById('pro_genre')[0].selected = true;
   }
